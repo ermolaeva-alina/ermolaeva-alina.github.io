@@ -170,6 +170,7 @@ header {
       padding: 12px 28px 12px 32px;
       display: flex;
       align-items: center;
+
       img {
         margin-left: 8px;
       }
@@ -189,6 +190,150 @@ header {
       width: 20px;
       height: 20px;
       margin-left: 16px;
+    }
+  }
+}
+
+.description-container {
+  margin-top: 12px;
+  color: $light;
+  background-color: $black-2;
+  padding: 32px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+
+  .i-love-container {
+    width: 1115px;
+
+    .emotional-image {
+      margin-top: -188px;
+    }
+
+    .human-friendly-image {
+      margin-top: -176px;
+      margin-left: 141px;
+    }
+  }
+
+  .expertise-container {
+    margin-top: 120px;
+    width: 681px;
+    align-self: end;
+  }
+}
+
+.case-studies-header {
+  color: $light;
+  background-color: $black-2;
+  border-radius: 16px;
+  margin-top: 12px;
+  padding: 40px 48px;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-left: 40px;
+  }
+}
+
+.case-1-container {
+  margin-top: 12px;
+  background-color: $black-2;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+
+  .left-block-container {
+    display: flex;
+    flex-direction: column;
+
+    .description-block-container {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .text-container {
+      background-color: $white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 4px;
+      margin-left: 4px;
+    }
+
+    .header-container {
+      background-color: $blue;
+      border-radius: 16px;
+      padding: 32px;
+
+      h3, div {
+        width: 625px;
+      }
+    }
+
+    .col-1 {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .outcome-container {
+      flex-grow: 1;
+    }
+
+    .text-container {
+      h3, div {
+        width: 398px;
+      }
+    }
+
+    .role-container ul {
+      padding-left: 30px;
+    }
+  }
+
+  .right-block-container {
+    padding-left: 16px;
+
+    .case-img {
+      height: 720px;
+      border-radius: 16px;
+    }
+
+    .tags-container {
+      display: flex;
+      margin-top: 4px;
+
+      div {
+        padding: 16px 20px 16px 20px;
+        background-color: $black-3;
+        border-radius: 29px;
+        margin-left: -16px;
+      }
+
+      div:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .link-container {
+      display: flex;
+      margin-top: 4px;
+
+      .year-block {
+        padding: 16px 20px 16px 20px;
+        background-color: $black-3;
+        border-radius: 29px;
+      }
+
+      .link-block {
+        padding: 16px 20px 16px 20px;
+        border-radius: 29px;
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 1;
+        background-color: $blue;
+      }
     }
   }
 }
