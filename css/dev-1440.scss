@@ -1,0 +1,99 @@
+@media screen and (max-width: 1440px) {
+  header {
+    .avatar {
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    .menu-buttons {
+      div {
+        height: 40px !important;
+      }
+    }
+  }
+
+  .main-blocks-container {
+    .left-main-block {
+      .left-main-block-header h1 {
+        min-width: 440px !important;
+        max-width: 620px !important;
+      }
+
+      .paragraph-1 {
+        margin-top: 56px !important;
+        min-width: 440px !important;
+        max-width: 620px !important;
+      }
+
+      .paragraph-2 {
+        margin-top: 32px !important;
+        min-width: 440px !important;
+        max-width: 620px !important;
+      }
+    }
+  }
+
+  .main-block-footer {
+    .link-block {
+      height: 40px !important;
+    }
+
+    .email-container {
+      height: 40px !important;
+    }
+  }
+
+  .description-container {
+    .i-love-container {
+      width: 821px !important;
+
+      .emotional-image {
+        width: 266.01px;
+        height: 17.99px;
+        top: 115px;
+        left: -15px;
+      }
+
+      .human-friendly-image {
+        width: 371px;
+        top: 122px;
+        left: 350px;
+      }
+    }
+
+    .expertise-container {
+      width: 514px;
+    }
+  }
+
+  .case-studies-header {
+    padding: 0 32px;
+    height: 134px;
+  }
+
+  .case-1-container {
+    height: 566px;
+
+    .left-block-container {
+      overflow: scroll;
+
+      .text-container, .header-container {
+        padding: 24px;
+
+        div {
+          margin-top: 32px;
+        }
+      }
+
+
+      .description-block-container {
+        flex-direction: column;
+      }
+    }
+
+    .case-img {
+      height: auto !important;
+      width: 100% !important;
+    }
+  }
+}

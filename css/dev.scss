@@ -5,121 +5,498 @@
   font-family: 'ClashGrotesk-Variable', sans-serif;
 }
 
+h1, h2, h3 {
+  margin: 0;
+}
+
 .main-container {
   background-color: $black;
-  min-height: 100vh;
   padding: 12px 16px;
 }
 
-// Header
+.main-container-content {
+  height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
+}
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
 
-.cv-block {
-  display: flex;
-  align-items: center;
-  background-color: $black-2;
-  justify-content: space-between;
-  padding: 4px 16px 4px 4px;
-  width: fit-content;
-  border-radius: 1000px;
-  border: 1px $black;
-}
-
-.cv-block:hover {
-  background-color: $black-3;
-
-  .arrow {
-    margin-left: 16px;
-    margin-right: 0;
-  }
-}
-
-.avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 1000px;
-}
-
-.name-container {
-  display: flex;
-  align-items: center;
-  margin-left: 16px;
-}
-
-.arrow {
-  margin-left: 8px;
-  margin-right: 8px;
-}
-
-.menu-buttons {
-  display: flex;
-  background-color: $black-2;
-  border: 1px $black;
-  border-radius: 1000px;
-  padding: 4px;
-
-  div:first-child {
-    background-color: $light;
-    color: $black-2;
-    margin-right: -16px;
-  }
-
-  div {
+  .cv-block {
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: $black-2;
-    color: $light;
+    justify-content: space-between;
+    padding: 4px 16px 4px 4px;
+    width: fit-content;
     border-radius: 1000px;
-    width: 112px;
+    border: 1px $black;
+  }
+
+  .cv-block:hover {
+    background-color: $black-3;
+
+    .arrow {
+      margin-left: 16px;
+      margin-right: 0;
+    }
+  }
+
+  .avatar {
+    width: 48px;
     height: 48px;
+    border-radius: 1000px;
   }
 
-  div:last-child {
-    margin-left: -16px;
+  .name-container {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+  }
+
+  .arrow {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .menu-buttons {
+    display: flex;
+    background-color: $black-2;
+    border: 1px $black;
+    border-radius: 1000px;
+    padding: 4px;
+
+    div:first-child {
+      background-color: $light;
+      color: $black-2;
+      margin-right: -16px;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $black-2;
+      color: $light;
+      border-radius: 1000px;
+      width: 112px;
+      height: 48px;
+    }
+
+    div:last-child {
+      margin-left: -16px;
+    }
   }
 }
 
-
-// Main blocks
-.main-blocks-container {
+.main-section {
+  flex-grow: 1;
   margin-top: 12px;
-  display: flex;
 }
 
-.left-main-block {
-  position: relative;
-  box-sizing: border-box;
-  background-color: $light;
-  width: 1155px;
-  height: 840px;
-  padding: 56px 40px 16px 40px;
+.main-blocks-container {
+  display: flex;
+  height: 100%;
+
+  .left-main-block {
+    position: relative;
+    box-sizing: border-box;
+    background-color: $light;
+    width: calc((100% - 32px) / 1.62);
+    padding: 40px 40px 16px 40px;
+    border-radius: 16px;
+
+    .left-main-block-header h1 {
+      margin: 0;
+      min-width: 482px;
+      max-width: 825px;
+    }
+
+    .paragraph-1 {
+      margin-top: 64px;
+      min-width: 482px;
+      max-width: 825px;
+    }
+
+    .paragraph-2 {
+      margin-top: 40px;
+      min-width: 482px;
+      max-width: 825px;
+    }
+
+    .explore-case-studies-button {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: flex;
+      align-items: center;
+      border-radius: 1000px;
+      background-color: $black-2;
+      padding: 4px 24px 4px 4px;
+      width: fit-content;
+      color: $light;
+
+      .explore-case-studies-arrow-down {
+        background-color: $light;
+        border-radius: 1000px;
+
+        img {
+          padding: 14px;
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      .explore-case-studies-text {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .right-main-block {
+    background-color: $black-2;
+    border-radius: 16px;
+    margin-left: 12px;
+    flex-grow: 1;
+  }
+}
+
+.main-footer-section {
+  margin-top: 12px;
+}
+
+.main-block-footer {
+  display: flex;
+  justify-content: space-between;
+
+  .links-block-container {
+    display: flex;
+    color: $light;
+    background-color: $black-2;
+    width: fit-content;
+    border-radius: 1000px;
+    padding: 4px;
+
+    .link-block {
+      padding: 0 28px 0 32px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  .email-container {
+    display: flex;
+    align-items: center;
+    color: $light;
+
+    height: 48px;
+    border: 1px dashed $light;
+    border-radius: 1000px;
+    padding: 0 24px;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-left: 16px;
+    }
+  }
+}
+
+.description-container {
+  margin-top: 12px;
+  color: $light;
+  background-color: $black-2;
+  padding: 40px;
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
 
-  .left-main-block-header h1 {
-    margin: 0;
+  .i-love-container {
+    width: 1115px;
+    position: relative;
+
+    h1 {
+      position: relative;
+      z-index: 5;
+    }
+
+    .emotional-image {
+      position: absolute;
+      top: 146px;
+      left: 5px;
+    }
+
+    .human-friendly-image {
+      position: absolute;
+      top: 155px;
+      left: 495px;
+    }
   }
 
-  .paragraph-1 {
-    margin-top: 64px;
-    width: 825px;
+  .expertise-container {
+    margin-top: 120px;
+    width: 681px;
+    align-self: end;
+  }
+}
+
+.case-studies-header {
+  color: $light;
+  background-color: $black-2;
+  border-radius: 16px;
+  margin-top: 12px;
+  padding: 0 40px;
+  height: 152px;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-left: 40px;
+  }
+}
+
+.case-1-container {
+  margin-top: 12px;
+  background-color: $black-2;
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+
+  .left-block-container {
+    flex: 1;
+    margin-right: 8px;
+
+    .description-block-container {
+      display: flex;
+    }
+
+    .col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .text-container {
+      background-color: $white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 4px;
+
+      div {
+        margin-top: 40px;
+      }
+      h3, div {
+        max-width: 625px;
+        min-width: 240px;
+      }
+    }
+
+    .header-container {
+      background-color: $blue;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 0;
+      margin-left: 0;
+    }
+
+    .outcome-container {
+      flex-grow: 1;
+      margin-right: 2px;
+    }
+
+    .problem-container {
+      margin-right: 2px;
+    }
+
+    .role-container {
+      flex: 1;
+      margin-left: 2px;
+      ul {
+        padding-left: 30px;
+      }
+    }
+
   }
 
-  .paragraph-2 {
-    margin-top: 40px;
-    width: 825px;
+  .right-block-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+
+    .image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      flex-grow: 1000;
+
+      .case-img {
+        position: absolute;
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+
+    .tags-container {
+      display: flex;
+      margin-top: 4px;
+      flex-grow: 1;
+
+      div {
+        padding: 0 20px;
+        background-color: $black-3;
+        border-radius: 29px;
+        margin-left: -16px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+      }
+
+      div:first-child {
+        margin-left: 0;
+      }
+    }
+
+    .link-container {
+      display: flex;
+      margin-top: 4px;
+      flex-grow: 1;
+
+      .year-block {
+        padding: 0 20px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        background-color: $black-3;
+        border-radius: 29px;
+      }
+
+      .link-block {
+        margin-left: 8px;
+        padding: 0 20px;
+        height: 48px;
+        border-radius: 29px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 1;
+        background-color: $blue;
+      }
+    }
+  }
+}
+
+
+.my-approach-container {
+  background-color: $black-2;
+  border-radius: 16px;
+  margin-top: 8px;
+  padding: 40px;
+
+  .cards-container {
+    margin-top: 160px;
+    display: flex;
+
+    .card {
+      flex-basis: 100%;
+      background-color: $purple;
+      padding: 32px 0;
+      border-radius: 32px;
+      position: relative;
+
+      .card-border-container {
+        //border-right: 1px dashed $black;
+        //border-left: 1px dashed $black;
+
+        height: 529-64px;
+        padding: 0 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .ux {
+        position: absolute;
+        top: 200px;
+      }
+
+      .ui {
+        position: absolute;
+        top: 265px;
+        right: 0;
+      }
+
+      .heart {
+        position: absolute;
+        top: 80px;
+        right: 0;
+      }
+
+      .card-3-header {
+        z-index: 5;
+      }
+
+      .plane {
+        position: absolute;
+        top: 56px;
+        right: 31px;
+      }
+
+      .card-4-header {
+        width: 300px;
+      }
+
+      .new {
+        position: absolute;
+        top: 38px;
+        right: 8px;
+      }
+    }
+  }
+}
+
+.footer-container {
+  margin-top: 16px;
+  border-radius: 16px;
+  background-color: $light;
+  padding: 56px 56px 56px 40px;
+
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+
+  position: relative;
+
+  .footer-text {
+    width: 834px;
+    z-index: 20;
   }
 
-  .explore-case-studies-button {
+  .orange-vector {
     position: absolute;
-    bottom: 16px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 511px;
+    top: 87px;
+  }
 
+  .purple-vector {
+    position: absolute;
+    left: 265px;
+    top: 168px;
+  }
+
+  .footer-button {
     display: flex;
     align-items: center;
     border-radius: 1000px;
@@ -128,7 +505,7 @@ header {
     width: fit-content;
     color: $light;
 
-    .explore-case-studies-arrow-down {
+    .icon-container {
       background-color: $light;
       border-radius: 1000px;
 
@@ -139,29 +516,21 @@ header {
       }
     }
 
-    .explore-case-studies-text {
+    .text-container {
       margin-left: 16px;
     }
   }
 }
 
-.right-main-block {
-  background-color: $black-2;
-  width: 721px;
-  height: 840px;
-  border-radius: 16px;
-  margin-left: 12px;
-}
-
-.main-block-footer {
+.footer-links {
   display: flex;
   justify-content: space-between;
   margin-top: 12px;
 
   .links-block-container {
     display: flex;
-    color: $light;
-    background-color: $black-2;
+    color: $black-2;
+    background-color: $light;
     width: fit-content;
     border-radius: 1000px;
     padding: 4px;
@@ -190,150 +559,6 @@ header {
       width: 20px;
       height: 20px;
       margin-left: 16px;
-    }
-  }
-}
-
-.description-container {
-  margin-top: 12px;
-  color: $light;
-  background-color: $black-2;
-  padding: 32px;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-
-  .i-love-container {
-    width: 1115px;
-
-    .emotional-image {
-      margin-top: -188px;
-    }
-
-    .human-friendly-image {
-      margin-top: -176px;
-      margin-left: 141px;
-    }
-  }
-
-  .expertise-container {
-    margin-top: 120px;
-    width: 681px;
-    align-self: end;
-  }
-}
-
-.case-studies-header {
-  color: $light;
-  background-color: $black-2;
-  border-radius: 16px;
-  margin-top: 12px;
-  padding: 40px 48px;
-
-  display: flex;
-  align-items: center;
-
-  img {
-    margin-left: 40px;
-  }
-}
-
-.case-1-container {
-  margin-top: 12px;
-  background-color: $black-2;
-  border-radius: 16px;
-  padding: 16px;
-  display: flex;
-
-  .left-block-container {
-    display: flex;
-    flex-direction: column;
-
-    .description-block-container {
-      display: flex;
-      align-items: stretch;
-    }
-
-    .text-container {
-      background-color: $white;
-      border-radius: 16px;
-      padding: 32px;
-      margin-top: 4px;
-      margin-left: 4px;
-    }
-
-    .header-container {
-      background-color: $blue;
-      border-radius: 16px;
-      padding: 32px;
-
-      h3, div {
-        width: 625px;
-      }
-    }
-
-    .col-1 {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .outcome-container {
-      flex-grow: 1;
-    }
-
-    .text-container {
-      h3, div {
-        width: 398px;
-      }
-    }
-
-    .role-container ul {
-      padding-left: 30px;
-    }
-  }
-
-  .right-block-container {
-    padding-left: 16px;
-
-    .case-img {
-      height: 720px;
-      border-radius: 16px;
-    }
-
-    .tags-container {
-      display: flex;
-      margin-top: 4px;
-
-      div {
-        padding: 16px 20px 16px 20px;
-        background-color: $black-3;
-        border-radius: 29px;
-        margin-left: -16px;
-      }
-
-      div:first-child {
-        margin-left: 0;
-      }
-    }
-
-    .link-container {
-      display: flex;
-      margin-top: 4px;
-
-      .year-block {
-        padding: 16px 20px 16px 20px;
-        background-color: $black-3;
-        border-radius: 29px;
-      }
-
-      .link-block {
-        padding: 16px 20px 16px 20px;
-        border-radius: 29px;
-        display: flex;
-        justify-content: space-between;
-        flex-grow: 1;
-        background-color: $blue;
-      }
     }
   }
 }

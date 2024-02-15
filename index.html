@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/dev.css">
+  <link rel="stylesheet" href="./css/dev-media.css">
+  <link rel="stylesheet" href="./css/dev-1440.css">
   <link rel="stylesheet" href="./css/components.css">
 
   <meta name="theme-color" content="#fafafa">
@@ -47,7 +49,7 @@
         </div>
       </div>
     </header>
-    <section>
+    <section class="main-section">
       <div class="main-blocks-container">
         <div class="left-main-block">
           <div class="left-main-block-header">
@@ -71,6 +73,8 @@
 
         </div>
       </div>
+    </section>
+    <section class="main-footer-section">
       <div class="main-block-footer">
         <div class="links-block-container">
           <div class="link-block behance">
@@ -92,31 +96,30 @@
         </div>
       </div>
     </section>
-    <section>
-      <div class="description-container">
-        <div class="i-love-container">
-          <h1 class="m-0">I love transform problem into emotional and human-friendly solutions. </h1>
-          <img class="emotional-image" src="./img/emotional-vector.svg" alt="">
-          <img class="human-friendly-image" src="./img/human-friendly-vector.svg" alt="">
-        </div>
-        <div class="expertise-container text-2">
-          My expertise includes working with B2B and B2C products, from simple to
-          complex, and understanding the unique needs of each audience.
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="case-studies-header">
-        <h1 class="m-0">Case studies</h1>
-        <img src="./img/case-studies-vector.svg" alt="">
-      </div>
-    </section>
   </div>
-
+  <section>
+    <div class="description-container">
+      <div class="i-love-container">
+        <h1 class="m-0">I love transform problem into emotional and human-friendly solutions. </h1>
+        <img class="emotional-image" src="./img/emotional-vector.svg" alt="">
+        <img class="human-friendly-image" src="./img/human-friendly-vector.svg" alt="">
+      </div>
+      <div class="expertise-container text-2">
+        My expertise includes working with B2B and B2C products, from simple to
+        complex, and understanding the unique needs of each audience.
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="case-studies-header">
+      <h1 class="m-0">Case studies</h1>
+      <img src="./img/case-studies-vector.svg" alt="">
+    </div>
+  </section>
   <section>
     <div class="case-1-container">
       <div class="left-block-container">
-        <div class="header-container">
+        <div class="header-container text-container">
           <h3 class="m-0">rTIM | AI Application for architects and urbanists</h3>
           <div class="text-3">My goal is to ensure that the final product not only meets functional requirements but
             also aligns
@@ -124,7 +127,7 @@
           </div>
         </div>
         <div class="description-block-container">
-          <div class="col-1">
+          <div class="col">
             <div class="problem-container text-container">
               <h3 class="m-0">Problem</h3>
               <div class="text-3">Architects and site development planners spend a lot of time and money on development,
@@ -140,32 +143,36 @@
               </div>
             </div>
           </div>
-          <div class="role-container text-container">
-            <h3 class="m-0">My role</h3>
-            <div class="text-3">
-              I was the only designer on the project.
-              <ul>
-                <li>Conduct UX research and market research, conducted user interviews</li>
-                <li>Designed and nurtured the design system from the ground up</li>
-                <li>Collaborated with the product team</li>
-                <li>Collaborated with two development teams (web и desktop)</li>
-                <li>Designed information architecture and formulate user scenarios</li>
-                <li>Designed information architecture and formulate user scenarios</li>
-                <li>Conducted usability testing</li>
-                <li>Supported developers with implementation</li>
-              </ul>
+          <div class="col">
+            <div class="role-container text-container">
+              <h3 class="m-0">My role</h3>
+              <div class="text-3">
+                I was the only designer on the project.
+                <ul>
+                  <li>Conduct UX research and market research, conducted user interviews</li>
+                  <li>Designed and nurtured the design system from the ground up</li>
+                  <li>Collaborated with the product team</li>
+                  <li>Collaborated with two development teams (web и desktop)</li>
+                  <li>Designed information architecture and formulate user scenarios</li>
+                  <li>Designed information architecture and formulate user scenarios</li>
+                  <li>Conducted usability testing</li>
+                  <li>Supported developers with implementation</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="right-block-container">
-        <img class="case-img" src="./img/case-1.png" alt="">
+        <div class="image-container">
+          <img class="case-img" src="./img/case-1.png" alt="">
+        </div>
         <div class="tags-container">
-          <div class="case-tag-1 tag-16 light">UI design</div>
-          <div class="case-tag-2 tag-16 light">Qualitative research</div>
-          <div class="case-tag-3 tag-16 light">Design system</div>
-          <div class="case-tag-4 tag-16 light">Usability testing</div>
-          <div class="case-tag-5 tag-16 light">B2B</div>
+          <div class="case-tag tag-16 light">UI design</div>
+          <div class="case-tag tag-16 light">Qualitative research</div>
+          <div class="case-tag tag-16 light">Design system</div>
+          <div class="case-tag tag-16 light">Usability testing</div>
+          <div class="case-tag tag-16 light">B2B</div>
         </div>
         <div class="link-container">
           <div class="year-block tag-16 light">2020</div>
@@ -177,6 +184,95 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="my-approach-container">
+      <h1 class="header light">My approach</h1>
+      <div class="cards-container">
+        <div class="card">
+          <div class="card-border-container">
+            <h2 class="card-header black">User centered design</h2>
+            <div class="card-content text-3">
+              My goal is to ensure that the final product not only meets functional requirements but also aligns closely
+              with user needs and preferences, ultimately enhancing user satisfaction and usability.
+            </div>
+          </div>
+          <img class="ux" src="./img/ux.svg" alt=""/>
+          <img class="ui" src="./img/ui.svg" alt=""/>
+        </div>
+        <div class="card">
+          <div class="card-border-container">
+            <h2 class="card-header black">Empathy</h2>
+            <div class="card-content text-3">I integrate empathy into my design process by deeply understanding user
+              needs, and
+              challenges. I strive to create interfaces that are not only user-friendly but also address their concerns,
+              resulting in a more satisfying user experience.
+            </div>
+          </div>
+          <img class="heart" src="./img/heart.svg" alt=""/>
+        </div>
+        <div class="card">
+          <div class="card-border-container">
+            <h2 class="card-header black card-3-header">Helicopter view</h2>
+            <div class="card-content text-3">Applying strategic thinking in my role, I use a 'helicopter view' to assess
+              the
+              larger context and goals of a project. This approach enables me to make design decisions that align with
+              the
+              project's strategic objectives, ensuring a cohesive and forward-thinking user interface that contributes
+              to
+              overall project success.
+            </div>
+          </div>
+          <img class="plane" src="./img/plane.svg" alt=""/>
+        </div>
+        <div class="card">
+          <div class="card-border-container">
+            <h2 class="card-header black card-4-header">Design thinking</h2>
+            <div class="card-content text-3">My goal is to ensure that the final product not only meets functional
+              requirements
+              but also aligns closely with user needs and preferences, ultimately enhancing user satisfaction and
+              usability.
+            </div>
+          </div>
+          <img class="new" src="./img/new.svg" alt=""/>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="footer-container">
+      <h1 class="footer-text black">Open to new challenges and opportunities</h1>
+      <div class="footer-button-container">
+        <div class="footer-button">
+          <div class="icon-container">
+            <img src="./img/arrow-up.svg" alt="">
+          </div>
+          <div class="text-container light tag-16">Up</div>
+        </div>
+      </div>
+      <img class="orange-vector" src="./img/footer-orange-vector.svg" alt="">
+      <img class="purple-vector" src="./img/footer-purple-vector.svg" alt="">
+    </div>
+    <div class="footer-links">
+      <div class="links-block-container">
+        <div class="link-block behance">
+          <span class="tag-16">Behance</span>
+          <img src="./img/arrow-dark.svg" alt="">
+        </div>
+        <div class="link-block linkedin">
+          <span class="tag-16">LinkedIn</span>
+          <img src="./img/arrow-dark.svg" alt="">
+        </div>
+        <div class="link-block telegram">
+          <span class="tag-16">Telegram</span>
+          <img src="./img/arrow-dark.svg" alt="">
+        </div>
+      </div>
+      <div class="email-container">
+        <div class="email">alinaermolaeva044@gmail.com</div>
+        <img src="./img/copy.svg" alt="">
+      </div>
+    </div>
+  </footer>
 </div>
 
 <script src="./js/vendor/modernizr-3.11.2.min.js"></script>
