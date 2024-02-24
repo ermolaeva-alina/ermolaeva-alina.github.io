@@ -14,19 +14,26 @@
 
   .main-blocks-container {
     .left-main-block {
-      .left-main-block-header h1 {
-        min-width: 440px !important;
-        max-width: 620px !important;
+      padding: 32px;
+      .left-main-block-header {
+        .hi-container {
+          min-width: 440px !important;
+          max-width: 620px !important;
+        }
+        img {
+          height: 56px;
+          width: 56px;
+        }
       }
 
       .paragraph-1 {
-        margin-top: 56px !important;
+        margin-top: 32px !important;
         min-width: 440px !important;
         max-width: 620px !important;
       }
 
       .paragraph-2 {
-        margin-top: 32px !important;
+        margin-top: 24px !important;
         min-width: 440px !important;
         max-width: 620px !important;
       }
@@ -62,7 +69,7 @@
     }
 
     .expertise-container {
-      width: 514px;
+      width: 566px;
     }
   }
 
@@ -94,6 +101,75 @@
     .case-img {
       height: auto !important;
       width: 100% !important;
+    }
+  }
+
+  .my-approach-container {
+    .cards-container {
+      margin-top: 120px;
+
+      .card {
+        padding: 24px 0;
+
+        .card-border-container {
+          height: 380-48px;
+          padding: 0 24px;
+        }
+
+        .ux {
+          top: 85px;
+        }
+
+        .ui {
+          top: 144px;
+        }
+
+        .heart {
+          top: 48px;
+        }
+
+        .plane {
+          top: 56px;
+        }
+
+        .new {
+          top:28px;
+        }
+      }
+    }
+  }
+
+  .footer-container {
+    padding: 48px 32px 32px 32px !important;
+
+    .footer-text {
+      margin-bottom: 20px;
+    }
+
+    .orange-vector {
+      left: 356px;
+      top: 80px;
+      width: 239px;
+      height: 36px;
+    }
+
+    .purple-vector {
+      width: 234px;
+      height: 44px;
+      left: 74px;
+      top: 145px;
+    }
+  }
+
+  .footer-links {
+    .links-block-container {
+      .link-block {
+        height: 40px !important;
+      }
+
+      .email-container {
+        height: 40px !important;
+      }
     }
   }
 }
