@@ -21,8 +21,8 @@
           max-width: 620px !important;
         }
         img {
-          height: 56px;
-          width: 56px;
+          height: 56px!important;
+          width: 56px!important;
         }
       }
 
@@ -82,11 +82,11 @@
     height: 566px;
 
     .left-block-container {
-      overflow: scroll;
+      overflow-y: scroll;
 
       .text-container, .header-container {
         padding: 24px;
-
+        margin-right: 0;
         div {
           margin-top: 32px;
         }
@@ -98,9 +98,13 @@
       }
     }
 
-    .case-img {
-      height: auto !important;
-      width: 100% !important;
+    .left-block-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .left-block-container {
+      -ms-overflow-style: none;  /* IE и Edge */
+      scrollbar-width: none;  /* Firefox */
     }
   }
 
@@ -110,6 +114,7 @@
 
       .card {
         padding: 24px 0;
+        border-radius: 16px;
 
         .card-border-container {
           height: 380-48px;
@@ -117,23 +122,37 @@
         }
 
         .ux {
-          top: 85px;
+          top: 110px;
+          left: -5px;
+          rotate: -15deg;
+          width: 124px;
+          height: 71.54px;
         }
 
         .ui {
           top: 144px;
+          width: 104px;
+          height: 72px;
         }
 
         .heart {
-          top: 48px;
+          top: 55px;
+          width: 180px;
+          height: 189px;
         }
 
         .plane {
-          top: 56px;
+          top: 65px;
+          width: 136px;
+          height: 160px;
         }
 
         .new {
-          top:28px;
+          top: 65px;
+          right: 22px;
+          rotate: 30deg;
+          width: 156px;
+          height: 56px;
         }
       }
     }

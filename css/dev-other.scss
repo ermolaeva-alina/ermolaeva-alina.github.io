@@ -1,0 +1,89 @@
+@media screen and (max-width: 1088px) {
+  .my-approach-container {
+    .cards-container {
+      flex-wrap: wrap;
+
+      .card {
+        max-width: 50% !important;
+      }
+
+      .card-border-container {
+        height: 360-48px !important;
+      }
+
+      .card-4-header {
+        max-width: 253px !important;
+      }
+
+      .ux {
+        top: 81px !important;
+      }
+
+      .ui {
+        top: 150px !important;
+        right: 0 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .my-approach-container {
+    .cards-container {
+      flex-wrap: wrap;
+
+      .card {
+        max-width: unset !important;
+      }
+
+      .card-border-container {
+        flex-direction: row !important;
+        height: 200px - 48px !important;
+
+        .card-header {
+          width: 240px;
+        }
+
+        .card-content {
+          width: 360px;
+        }
+      }
+
+      .card-4-header {
+        max-width: 253px !important;
+      }
+
+      .ux {
+        top: 125px !important;
+        left: 3px!important;
+        width: 124px;
+        height: 712px;
+      }
+
+      .ui {
+        top: 80px !important;
+        left: 210px !important;
+        width: 104px;
+        height: 72px;
+      }
+
+      .heart {
+        top: 110px!important;
+        left: 0!important;
+      }
+
+      .plane {
+        top: 40px!important;
+        left: 92px!important;
+        rotate: 45deg;
+      }
+
+      .new {
+        top: 95 px!important;
+        left: 90px!important;
+        rotate: -15deg!important;
+      }
+    }
+  }
+}
+

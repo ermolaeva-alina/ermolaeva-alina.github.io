@@ -1,6 +1,5 @@
 @media screen and (max-width: 1024px) {
   .main-section {
-
     .hi-container {
       *:nth-child(4) {
         margin-left: 0 !important;
@@ -9,6 +8,26 @@
       *:nth-child(5) {
         margin-left: 12px !important;
       }
+    }
+  }
+
+  .description-container {
+    .i-love-container {
+      width: 564px!important;
+
+      .emotional-image {
+        top: 117px;
+        left: 305px;
+      }
+
+      .human-friendly-image {
+        top: 186px;
+        left: 108px;
+      }
+    }
+
+    .expertise-container {
+      width: 382px;
     }
   }
 }

@@ -7,4 +7,51 @@
       max-width: 480px;
     }
   }
+
+  .my-approach-container {
+    .card {
+      padding: 24px 0!important;
+      border-radius: 16px!important;
+    }
+
+    .card-border-container {
+      height: 454-48px!important;
+      padding: 0 24px!important;
+    }
+
+    .ux {
+      top: 175px!important;
+      width: 124px;
+      height: 72px;
+
+    }
+
+    .ui {
+      top: 230px!important;
+      right: 0!important;
+      width: 104px;
+      height: 72px;
+    }
+
+    .heart {
+      top: 60px!important;
+      right: -30px!important;
+      width: 180px;
+      height: 189px;
+    }
+
+    .plane {
+      top: 56px!important;
+      right: 31px!important;
+      width: 136px;
+      height: 160px;
+    }
+
+    .new {
+      top: 70px!important;
+      right: 20px!important;
+      width: 156px;
+      height: 56px;
+    }
+  }
 }

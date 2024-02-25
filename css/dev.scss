@@ -225,6 +225,14 @@ header {
       height: 20px;
       margin-left: 16px;
     }
+
+    .email-full {
+      display: block;
+    }
+
+    .email-short {
+      display: none;
+    }
   }
 }
 
@@ -288,10 +296,12 @@ header {
   border-radius: 16px;
   padding: 16px;
   display: flex;
+  box-sizing: border-box;
 
   .left-block-container {
     flex: 1;
     margin-right: 8px;
+    border-radius: 16px;
 
     .description-block-container {
       display: flex;
@@ -362,7 +372,7 @@ header {
       .case-img {
         position: absolute;
         height: 100%;
-        width: auto;
+        width: 100%;
         object-fit: cover;
       }
     }
@@ -371,6 +381,8 @@ header {
       display: flex;
       margin-top: 4px;
       flex-grow: 1;
+      flex-wrap: wrap;
+      padding-left: 16px;
 
       div {
         padding: 0 20px;
@@ -380,10 +392,7 @@ header {
         height: 48px;
         display: flex;
         align-items: center;
-      }
-
-      div:first-child {
-        margin-left: 0;
+        margin-top: 4px;
       }
     }
 
@@ -433,11 +442,9 @@ header {
       padding: 32px 0;
       border-radius: 32px;
       position: relative;
+      overflow: hidden;
 
       .card-border-container {
-        //border-right: 1px dashed $black;
-        //border-left: 1px dashed $black;
-
         height: 440-64px;
         padding: 0 32px;
         display: flex;
@@ -447,19 +454,21 @@ header {
 
       .ux {
         position: absolute;
-        top: 110px;
+        top: 140px;
+        rotate: -20.57deg;
       }
 
       .ui {
         position: absolute;
-        top: 176px;
+        top: 175px;
         right: 0;
+        rotate: 30deg;
       }
 
       .heart {
         position: absolute;
         top: 80px;
-        right: 0;
+        right: -25px;
       }
 
       .card-3-header {
@@ -478,8 +487,9 @@ header {
 
       .new {
         position: absolute;
-        top: 38px;
+        top: 90px;
         right: 8px;
+        rotate: 30deg;
       }
     }
   }
@@ -578,6 +588,14 @@ header {
       width: 20px;
       height: 20px;
       margin-left: 16px;
+    }
+
+    .email-full {
+      display: block;
+    }
+
+    .email-short {
+      display: none;
     }
   }
 }
