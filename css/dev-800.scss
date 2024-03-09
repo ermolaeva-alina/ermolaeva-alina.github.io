@@ -1,0 +1,66 @@
+@media screen and (max-width: 800px) {
+  .my-approach-container {
+    .main-header {
+      margin-left: 8px;
+    }
+
+    .cards-container {
+      flex-wrap: wrap;
+
+      .card {
+        max-width: unset;
+
+        .card-border-container {
+          flex-direction: row;
+          height: 200px - 48px;
+
+          .card-header {
+            width: 240px;
+          }
+
+          .card-content {
+            width: 360px;
+          }
+        }
+
+        .card-4-header {
+          max-width: 253px;
+        }
+
+        .ux {
+          top: 125px;
+          left: 3px;
+          width: 124px;
+          height: 712px;
+        }
+
+        .ui {
+          top: 80px;
+          left: 210px;
+          width: 104px;
+          height: 72px;
+        }
+
+        .heart {
+          top: 110px;
+          left: 0;
+        }
+
+        .plane {
+          top: 40px;
+          left: 92px;
+          rotate: 45deg;
+        }
+
+        .new {
+          top: 95px;
+          left: 90px;
+          rotate: -15deg;
+        }
+      }
+
+
+    }
+  }
+}
+

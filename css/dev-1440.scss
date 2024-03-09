@@ -1,13 +1,13 @@
 @media screen and (max-width: 1440px) {
-  header {
+  .main-header {
     .avatar {
-      width: 40px !important;
-      height: 40px !important;
+      width: 40px;
+      height: 40px;
     }
 
     .menu-buttons {
       div {
-        height: 40px !important;
+        height: 40px;
       }
     }
   }
@@ -15,44 +15,48 @@
   .main-blocks-container {
     .left-main-block {
       padding: 32px;
+
       .left-main-block-header {
         .hi-container {
-          min-width: 440px !important;
-          max-width: 620px !important;
+          min-width: 440px;
+          max-width: 620px;
         }
+
         img {
-          height: 56px!important;
-          width: 56px!important;
+          height: 56px;
+          width: 56px;
         }
       }
 
       .paragraph-1 {
-        margin-top: 32px !important;
-        min-width: 440px !important;
-        max-width: 620px !important;
+        margin-top: 32px;
+        min-width: 440px;
+        max-width: 620px;
       }
 
       .paragraph-2 {
-        margin-top: 24px !important;
-        min-width: 440px !important;
-        max-width: 620px !important;
+        margin-top: 24px;
+        min-width: 440px;
+        max-width: 620px;
       }
     }
   }
 
   .main-block-footer {
-    .link-block {
-      height: 40px !important;
+    .links-block-container {
+      .link-block {
+        height: 40px;
+      }
     }
 
     .email-container {
-      height: 40px !important;
+      height: 46px;
     }
   }
 
   .description-container {
     .i-love-container {
-      width: 821px !important;
+      width: 821px;
 
       .emotional-image {
         width: 266.01px;
@@ -87,6 +91,7 @@
       .text-container, .header-container {
         padding: 24px;
         margin-right: 0;
+
         div {
           margin-top: 32px;
         }
@@ -103,8 +108,8 @@
     }
 
     .left-block-container {
-      -ms-overflow-style: none;  /* IE и Edge */
-      scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none; /* IE и Edge */
+      scrollbar-width: none; /* Firefox */
     }
   }
 
@@ -159,7 +164,7 @@
   }
 
   .footer-container {
-    padding: 48px 32px 32px 32px !important;
+    padding: 48px 32px 32px 32px;
 
     .footer-text {
       margin-bottom: 20px;
@@ -183,11 +188,11 @@
   .footer-links {
     .links-block-container {
       .link-block {
-        height: 40px !important;
+        height: 40px;
       }
 
       .email-container {
-        height: 40px !important;
+        height: 46px;
       }
     }
   }

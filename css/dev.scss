@@ -20,7 +20,11 @@ h1, h2, h3 {
   flex-direction: column;
 }
 
-header {
+.merged-header {
+  display: none;
+}
+
+.main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -182,6 +186,10 @@ header {
   }
 }
 
+.interactive-container {
+  display: none;
+}
+
 .main-footer-section {
   margin-top: 12px;
 }
@@ -215,7 +223,7 @@ header {
     align-items: center;
     color: $light;
 
-    height: 48px;
+    height: 54px;
     border: 1px dashed $light;
     border-radius: 1000px;
     padding: 0 24px;
@@ -278,7 +286,7 @@ header {
   color: $light;
   background-color: $black-2;
   border-radius: 16px;
-  margin-top: 12px;
+  margin-top: 16px;
   padding: 0 40px;
   height: 152px;
 
@@ -291,7 +299,7 @@ header {
 }
 
 .case-1-container {
-  margin-top: 12px;
+  margin-top: 16px;
   background-color: $black-2;
   border-radius: 16px;
   padding: 16px;
@@ -302,6 +310,10 @@ header {
     flex: 1;
     margin-right: 8px;
     border-radius: 16px;
+
+    .image-container {
+      display: none;
+    }
 
     .description-block-container {
       display: flex;
@@ -429,7 +441,7 @@ header {
 .my-approach-container {
   background-color: $black-2;
   border-radius: 16px;
-  margin-top: 8px;
+  margin-top: 16px;
   padding: 40px;
 
   .cards-container {

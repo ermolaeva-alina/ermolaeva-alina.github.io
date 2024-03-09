@@ -1,19 +1,23 @@
 @media screen and (max-width: 1024px) {
-  .main-section {
-    .hi-container {
-      *:nth-child(4) {
-        margin-left: 0 !important;
-      }
+  .main-blocks-container {
+    .left-main-block {
+      .left-main-block-header {
+        .hi-container {
+          *:nth-child(4) {
+            margin-left: 0;
+          }
 
-      *:nth-child(5) {
-        margin-left: 12px !important;
+          *:nth-child(5) {
+            margin-left: 12px;
+          }
+        }
       }
     }
   }
 
   .description-container {
     .i-love-container {
-      width: 564px!important;
+      width: 564px;
 
       .emotional-image {
         top: 117px;
