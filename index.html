@@ -18,6 +18,7 @@
 
   <link rel="stylesheet" href="./css/normalize.css">
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/animations.css">
   <link rel="stylesheet" href="./css/dev.css">
   <link rel="stylesheet" href="./css/dev-media.css">
   <link rel="stylesheet" href="./css/dev-1440.css">
@@ -36,21 +37,21 @@
 <div class="main-container">
   <div class="main-container-content">
     <section class="main-header">
-      <div class="cv-block">
+      <div class="cv-block easy-in-out-slow">
         <img src="./img/avatar.png" class="avatar" alt="avatar"/>
         <div class="name-container">
           <span class="tag-16 light">Alina Ermolaeva (CV)</span>
-          <img class="arrow" src="./img/arrow.svg" alt="arrow"/>
+          <img class="arrow easy-in-out-slow" src="./img/arrow.svg" alt="arrow"/>
         </div>
       </div>
       <div class="menu-buttons">
-        <div class="home">
+        <div class="home easy-in-out-fast">
           <span class="tag-16">Home</span>
         </div>
-        <div class="work">
+        <div class="work easy-in-out-fast">
           <span class="tag-16">Work</span>
         </div>
-        <div class="contacts">
+        <div class="contacts easy-in-out-fast">
           <span class="tag-16">Contacts</span>
         </div>
       </div>
@@ -59,13 +60,13 @@
       <img src="./img/avatar.png" class="avatar" alt="avatar"/>
       <span class="tag-16 light">CV</span>
       <div class="menu-buttons">
-        <div class="home">
+        <div class="home easy-in-out-fast">
           <span class="tag-16">Home</span>
         </div>
-        <div class="work">
+        <div class="work easy-in-out-fast">
           <span class="tag-16">Work</span>
         </div>
-        <div class="contacts">
+        <div class="contacts easy-in-out-fast">
           <span class="tag-16">Contacts</span>
         </div>
       </div>
@@ -93,9 +94,9 @@
               Currently living in Finland
             </div>
           </div>
-          <div class="explore-case-studies-button">
+          <div class="explore-case-studies-button easy-in-out-slow">
             <div class="explore-case-studies-arrow-down">
-              <img src="./img/arrow-down.svg" alt="arrow">
+              <img src="./img/arrow-down.svg" alt="arrow" class="easy-in-out-slow">
             </div>
             <div class="explore-case-studies-text tag-16">
               Explore case studies
@@ -110,15 +111,15 @@
     <section class="main-footer-section">
       <div class="main-block-footer">
         <div class="links-block-container">
-          <div class="link-block behance">
+          <div class="link-block behance easy-in-out-fast">
             <span class="tag-16">Behance</span>
             <img src="./img/arrow.svg" alt="">
           </div>
-          <div class="link-block linkedin">
+          <div class="link-block linkedin easy-in-out-fast">
             <span class="tag-16">LinkedIn</span>
             <img src="./img/arrow.svg" alt="">
           </div>
-          <div class="link-block telegram">
+          <div class="link-block telegram easy-in-out-fast">
             <span class="tag-16">Telegram</span>
             <img src="./img/arrow.svg" alt="">
           </div>
@@ -140,6 +141,8 @@
         <h1 class="m-0">I love transform problem into emotional and human-friendly solutions. </h1>
         <img class="emotional-image" src="./img/emotional-vector.svg" alt="">
         <img class="human-friendly-image" src="./img/human-friendly-vector.svg" alt="">
+        <img class="human-friendly-image-short-left" src="./img/human-friendly-vector-short.svg" alt="">
+        <img class="human-friendly-image-short-right" src="./img/human-friendly-vector-short.svg" alt="">
       </div>
       <div class="expertise-container text-2">
         I strongly believe that an interface is not just a means of solving a user's problems, it should cover the
@@ -278,9 +281,9 @@
     <div class="footer-container">
       <h1 class="footer-text black">Open to new challenges and opportunities</h1>
       <div class="footer-button-container">
-        <div class="footer-button">
+        <div class="footer-button easy-in-out-slow">
           <div class="icon-container">
-            <img src="./img/arrow-up.svg" alt="">
+            <img src="./img/arrow-up.svg" alt="" class="easy-in-out-slow">
           </div>
           <div class="text-container light tag-16">Up</div>
         </div>
@@ -290,17 +293,90 @@
     </div>
     <div class="footer-links">
       <div class="links-block-container">
-        <div class="link-block behance">
+        <div class="link-block behance easy-in-out-fast">
           <span class="tag-16">Behance</span>
-          <img src="./img/arrow-dark.svg" alt="">
+          <svg width="20"
+               height="20"
+               viewBox="0 0 20 20"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               class="easy-in-out-fast">
+            <g clip-path="url(#clip0_849_3099)">
+              <path class="easy-in-out-fast"
+                    d="M5 14.9998L14.4626 5.53711"
+                    stroke="#2C2925"
+                    stroke-width="1.25"
+                    stroke-linecap="square"
+                    stroke-linejoin="round"/>
+              <path class="easy-in-out-fast"
+                    d="M6.875 5H15V13.125"
+                    stroke="#2C2925"
+                    stroke-width="1.25"
+                    stroke-linecap="square"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_849_3099">
+                <rect width="20" height="20" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
         </div>
-        <div class="link-block linkedin">
+        <div class="link-block linkedin easy-in-out-fast">
           <span class="tag-16">LinkedIn</span>
-          <img src="./img/arrow-dark.svg" alt="">
+          <svg width="20"
+               height="20"
+               viewBox="0 0 20 20"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               class="easy-in-out-fast">
+            <g clip-path="url(#clip0_849_3099)">
+              <path class="easy-in-out-fast"
+                    d="M5 14.9998L14.4626 5.53711"
+                    stroke="#2C2925"
+                    stroke-width="1.25"
+                    stroke-linecap="square"
+                    stroke-linejoin="round"/>
+              <path class="easy-in-out-fast"
+                    d="M6.875 5H15V13.125"
+                    stroke="#2C2925"
+                    stroke-width="1.25"
+                    stroke-linecap="square"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_849_3099">
+                <rect width="20" height="20" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
         </div>
-        <div class="link-block telegram">
+        <div class="link-block telegram easy-in-out-fast">
           <span class="tag-16">Telegram</span>
-          <img src="./img/arrow-dark.svg" alt="">
+          <svg width="20"
+               height="20"
+               viewBox="0 0 20 20"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               class="easy-in-out-fast">
+            <g clip-path="url(#clip0_849_3099)">
+              <path class="easy-in-out-fast"
+                    d="M5 14.9998L14.4626 5.53711"
+                    stroke="#2C2925"
+                    stroke-width="1.25"
+                    stroke-linecap="square"
+                    stroke-linejoin="round"/>
+              <path class="easy-in-out-fast"
+                    d="M6.875 5H15V13.125"
+                    stroke="#2C2925"
+                    stroke-width="1.25"
+                    stroke-linecap="square"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_849_3099">
+                <rect width="20" height="20" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+
         </div>
       </div>
       <div class="email-container">

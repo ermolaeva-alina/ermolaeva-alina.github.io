@@ -13,5 +13,8 @@
     "@parcel/transformer-webmanifest": "^2.10.2",
     "parcel": "^2.10.2",
     "sass": "^1.70.0"
+  },
+  "dependencies": {
+    "animate.css": "^4.1.1"
   }
 }

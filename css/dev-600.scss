@@ -184,6 +184,11 @@
         height: 7px;
         top: 153px;
         left: 7px;
+        display: block;
+      }
+
+      .human-friendly-image-short-left, .human-friendly-image-short-right {
+        display: none;
       }
     }
 
@@ -210,7 +215,7 @@
 
   .my-approach-container {
     margin-top: 12px;
-    padding: 32px 8px;
+    padding: 32px 8px 8px 8px;
 
     .header {
       margin-left: 8px;
@@ -218,6 +223,48 @@
 
     .cards-container {
       margin-top: 40px;
+
+      .card {
+        .card-border-container {
+          flex-direction: column;
+          height: unset;
+          padding: 0 16px;
+
+          .card-content {
+            width: 100%;
+            margin-top: 80px;
+          }
+        }
+
+        .ux {
+          rotate: -15deg;
+          top: 8px;
+          left: -12px;
+        }
+
+        .ui {
+          rotate: 30deg;
+          top: 53px;
+          left: 232px;
+        }
+
+        .heart {
+          top: -32px;
+          left: unset;
+          right: -36px;
+        }
+
+        .plane {
+          rotate: 0deg;
+          right: 16px;
+          left: unset;
+        }
+
+        .new {
+          top: 52px;
+          left: 10px;
+        }
+      }
     }
   }
 

@@ -1,0 +1,19 @@
+.easy-in-out-slow {
+  transition-timing-function: ease-in;
+  transition: 0.3s;
+}
+
+.easy-in-out-slow:hover {
+  transition-timing-function: ease-out;
+  transition: 0.3s;
+}
+
+.easy-in-out-fast {
+  transition-timing-function: ease-in;
+  transition: 0.2s;
+}
+
+.easy-in-out-fast:hover {
+  transition-timing-function: ease-out;
+  transition: 0.2s;
+}

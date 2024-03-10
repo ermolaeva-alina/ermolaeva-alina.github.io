@@ -20,8 +20,8 @@
         }
 
         img {
-          height: 72px;
-          width: 72px;
+          height: 56px;
+          width: 56px;
         }
       }
     }
@@ -59,6 +59,7 @@
 
   .description-container {
     padding: 30px;
+
     .i-love-container {
       width: 100% !important;
 
@@ -67,6 +68,24 @@
         height: 16px;
         top: 115px;
         left: 111px;
+      }
+
+      .human-friendly-image {
+        display: none;
+      }
+
+      .human-friendly-image-short-left {
+        display: block;
+        position: absolute;
+        top: 118px;
+        right: 25px;
+      }
+
+      .human-friendly-image-short-right {
+        display: block;
+        position: absolute;
+        top: 188px;
+        left: -6px;
       }
     }
 
@@ -107,11 +126,14 @@
   .case-1-container {
     height: auto;
     flex-direction: column;
+
     .left-block-container {
       margin-right: 0;
+
       .header-container {
         margin-top: 4px;
       }
+
       .image-container {
         display: block;
         height: 300px;
@@ -129,8 +151,10 @@
         }
       }
     }
+
     .right-block-container {
       margin-left: 0;
+
       .image-container {
         display: none;
       }
