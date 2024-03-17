@@ -278,6 +278,7 @@ h1, h2, h3 {
     border: 1px dashed $light;
     border-radius: 1000px;
     padding: 0 24px;
+    cursor: pointer;
 
     img {
       width: 20px;
@@ -292,6 +293,10 @@ h1, h2, h3 {
     .email-short {
       display: none;
     }
+  }
+
+  .email-container:active {
+    background-color: $black-2;
   }
 }
 
@@ -505,7 +510,7 @@ h1, h2, h3 {
 
     .card {
       flex-basis: 100%;
-      background-color: $purple;
+      background-color: $red;
       padding: 32px 0;
       border-radius: 32px;
       position: relative;
@@ -635,6 +640,7 @@ h1, h2, h3 {
   .footer-button:active {
     background-color: $black-2;
     transition: 0.05s;
+
     .icon-container {
       img {
         transition: 0.05s;
@@ -699,6 +705,7 @@ h1, h2, h3 {
     border: 1px dashed $light;
     border-radius: 1000px;
     padding: 4px 24px 4px 24px;
+    cursor: pointer;
 
     img {
       width: 20px;
@@ -712,6 +719,47 @@ h1, h2, h3 {
 
     .email-short {
       display: none;
+    }
+  }
+
+  .email-container:active {
+    background-color: $black-2;
+  }
+}
+
+.copied-popup-flying-container-background {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  z-index: 100;
+
+  .copied-popup-flying-container {
+    //display: inline-block;
+    display: none;
+
+    .copied-popup-content-container {
+      background-color: $green;
+      display: flex;
+      padding: 4px 24px 4px 4px;
+      border-radius: 1000px;
+      align-items: center;
+
+      .icon-container {
+        height: 48px;
+        width: 48px;
+        border-radius: 1000px;
+        background-color: $black;
+        text-align: center;
+
+        img {
+          margin-top: 14px
+        }
+      }
+
+      .text-container {
+        margin-left: 16px;
+      }
     }
   }
 }
