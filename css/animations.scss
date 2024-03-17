@@ -17,3 +17,7 @@
   transition-timing-function: ease-out;
   transition: 0.2s;
 }
+
+.animate__super_fast {
+  --animate-duration: 0.2s;
+}

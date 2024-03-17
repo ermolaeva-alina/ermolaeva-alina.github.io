@@ -1,4 +1,12 @@
 @media screen and (max-width: 920px) {
+
+  .main-container-content {
+    .main-section {
+      margin-top: 64px;
+      margin-bottom: 64px;
+    }
+  }
+
   .main-blocks-container {
     display: flex;
     flex-direction: column;
@@ -33,14 +41,19 @@
     }
   }
 
-  .main-block-footer {
-    .email-container {
-      .email-full {
-        display: none;
-      }
+  .floating-footer-container {
+    .main-footer-section {
+      margin-top: 16px;
+      .main-block-footer {
+        .email-container {
+          .email-full {
+            display: none;
+          }
 
-      .email-short {
-        display: block;
+          .email-short {
+            display: block;
+          }
+        }
       }
     }
   }

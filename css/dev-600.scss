@@ -211,6 +211,7 @@
 
   .case-1-container {
     margin-top: 12px;
+    padding: 8px;
   }
 
   .my-approach-container {
@@ -332,4 +333,9 @@
     }
   }
 
+  .copied-popup-flying-container-background{
+    left: 16px;
+    right: 16px;
+    transform: none;
+  }
 }

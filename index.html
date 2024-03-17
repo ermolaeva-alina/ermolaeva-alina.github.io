@@ -13,7 +13,7 @@
   <meta property="og:image" content="">
 
   <link rel="manifest" href="./site.webmanifest">
-  <link rel="apple-touch-icon" href="./icon.png">
+  <link rel="apple-touch-icon" href="./img/avatar.png">
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="./css/normalize.css">
@@ -35,8 +35,8 @@
 
 <body>
 <div class="main-container">
-  <div class="main-container-content">
-    <section class="main-header">
+  <section class="floating-header-container">
+    <div class="main-header">
       <div class="cv-block easy-in-out-slow">
         <img src="./img/avatar.png" class="avatar" alt="avatar"/>
         <div class="name-container">
@@ -55,8 +55,8 @@
           <span class="tag-16">Contacts</span>
         </div>
       </div>
-    </section>
-    <section class="merged-header">
+    </div>
+    <div class="merged-header">
       <img src="./img/avatar.png" class="avatar" alt="avatar"/>
       <span class="tag-16 light">CV</span>
       <div class="menu-buttons">
@@ -70,7 +70,9 @@
           <span class="tag-16">Contacts</span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
+  <div class="main-container-content">
     <section class="main-section">
       <div class="main-blocks-container">
         <div class="left-main-block">
@@ -108,35 +110,37 @@
         </div>
       </div>
     </section>
-    <section class="main-footer-section">
-      <div class="main-block-footer">
-        <div class="links-block-container">
-          <div class="link-block behance easy-in-out-fast">
-            <span class="tag-16">Behance</span>
-            <img src="./img/arrow.svg" alt="">
+    <div class="floating-footer-container animate__animated animate__super_fast">
+      <section class="main-footer-section">
+        <div class="main-block-footer">
+          <div class="links-block-container">
+            <div class="link-block behance easy-in-out-fast">
+              <span class="tag-16">Behance</span>
+              <img src="./img/arrow.svg" alt="">
+            </div>
+            <div class="link-block linkedin easy-in-out-fast">
+              <span class="tag-16">LinkedIn</span>
+              <img src="./img/arrow.svg" alt="">
+            </div>
+            <div class="link-block telegram easy-in-out-fast">
+              <span class="tag-16">Telegram</span>
+              <img src="./img/arrow.svg" alt="">
+            </div>
           </div>
-          <div class="link-block linkedin easy-in-out-fast">
-            <span class="tag-16">LinkedIn</span>
-            <img src="./img/arrow.svg" alt="">
-          </div>
-          <div class="link-block telegram easy-in-out-fast">
-            <span class="tag-16">Telegram</span>
-            <img src="./img/arrow.svg" alt="">
+          <div class="email-container easy-in-out-fast">
+            <div class="email email-full">alinaermolaeva044@gmail.com</div>
+            <div class="email email-short">Copy e-mail</div>
+            <img src="./img/copy.svg" alt="">
           </div>
         </div>
-        <div class="email-container easy-in-out-fast">
-          <div class="email email-full">alinaermolaeva044@gmail.com</div>
-          <div class="email email-short">Copy e-mail</div>
-          <img src="./img/copy.svg" alt="">
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <section class="interactive-container">
 
     </section>
   </div>
   <section>
-    <div class="description-container">
+    <div class="description-container easy-in-out-fast">
       <div class="i-love-container">
         <h1 class="m-0">I love transform problem into emotional and human-friendly solutions. </h1>
         <img class="emotional-image" src="./img/emotional-vector.svg" alt="">
@@ -388,7 +392,7 @@
   </footer>
   <section>
     <div class="copied-popup-flying-container-background">
-      <div class="copied-popup-flying-container animate__animated">
+      <div class="copied-popup-flying-container animate__animated animate__faster">
         <div class="copied-popup-content-container">
           <div class="icon-container">
             <img src="./img/check.svg" alt=""/>

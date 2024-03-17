@@ -1,6 +1,6 @@
 import $ from "jquery";
 import 'animate.css';
-
+//todo refactor it somehow
 const $copiedPopup = $(".copied-popup-flying-container");
 
 let showed = false;
@@ -16,7 +16,7 @@ $('.email-container').on("click", async () => {
 
   setTimeout(() => {
     $copiedPopup.addClass('animate__fadeOutDown').removeClass('animate__fadeInUp');
-  }, 5000); // Элемент начнет исчезать через 5 секунд
+  }, 3000); // Элемент начнет исчезать через 3 секунд
 
   $copiedPopup.on('animationend', () => {
     if ($copiedPopup.hasClass('animate__fadeOutDown')) {
@@ -32,4 +32,25 @@ $('#up-button').on('click', () => {
 
 $('#explore-cases-button').on('click', () => {
   window.scrollTo({top: $(".case-studies-header").position().top, behavior: "smooth"});
+})
+
+const $window = $(window);
+const $footer = $(".floating-footer-container");
+const $nextAfterFooter = $(".description-container");
+
+let lastScrollY = window.scrollY;
+
+$window.scroll(() => {
+  if (window.scrollY === 0) {
+    $nextAfterFooter.addClass('description-container-margin').removeClass('description-container-margin-scrolled');
+  } else {
+    $nextAfterFooter.addClass('description-container-margin-scrolled').removeClass('description-container-margin');
+  }
+
+  if (window.scrollY === 0 || window.scrollY < lastScrollY) {
+    $footer.addClass('animate__slideInUp').removeClass('animate__slideOutDown');
+  } else {
+    $footer.addClass('animate__slideOutDown').removeClass('animate__slideInUp');
+  }
+  lastScrollY = window.scrollY;
 })
