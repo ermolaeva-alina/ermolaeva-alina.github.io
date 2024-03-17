@@ -8,3 +8,6 @@ dist
 .parcel-cache
 
 .idea
+
+./css/*.css
+./css/*.css.map
