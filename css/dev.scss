@@ -22,7 +22,7 @@ h1, h2, h3 {
 
 .floating-header-container {
   position: fixed;
-  z-index: 10;
+  z-index: 50;
   left: 0;
   right: 0;
   top: 0;
@@ -82,9 +82,12 @@ h1, h2, h3 {
       border-radius: 1000px;
       padding: 4px;
 
-      div:first-child {
+      .selected-menu-button {
         background-color: $light;
         color: $black-2;
+      }
+
+      div:first-child {
         margin-right: -16px;
       }
 
@@ -788,6 +791,9 @@ h1, h2, h3 {
 
       .text-container {
         margin-left: 16px;
+        br {
+          display: none;
+        }
       }
     }
   }
