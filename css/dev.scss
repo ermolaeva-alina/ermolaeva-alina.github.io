@@ -775,3 +775,23 @@ h1, h2, h3 {
     }
   }
 }
+
+.interactive-tag {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-left: 32px;
+  padding-right: 32px;
+
+  height: 56px;
+  width: fit-content;
+  border-radius: 28px;
+  box-sizing: border-box;
+
+  color: $black;
+  //border: 2px solid $black-2;
+  cursor: pointer;
+  user-select: none;
+}

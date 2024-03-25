@@ -1,105 +1,96 @@
 import Matter from 'matter-js'
 import $ from "jquery";
-import _ from "lodash";
+
+const colors = ["#B3DDC7", "#F9E398", "#EB7A53", "#C1D8FE"]
+
+const tagTexts = [
+  "JTB",
+  "User & Market Research",
+  "Usability testing",
+  "Accessibility",
+  "CJM",
+  "Qualitative research",
+  "UX design",
+  "Wireframing",
+  "UX research",
+  "Quantitative research",
+  "Design systems",
+  "Problem solving",
+  "User centred design",
+  "User-Centered Design",
+  "Prototyping",
+  "Interaction design"
+];
 
 const Engine = Matter.Engine,
-  Render = Matter.Render,
-  Runner = Matter.Runner,
   Bodies = Matter.Bodies,
-  MouseConstraint = Matter.MouseConstraint,
-  Mouse = Matter.Mouse,
   Composite = Matter.Composite;
 
-const engine = Engine.create();
-
+const engine = Engine.create({
+  positionIterations: 10,
+  velocityIterations: 10
+});
+engine.timing.timeScale = 0.8;
 const $canvasContainer = $(".right-main-block > .canvas-container");
-const $canvasContainerParent = $(".right-main-block");
 
-const render = Render.create({
-  element: $canvasContainer.get(0),
-  engine: engine,
-  options: {
-    width: $canvasContainer.width(),
-    height: $canvasContainer.height(),
-    wireframes: false,
-    background: "#37332F"
+
+const createRoundedRectangle = (x, y, text, color) => {
+  const index = Math.floor(Math.random() * 1000000);
+  $canvasContainer.append(`<div id="tag${index}" class="interactive-tag tag-24">${text}</div>`);
+  const $tag1 = $("#tag" + index);
+  const height = $tag1.height();
+  const width = $tag1.outerWidth();
+
+  $tag1.css("width", width + "px")
+  $tag1.css("padding", 0)
+  $tag1.css("background-color", color)
+  const limitToContainer = function (x, y) {
+    this.body.position.x = Math.min(Math.max(x, 0), $canvasContainer.width());
+    this.body.position.y = Math.min(Math.max(y, 0), $canvasContainer.height());
+  };
+
+  const radius = $tag1.css("border-radius").replace("px", "");
+  return {
+    w: width,
+    h: height,
+    body: Bodies.rectangle(x, y, width, height, {chamfer: {radius}}),
+    elem: document.querySelector("#tag" + index),
+    render() {
+      const {x, y} = this.body.position;
+      limitToContainer.call(this, x, y);
+      this.elem.style.top = `${Math.floor(y - this.h / 2)}px`;
+      this.elem.style.left = `${Math.floor(x - this.w / 2)}px`;
+      this.elem.style.transform = `rotate(${this.body.angle}rad)`;
+    },
   }
+}
+
+const width = $canvasContainer.width();
+const height = $canvasContainer.height();
+let lastColorIndex = 0;
+const tags = tagTexts.map(value => {
+  const x = Math.random() * width;
+  const y = Math.random() * height;
+  const roundedRectangle = createRoundedRectangle(x, y, value, colors[lastColorIndex++ % colors.length]);
+  Composite.add(engine.world, roundedRectangle.body);
+  return roundedRectangle;
 });
 
+const mouseConstraint = Matter.MouseConstraint.create(
+  engine, {element: $canvasContainer.get(0)}
+);
 
-const createMouseControl = () => {
-  // add mouse control
-  const mouse = Mouse.create(render.canvas),
-    mouseConstraint = MouseConstraint.create(engine, {
-      mouse: mouse,
-      constraint: {
-        stiffness: 0.2,
-        render: {
-          visible: false
-        }
-      }
-    });
+Composite.add(engine.world, [mouseConstraint]);
 
-  Composite.add(engine.world, mouseConstraint);
+Composite.add(engine.world, [
+  Bodies.rectangle(width - width / 2, 0, width, 1, {isStatic: true,}), // top
+  Bodies.rectangle(width - width / 2, height, width, 1, {isStatic: true,}), // bottom
+  Bodies.rectangle(0, height - height / 2, 1, height, {isStatic: true,}), // left
+  Bodies.rectangle(width + 10, height - height / 2, 1, height, {isStatic: true,}) // right
+]);
 
-// keep the mouse in sync with rendering
-  render.mouse = mouse;
-}
-
-const createRoundedRectangle = (x, y, text) => {
-  return Bodies.rectangle(x, y, 300, 56, {
-    chamfer: {
-      radius: 25
-    }
-  })
-}
-
-const createObjects = () => {
-
-  Composite.add(engine.world, [
-    createRoundedRectangle(400, 200),
-    createRoundedRectangle(400, 200),
-    createRoundedRectangle(400, 200),
-    createRoundedRectangle(400, 200),
-    createRoundedRectangle(400, 200),
-    createRoundedRectangle(400, 200),
-  ]);
-
-  Composite.add(engine.world, [
-    Bodies.rectangle($canvasContainer.width() - $canvasContainer.width() / 2, 0, $canvasContainer.width(), 1, {isStatic: true}), // top
-    Bodies.rectangle($canvasContainer.width() - $canvasContainer.width() / 2, $canvasContainer.height(), $canvasContainer.width(), 1, {isStatic: true}), // bottom
-    Bodies.rectangle(0, $canvasContainer.height() - $canvasContainer.height() / 2, 1, $canvasContainer.height(), {isStatic: true}), // left
-    Bodies.rectangle($canvasContainer.width() + 10, $canvasContainer.height() - $canvasContainer.height() / 2, 1, $canvasContainer.height(), {isStatic: true}) // right
-  ]);
-
-
-}
-
-const run = () => {
-
-// run the renderer
-  Render.run(render);
-
-// create runner
-  const runner = Runner.create();
-
-// run the engine
-  Runner.run(runner, engine);
-}
-
-createObjects();
-createMouseControl();
-run();
-const debouncedFunc = _.throttle(() => {
-  Composite.clear(engine.world)
-  render.canvas.height = $canvasContainerParent.height()
-  render.canvas.width = $canvasContainerParent.width()
-  createObjects()
-  createMouseControl();
-}, 200, {leading: false});
-window.addEventListener('resize', () => {
-  debouncedFunc()
-});
-
-//https://stackoverflow.com/questions/62681437/matter-js-text-inside-a-rectangle
-// https://stackoverflow.com/questions/61420347/html-elements-with-matter-js
+(function rerender() {
+  tags.forEach(box => box.render());
+  Engine.update(engine);
+  requestAnimationFrame(rerender);
+})();

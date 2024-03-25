@@ -61,11 +61,6 @@ function calculateCasesScrollPosition() {
   return descriptionBottomCountingAnimation - headerSizeWithoutTopPadding;
 }
 
-function scrollToCases() {
-  const scrollPosition = calculateCasesScrollPosition();
-  window.scrollTo({top: scrollPosition, behavior: "smooth"});
-}
-
 $('#explore-cases-button').on('click', () => window.scrollTo({top: calculateCasesScrollPosition(), behavior: "smooth"}))
 
 const $window = $(window);
