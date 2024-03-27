@@ -78,9 +78,7 @@ export class AnimatedTags {
 
   removeObjects() {
     Composite.clear(this.engine.world);
-    this.tags.forEach(tag => {
-      tag.elem.remove();
-    });
+    this.tags.forEach(tag => tag.elem.remove());
     this.tags = [];
   }
 

@@ -34,6 +34,14 @@
           border-radius: 1000px;
         }
 
+        .cv {
+          margin-left: 16px;
+        }
+
+        .space {
+          flex-grow: 1;
+        }
+
         .name-container {
           display: flex;
           align-items: center;
@@ -82,7 +90,8 @@
 
         .links-block-container {
           width: 100%;
-          padding: 4px 0;
+          padding: 4px;
+          box-sizing: border-box;
 
           display: flex;
           justify-content: space-around;
@@ -92,7 +101,10 @@
           }
 
           .link-block {
+            display: flex;
+            justify-content: center;
             padding: 0;
+            width: 100%;
           }
         }
 
@@ -345,17 +357,20 @@
 
     .links-block-container {
       width: 100%;
-      padding: 4px 0;
+      padding: 4px;
 
       display: flex;
       justify-content: space-around;
 
-      img {
+      svg {
         display: none;
       }
 
       .link-block {
+        display: flex;
+        justify-content: center;
         padding: 0;
+        width: 100%;
       }
     }
 
