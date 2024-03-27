@@ -87,6 +87,10 @@ h1, h2, h3 {
         color: $black-2;
       }
 
+      div:not(.selected-menu-button):hover {
+        background-color: $black-3;
+      }
+
       div:first-child {
         margin-right: -16px;
       }
@@ -106,10 +110,6 @@ h1, h2, h3 {
 
       div:last-child {
         margin-left: -16px;
-      }
-
-      div:hover { // Change to JS classes
-        background-color: $black-3;
       }
     }
   }

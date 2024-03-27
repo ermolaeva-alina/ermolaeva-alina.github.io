@@ -114,7 +114,6 @@ $window.scroll(() => {
   }
 })
 
-
 $(".menu-buttons > .home").on('click', () => {
   window.scrollTo({top: 0, behavior: "smooth"})
 });

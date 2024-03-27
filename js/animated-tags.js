@@ -1,5 +1,6 @@
 import {AnimatedTags} from "./animated-tags-physics";
 import $ from "jquery";
+import _ from "lodash";
 
 const mainScreenTags = (() => {
   const colors = ["#B3DDC7", "#F9E398", "#EB7A53", "#C1D8FE"]
@@ -91,3 +92,8 @@ $(window).resize(() => {
   case2Tags.onWindowResizing();
   case3Tags.onWindowResizing();
 })
+
+// this somehow allows to use scroll on the canvas containers
+$('.canvas-container').each(function() {
+  $(this).on('wheel', () => {});
+});

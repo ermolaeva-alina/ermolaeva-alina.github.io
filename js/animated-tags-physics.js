@@ -59,7 +59,8 @@ export class AnimatedTags {
     this.tags = this.tagTexts.map((text, index) => {
       const x = getRandomInt(containerWidth * 0.2, containerWidth * 0.8);
       const y = getRandomInt(containerHeight * 0.2 - this.#topAdditionalSpace, containerHeight * 0.8);
-      const roundedRectangle = createRoundedRectangle(x, y, text, this.tagColors[index % this.tagColors.length], this.$canvasContainer);
+      const tagColor = this.tagColors[index % this.tagColors.length];
+      const roundedRectangle = createRoundedRectangle(x, y, text, tagColor, this.$canvasContainer, this.mouseDragging);
       Composite.add(this.engine.world, roundedRectangle.body);
       return roundedRectangle;
     });
@@ -114,7 +115,7 @@ const createWalls = (containerWidth, containerHeight, wallsHeight, topAdditional
   Bodies.rectangle(containerWidth, (containerHeight - topAdditionalSpace) / 2, 1, wallsHeight, {isStatic: true}) // right
 ];
 
-const createRoundedRectangle = (x, y, text, color, $canvasContainer) => {
+const createRoundedRectangle = (x, y, text, color, $canvasContainer, mouseDragging) => {
   const index = getRandomInt(0, 100000);
   $canvasContainer.append(`<div id="tag${index}" class="interactive-tag tag-24">${text}</div>`);
   const $tag1 = $("#tag" + index);
@@ -122,7 +123,12 @@ const createRoundedRectangle = (x, y, text, color, $canvasContainer) => {
   const height = $tag1.height();
   const width = $tag1.outerWidth();
 
-  $tag1.css({"width": width + "px", "padding": 0, "background-color": color});
+  $tag1.css({
+    "width": width + "px",
+    "padding": 0,
+    "background-color": color,
+    "cursor": mouseDragging ? "pointer" : "default"
+  });
 
   const radius = Number.parseInt($tag1.css("border-radius").replace("px", ""));
   const borderSize = Number.parseInt($tag1.css("border").replace(/px.*/, "")) * 2;
