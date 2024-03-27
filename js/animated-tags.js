@@ -92,8 +92,3 @@ $(window).resize(() => {
   case2Tags.onWindowResizing();
   case3Tags.onWindowResizing();
 })
-
-// this somehow allows to use scroll on the canvas containers
-$('.canvas-container').each(function() {
-  $(this).on('wheel', () => {});
-});

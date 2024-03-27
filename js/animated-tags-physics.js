@@ -69,6 +69,27 @@ export class AnimatedTags {
       const mouseConstraint = Matter.MouseConstraint.create(
         this.engine, {element: this.$canvasContainer.get(0)}
       );
+
+      // todo: makes a lot of errors to console
+      const mouse = mouseConstraint.mouse;
+      mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+      mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+      mouse.element.removeEventListener('touchstart', mouse.mousedown);
+      mouse.element.removeEventListener('touchmove', mouse.mousemove);
+      mouse.element.removeEventListener('touchend', mouse.mouseup);
+
+      mouse.element.addEventListener('touchstart', mouse.mousedown, { passive: true });
+      mouse.element.addEventListener('touchmove', (e) => {
+        if (mouseConstraint.body) {
+          mouse.mousemove(e);
+        }
+      });
+      mouse.element.addEventListener('touchend', (e) => {
+        if (mouseConstraint.body) {
+          mouse.mouseup(e);
+        }
+      });
+
       Composite.add(this.engine.world, [mouseConstraint]);
     }
 
