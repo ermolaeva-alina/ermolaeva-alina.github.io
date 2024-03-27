@@ -9,5 +9,5 @@ dist
 
 .idea
 
-./css/*.css
-./css/*.css.map
+css/*.css
+css/*.css.map

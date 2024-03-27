@@ -1,6 +1,7 @@
 import {AnimatedTags} from "./animated-tags-physics";
+import $ from "jquery";
 
-(function mainScreenTags() {
+const mainScreenTags = (() => {
   const colors = ["#B3DDC7", "#F9E398", "#EB7A53", "#C1D8FE"]
 
   const tagTexts = [
@@ -24,16 +25,12 @@ import {AnimatedTags} from "./animated-tags-physics";
 
   const animatedTags = new AnimatedTags(".main-container-content .canvas-container:visible", tagTexts, colors);
   animatedTags.render();
-
-  window.addEventListener('resize', () => {
-    animatedTags.onWindowResizing()
-  });
+  return animatedTags;
 })();
 
 const caseColors = ["#D5B8F0", "#C1D8FE", "#F9E398", "#EB7A53", "#B3DDC7"];
 
-(function case1Tags() {
-
+const case1Tags = (() => {
   const tagTexts = [
     "Design system",
     "UI design",
@@ -45,13 +42,10 @@ const caseColors = ["#D5B8F0", "#C1D8FE", "#F9E398", "#EB7A53", "#B3DDC7"];
 
   const animatedTags = new AnimatedTags(".case-1-container .canvas-container", tagTexts, caseColors);
   animatedTags.render();
-
-  window.addEventListener('resize', () => {
-    animatedTags.onWindowResizing()
-  });
+  return animatedTags;
 })();
 
-(function case2Tags() {
+const case2Tags = (() => {
   const tagTexts = [
     "Design system",
     "UI design",
@@ -63,13 +57,10 @@ const caseColors = ["#D5B8F0", "#C1D8FE", "#F9E398", "#EB7A53", "#B3DDC7"];
 
   const animatedTags = new AnimatedTags(".case-2-container .canvas-container", tagTexts, caseColors);
   animatedTags.render();
-
-  window.addEventListener('resize', () => {
-    animatedTags.onWindowResizing()
-  });
+  return animatedTags;
 })();
 
-(function case3Tags() {
+const case3Tags  = (() => {
   const tagTexts = [
     "Design system",
     "UI design",
@@ -81,8 +72,22 @@ const caseColors = ["#D5B8F0", "#C1D8FE", "#F9E398", "#EB7A53", "#B3DDC7"];
 
   const animatedTags = new AnimatedTags(".case-3-container .canvas-container", tagTexts, caseColors);
   animatedTags.render();
-
-  window.addEventListener('resize', () => {
-    animatedTags.onWindowResizing()
-  });
+  return animatedTags;
 })();
+
+let windowWidth = $(window).width();
+let heightWidth = $(window).height();
+
+$(window).resize(() => {
+  if (windowWidth === $(window).width() && heightWidth === $(window).height()) {
+    return;
+  }
+
+  windowWidth = $(window).width();
+  heightWidth = $(window).height();
+
+  mainScreenTags.onWindowResizing();
+  case1Tags.onWindowResizing();
+  case2Tags.onWindowResizing();
+  case3Tags.onWindowResizing();
+})
