@@ -788,10 +788,9 @@ h1, h2, h3 {
   height: 56px;
   width: fit-content;
   border-radius: 28px;
-  box-sizing: border-box;
 
   color: $black;
-  //border: 2px solid $black-2;
+  border: 2px solid $black-2;
   cursor: pointer;
   user-select: none;
 }

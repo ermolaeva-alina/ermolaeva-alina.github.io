@@ -33,9 +33,18 @@ const engine = Engine.create({
 engine.timing.timeScale = 0.8;
 const $canvasContainer = $(".right-main-block > .canvas-container");
 
+const truncNumber = (number) => {
+  return Math.trunc(number * 100) / 100
+}
+
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 const createRoundedRectangle = (x, y, text, color) => {
-  const index = Math.floor(Math.random() * 1000000);
+  const index = getRandomInt(0, 100000);
   $canvasContainer.append(`<div id="tag${index}" class="interactive-tag tag-24">${text}</div>`);
   const $tag1 = $("#tag" + index);
   const height = $tag1.height();
@@ -44,34 +53,54 @@ const createRoundedRectangle = (x, y, text, color) => {
   $tag1.css("width", width + "px")
   $tag1.css("padding", 0)
   $tag1.css("background-color", color)
-  const limitToContainer = function (x, y) {
-    this.body.position.x = Math.min(Math.max(x, 0), $canvasContainer.width());
-    this.body.position.y = Math.min(Math.max(y, 0), $canvasContainer.height());
-  };
 
-  const radius = $tag1.css("border-radius").replace("px", "");
+  const radius = Number.parseInt($tag1.css("border-radius").replace("px", ""));
   return {
-    w: width,
-    h: height,
-    body: Bodies.rectangle(x, y, width, height, {chamfer: {radius}}),
+    w: width + 4,
+    h: height + 4,
+    body: Bodies.rectangle(x, y, width + 4, height + 4, {chamfer: {radius}}),
     elem: document.querySelector("#tag" + index),
+    prevX: truncNumber(x),
+    prevY: truncNumber(y),
     render() {
       const {x, y} = this.body.position;
-      limitToContainer.call(this, x, y);
-      this.elem.style.top = `${Math.floor(y - this.h / 2)}px`;
-      this.elem.style.left = `${Math.floor(x - this.w / 2)}px`;
+      let xFixed = truncNumber(x);
+      let yFixed = truncNumber(y);
+
+      if (this.prevX === xFixed && this.prevY === yFixed) {
+        return;
+      }
+
+      const top = yFixed - this.h / 2;
+      this.elem.style.top = `${top}px`;
+      const left = xFixed - this.w / 2;
+      this.elem.style.left = `${left}px`;
       this.elem.style.transform = `rotate(${this.body.angle}rad)`;
+      this.prevX = xFixed;
+      this.prevY = yFixed;
     },
   }
 }
 
+const render = Matter.Render.create({
+  element: $canvasContainer.get(0),
+  engine: engine,
+  options: {
+    width: $canvasContainer.width(),
+    height: $canvasContainer.height(),
+    wireframes: true // включаем ваирфреймы
+  }
+});
+
 const width = $canvasContainer.width();
 const height = $canvasContainer.height();
+const topAdditionalSpace = 500;
+const wallsHeight = height + topAdditionalSpace;
 let lastColorIndex = 0;
-const tags = tagTexts.map(value => {
-  const x = Math.random() * width;
-  const y = Math.random() * height;
-  const roundedRectangle = createRoundedRectangle(x, y, value, colors[lastColorIndex++ % colors.length]);
+const tags = tagTexts.map(text => {
+  const x = getRandomInt(width * 0.2, width * 0.8);
+  const y = getRandomInt(height * 0.2 - topAdditionalSpace, height * 0.8);
+  const roundedRectangle = createRoundedRectangle(x, y, text, colors[lastColorIndex++ % colors.length]);
   Composite.add(engine.world, roundedRectangle.body);
   return roundedRectangle;
 });
@@ -83,11 +112,13 @@ const mouseConstraint = Matter.MouseConstraint.create(
 Composite.add(engine.world, [mouseConstraint]);
 
 Composite.add(engine.world, [
-  Bodies.rectangle(width - width / 2, 0, width, 1, {isStatic: true,}), // top
-  Bodies.rectangle(width - width / 2, height, width, 1, {isStatic: true,}), // bottom
-  Bodies.rectangle(0, height - height / 2, 1, height, {isStatic: true,}), // left
-  Bodies.rectangle(width + 10, height - height / 2, 1, height, {isStatic: true,}) // right
+  Bodies.rectangle(width / 2, -topAdditionalSpace, width, 1, {isStatic: true, render: {visible: true}}), // top
+  Bodies.rectangle(width / 2, height, width, 1, {isStatic: true, render: {visible: true}}), // bottom
+  Bodies.rectangle(0, (height - topAdditionalSpace) / 2, 1, wallsHeight, {isStatic: true, render: {visible: true}}), // left
+  Bodies.rectangle(width, (height - topAdditionalSpace) / 2, 1, wallsHeight, {isStatic: true, render: {visible: true}}) // right
 ]);
+
+// Matter.Render.run(render);
 
 (function rerender() {
   tags.forEach(box => box.render());
