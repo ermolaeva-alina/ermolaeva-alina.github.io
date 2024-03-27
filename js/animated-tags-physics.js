@@ -11,7 +11,7 @@ const Engine = Matter.Engine,
 export class AnimatedTags {
   #topAdditionalSpace = 500;
 
-  constructor(containerSelector, tagTexts, tagColors, debugPhysics = false) {
+  constructor(containerSelector, tagTexts, tagColors, mouseDragging = false, debugPhysics = false) {
     this.containerSelector = containerSelector;
     this.$canvasContainer = $(containerSelector);
     this.tagTexts = tagTexts;
@@ -20,6 +20,7 @@ export class AnimatedTags {
     this.initialized = false;
     this.tags = [];
     this.debugPhysics = debugPhysics;
+    this.mouseDragging = mouseDragging;
   }
 
   init() {
@@ -63,11 +64,13 @@ export class AnimatedTags {
       return roundedRectangle;
     });
 
-    const mouseConstraint = Matter.MouseConstraint.create(
-      this.engine, {element: this.$canvasContainer.get(0)}
-    );
+    if (this.mouseDragging) {
+      const mouseConstraint = Matter.MouseConstraint.create(
+        this.engine, {element: this.$canvasContainer.get(0)}
+      );
+      Composite.add(this.engine.world, [mouseConstraint]);
+    }
 
-    Composite.add(this.engine.world, [mouseConstraint]);
     Composite.add(this.engine.world, createWalls(containerWidth, containerHeight, wallsHeight, this.#topAdditionalSpace));
     return {containerWidth, containerHeight};
   }

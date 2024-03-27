@@ -23,7 +23,7 @@ const mainScreenTags = (() => {
     "Interaction design"
   ];
 
-  const animatedTags = new AnimatedTags(".main-container-content .canvas-container:visible", tagTexts, colors);
+  const animatedTags = new AnimatedTags(".main-container-content .canvas-container:visible", tagTexts, colors, true, false)
   animatedTags.render();
   return animatedTags;
 })();
@@ -60,7 +60,7 @@ const case2Tags = (() => {
   return animatedTags;
 })();
 
-const case3Tags  = (() => {
+const case3Tags = (() => {
   const tagTexts = [
     "Design system",
     "UI design",
