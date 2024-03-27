@@ -12,7 +12,7 @@ $('.email-container').on("click", async () => {
   }
 
   showed = true;
-  $copiedPopup.css('display', 'inline-block').addClass('animate__fadeInUp').removeClass('animate__fadeOutDown');
+  $copiedPopup.css('display', 'block').addClass('animate__fadeInUp').removeClass('animate__fadeOutDown');
 
   setTimeout(() => {
     $copiedPopup.addClass('animate__fadeOutDown').removeClass('animate__fadeInUp');

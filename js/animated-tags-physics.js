@@ -1,6 +1,7 @@
 import Matter from "matter-js";
 import $ from "jquery";
 import {getRandomInt, truncNumber} from "./utils";
+import _ from "lodash";
 
 const Engine = Matter.Engine,
   Bodies = Matter.Bodies,
@@ -8,9 +9,10 @@ const Engine = Matter.Engine,
 
 
 export class AnimatedTags {
-  topAdditionalSpace = 500;
+  #topAdditionalSpace = 500;
 
   constructor(containerSelector, tagTexts, tagColors, debugPhysics = false) {
+    this.containerSelector = containerSelector;
     this.$canvasContainer = $(containerSelector);
     this.tagTexts = tagTexts;
     this.tagColors = tagColors;
@@ -29,28 +31,10 @@ export class AnimatedTags {
       }
     });
 
-    const containerWidth = this.$canvasContainer.width();
-    const containerHeight = this.$canvasContainer.height();
-
-    const wallsHeight = containerHeight + this.topAdditionalSpace;
-
-    this.tags = this.tagTexts.map((text, index) => {
-      const x = getRandomInt(containerWidth * 0.2, containerWidth * 0.8);
-      const y = getRandomInt(containerHeight * 0.2 - this.topAdditionalSpace, containerHeight * 0.8);
-      const roundedRectangle = createRoundedRectangle(x, y, text, this.tagColors[index % this.tagColors.length], this.$canvasContainer);
-      Composite.add(this.engine.world, roundedRectangle.body);
-      return roundedRectangle;
-    });
-
-    const mouseConstraint = Matter.MouseConstraint.create(
-      this.engine, {element: this.$canvasContainer.get(0)}
-    );
-
-    Composite.add(this.engine.world, [mouseConstraint]);
-    Composite.add(this.engine.world, createWalls(containerWidth, containerHeight, wallsHeight, this.topAdditionalSpace));
+    const {containerWidth, containerHeight} = this.#createObjects();
 
     if (this.debugPhysics) {
-      const render = Matter.Render.create({
+      this.render = Matter.Render.create({
         element: this.$canvasContainer.get(0),
         engine: this.engine,
         options: {
@@ -65,6 +49,37 @@ export class AnimatedTags {
     this.initialized = true;
   }
 
+  #createObjects() {
+    const containerWidth = this.$canvasContainer.width();
+    const containerHeight = this.$canvasContainer.height();
+
+    const wallsHeight = containerHeight + this.#topAdditionalSpace;
+
+    this.tags = this.tagTexts.map((text, index) => {
+      const x = getRandomInt(containerWidth * 0.2, containerWidth * 0.8);
+      const y = getRandomInt(containerHeight * 0.2 - this.#topAdditionalSpace, containerHeight * 0.8);
+      const roundedRectangle = createRoundedRectangle(x, y, text, this.tagColors[index % this.tagColors.length], this.$canvasContainer);
+      Composite.add(this.engine.world, roundedRectangle.body);
+      return roundedRectangle;
+    });
+
+    const mouseConstraint = Matter.MouseConstraint.create(
+      this.engine, {element: this.$canvasContainer.get(0)}
+    );
+
+    Composite.add(this.engine.world, [mouseConstraint]);
+    Composite.add(this.engine.world, createWalls(containerWidth, containerHeight, wallsHeight, this.#topAdditionalSpace));
+    return {containerWidth, containerHeight};
+  }
+
+  removeObjects() {
+    Composite.clear(this.engine.world);
+    this.tags.forEach(tag => {
+      tag.elem.remove();
+    });
+    this.tags = [];
+  }
+
   render() {
     if (!this.initialized) {
       this.init();
@@ -72,6 +87,20 @@ export class AnimatedTags {
     this.tags.forEach(box => box.render());
     Engine.update(this.engine);
     requestAnimationFrame(this.render.bind(this));
+  }
+
+  #reinit = _.throttle(() => {
+    this.removeObjects()
+    this.$canvasContainer = $(this.containerSelector);
+    this.#createObjects()
+    if (this.debugPhysics) {
+      this.render.canvas.height = this.$canvasContainer.height()
+      this.render.canvas.width = this.$canvasContainer.width()
+    }
+  }, 1000)
+
+  onWindowResizing() {
+    this.#reinit();
   }
 }
 

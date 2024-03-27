@@ -434,6 +434,19 @@ h1, h2, h3 {
 
     .interactive-tags-block {
       flex-grow: 1;
+
+      background-color: $black-2;
+      border-radius: 16px;
+      margin-left: 12px;
+      position: relative;
+
+      .canvas-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 16px;
+      }
     }
 
     .full-case-link-container {
@@ -743,7 +756,7 @@ h1, h2, h3 {
   z-index: 100;
 
   .copied-popup-flying-container {
-    //display: inline-block;
+    //display: block;
     display: none;
 
     .copied-popup-content-container {
