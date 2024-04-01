@@ -33,6 +33,8 @@ export const calculateCasesScrollPosition = () => {
 
 const calculateFooterLinksTopPosition = () => $(".footer-links").position().top
 
+const calculateFooterTopPosition = () => $("footer").position().top;
+
 const $floatingFooter = $(".floating-footer-container");
 const $nextAfterFooter = $(".description-container");
 
@@ -73,7 +75,7 @@ export const animateMenuButtons = () => {
     $home.addClass("selected-menu-button")
     $work.removeClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
-  } else if (window.innerHeight + window.scrollY < document.body.offsetHeight) {
+  } else if (window.innerHeight + window.scrollY < calculateFooterTopPosition()) {
     $home.removeClass("selected-menu-button")
     $work.addClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
