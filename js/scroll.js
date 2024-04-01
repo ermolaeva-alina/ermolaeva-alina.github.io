@@ -73,7 +73,7 @@ export const animateMenuButtons = () => {
     $home.addClass("selected-menu-button")
     $work.removeClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
-  } else if (window.innerHeight + Math.round(window.scrollY) < document.body.offsetHeight) {
+  } else if (window.innerHeight + window.scrollY < document.body.offsetHeight) {
     $home.removeClass("selected-menu-button")
     $work.addClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
