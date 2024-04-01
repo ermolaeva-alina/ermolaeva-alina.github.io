@@ -66,31 +66,7 @@ export class AnimatedTags {
     });
 
     if (this.mouseDragging) {
-      const mouseConstraint = Matter.MouseConstraint.create(
-        this.engine, {element: this.$canvasContainer.get(0)}
-      );
-
-      // todo: makes a lot of errors to console
-      const mouse = mouseConstraint.mouse;
-      mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
-      mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
-      mouse.element.removeEventListener('touchstart', mouse.mousedown);
-      mouse.element.removeEventListener('touchmove', mouse.mousemove);
-      mouse.element.removeEventListener('touchend', mouse.mouseup);
-
-      mouse.element.addEventListener('touchstart', mouse.mousedown, { passive: true });
-      mouse.element.addEventListener('touchmove', (e) => {
-        if (mouseConstraint.body) {
-          mouse.mousemove(e);
-        }
-      });
-      mouse.element.addEventListener('touchend', (e) => {
-        if (mouseConstraint.body) {
-          mouse.mouseup(e);
-        }
-      });
-
-      Composite.add(this.engine.world, [mouseConstraint]);
+      createMouseConstraint(this.engine, this.$canvasContainer);
     }
 
     Composite.add(this.engine.world, createWalls(containerWidth, containerHeight, wallsHeight, this.#topAdditionalSpace));
@@ -177,3 +153,31 @@ const createRoundedRectangle = (x, y, text, color, $canvasContainer, mouseDraggi
     },
   }
 }
+
+const createMouseConstraint = (engine, $canvasContainer) => {
+  const mouseConstraint = Matter.MouseConstraint.create(
+   engine, {element: $canvasContainer.get(0)}
+  );
+
+  // todo: makes a lot of errors to console
+  const mouse = mouseConstraint.mouse;
+  mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
+  mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
+  mouse.element.removeEventListener('touchstart', mouse.mousedown);
+  mouse.element.removeEventListener('touchmove', mouse.mousemove);
+  mouse.element.removeEventListener('touchend', mouse.mouseup);
+
+  mouse.element.addEventListener('touchstart', mouse.mousedown, {passive: true});
+  mouse.element.addEventListener('touchmove', (e) => {
+    if (mouseConstraint.body) {
+      mouse.mousemove(e);
+    }
+  });
+  mouse.element.addEventListener('touchend', (e) => {
+    if (mouseConstraint.body) {
+      mouse.mouseup(e);
+    }
+  });
+
+  Composite.add(engine.world, [mouseConstraint]);
+};

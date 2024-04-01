@@ -1,6 +1,5 @@
-import {AnimatedTags} from "./animated-tags-physics";
+import {AnimatedTags} from "./animated-tags-logic";
 import $ from "jquery";
-import _ from "lodash";
 
 const mainScreenTags = (() => {
   const colors = ["#B3DDC7", "#F9E398", "#EB7A53", "#C1D8FE"]
