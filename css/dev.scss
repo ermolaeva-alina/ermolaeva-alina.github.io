@@ -5,16 +5,6 @@
   font-family: 'ClashGrotesk-Variable', sans-serif;
 }
 
-body {
-  min-height: 100vh;
-  /* mobile viewport bug fix */
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
-}
-
 h1, h2, h3 {
   margin: 0;
 }
@@ -25,7 +15,7 @@ h1, h2, h3 {
 }
 
 .main-container-content {
-  height: calc(100vh - 24px);
+  height: calc(100svh - 24px);
   display: flex;
   flex-direction: column;
 }
