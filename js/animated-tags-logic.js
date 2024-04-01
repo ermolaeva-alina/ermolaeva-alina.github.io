@@ -28,7 +28,7 @@ export class AnimatedTags {
       // positionIterations: 10,
       // velocityIterations: 10,
       timing: {
-        // timeScale: 0.8
+        timeScale: 0.8
       }
     });
 
