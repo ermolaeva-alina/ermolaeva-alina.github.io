@@ -101,14 +101,12 @@
   }
 
   .footer-container {
-    .orange-vector {
-      top: 140px;
-      left: 43px;
-    }
+    .footer-text {
+      width: 531px;
 
-    .purple-vector {
-      top: 205px;
-      left: 84px;
+      .challenges {
+        margin-left: 0;
+      }
     }
   }
 

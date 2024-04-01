@@ -356,7 +356,6 @@ h1, h2, h3 {
     display: flex;
     flex-wrap: wrap;
 
-
     .emotional-text {
       position: relative;
 
@@ -367,7 +366,7 @@ h1, h2, h3 {
       img {
         z-index: 1;
         position: absolute;
-        bottom: -8px;
+        bottom: -5px;
         right: 0;
         width: 70%;
       }
@@ -383,7 +382,7 @@ h1, h2, h3 {
       img {
         z-index: 1;
         position: absolute;
-        bottom: -8px;
+        bottom: -5px;
         right: 0;
         width: 100%;
       }
@@ -625,19 +624,46 @@ h1, h2, h3 {
 
   .footer-text {
     width: 834px;
-    z-index: 20;
-  }
+    display: flex;
+    flex-wrap: wrap;
 
-  .orange-vector {
-    position: absolute;
-    left: 511px;
-    top: 87px;
-  }
+    .challenges {
+      margin-left: 12px;
 
-  .purple-vector {
-    position: absolute;
-    left: 265px;
-    top: 168px;
+      position: relative;
+
+      h1 {
+        z-index: 5;
+        position: relative;
+      }
+
+      img {
+        z-index: 1;
+        position: absolute;
+        bottom: -5px;
+        right: 5%;
+        width: 90%;
+      }
+    }
+
+    .opportunities {
+      margin-left: 12px;
+
+      position: relative;
+
+      h1 {
+        z-index: 5;
+        position: relative;
+      }
+
+      img {
+        z-index: 1;
+        position: absolute;
+        bottom: -10px;
+        right: 20%;
+        width: 60%;
+      }
+    }
   }
 
   .footer-button {
