@@ -31,6 +31,8 @@ export const calculateCasesScrollPosition = () => {
   return descriptionBottomCountingAnimation - headerSizeWithoutTopPadding;
 };
 
+const calculateFooterLinksTopPosition = () => $(".footer-links").position().top
+
 const $floatingFooter = $(".floating-footer-container");
 const $nextAfterFooter = $(".description-container");
 
@@ -41,13 +43,16 @@ export const animateFooterOnScroll = () => {
     return;
   }
 
-  if (window.scrollY === 0) {
+  const isScrolledToMostTop = window.scrollY === 0;
+  if (isScrolledToMostTop) {
     $nextAfterFooter.addClass('description-container-margin').removeClass('description-container-margin-scrolled');
   } else {
     $nextAfterFooter.addClass('description-container-margin-scrolled').removeClass('description-container-margin');
   }
 
-  if (window.scrollY === 0 || window.scrollY < lastScrollY) {
+  const wasScrolledToTop = window.scrollY < lastScrollY;
+  const isScrolledUpperThanFooterLinks = window.scrollY + window.innerHeight < calculateFooterLinksTopPosition();
+  if (isScrolledToMostTop || (wasScrolledToTop && isScrolledUpperThanFooterLinks)) {
     $floatingFooter.addClass('animate__slideInUp').removeClass('animate__slideOutDown');
   } else {
     $floatingFooter.addClass('animate__slideOutDown').removeClass('animate__slideInUp');
@@ -83,7 +88,7 @@ export const initFooter = () => {
   if (window.matchMedia("(max-width: 600px)").matches) {
     return;
   }
-  console.log(window.scrollY)
+
   if (window.scrollY === 0) {
     $nextAfterFooter.addClass('description-container-margin').removeClass('description-container-margin-scrolled');
   } else {
