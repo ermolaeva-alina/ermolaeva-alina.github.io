@@ -351,28 +351,51 @@ h1, h2, h3 {
   flex-direction: column;
 
   .i-love-container {
-    width: 1115px;
+    max-width: 1115px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+
+
+    .emotional-text {
+      position: relative;
+
+      h1 {
+        z-index: 5;
+      }
+
+      img {
+        z-index: 1;
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+        width: 70%;
+      }
+    }
+
+    .human-friendly-text {
+      position: relative;
+
+      h1 {
+        z-index: 5;
+      }
+
+      img {
+        z-index: 1;
+        position: absolute;
+        bottom: -8px;
+        right: 0;
+        width: 100%;
+      }
+    }
+
+    .problems, .and, .solutions {
+      margin-left: 12px;
+    }
 
     h1 {
       position: relative;
       z-index: 5;
-    }
-
-    .emotional-image {
-      position: absolute;
-      top: 146px;
-      left: 5px;
-    }
-
-    .human-friendly-image {
-      position: absolute;
-      top: 155px;
-      left: 495px;
-    }
-
-    .human-friendly-image-short-left, .human-friendly-image-short-right {
-      display: none;
     }
   }
 

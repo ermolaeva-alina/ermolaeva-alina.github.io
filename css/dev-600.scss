@@ -232,27 +232,15 @@
 
   .description-container {
     margin-top: 12px;
-
     padding: 24px 16px;
 
     .i-love-container {
-      .emotional-image {
-        width: 143px;
-        height: 10px;
-        left: 0;
-        top: 110px;
+      .problems, .and, .human-friendly-text {
+        margin-left: 6px;
       }
 
-      .human-friendly-image {
-        width: 224px;
-        height: 7px;
-        top: 153px;
-        left: 7px;
-        display: block;
-      }
-
-      .human-friendly-image-short-left, .human-friendly-image-short-right {
-        display: none;
+      .problems {
+        margin-right: 0;
       }
     }
 

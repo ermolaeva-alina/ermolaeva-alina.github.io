@@ -17,16 +17,14 @@
 
   .description-container {
     .i-love-container {
-      width: 564px;
+      width: 600px;
 
-      .emotional-image {
-        top: 117px;
-        left: 305px;
+      .problems, .and, .solutions {
+        margin-left: 0;
       }
 
-      .human-friendly-image {
-        top: 186px;
-        left: 108px;
+      .emotional-text, .human-friendly-text {
+        margin-left: 12px;
       }
     }
 

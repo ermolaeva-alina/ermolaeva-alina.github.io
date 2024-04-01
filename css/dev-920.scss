@@ -77,29 +77,12 @@
     .i-love-container {
       width: 100% !important;
 
-      .emotional-image {
-        width: 241px;
-        height: 16px;
-        top: 115px;
-        left: 111px;
+      .emotional-text, .human-friendly-text {
+        margin-left: 0;
       }
 
-      .human-friendly-image {
-        display: none;
-      }
-
-      .human-friendly-image-short-left {
-        display: block;
-        position: absolute;
-        top: 118px;
-        right: 25px;
-      }
-
-      .human-friendly-image-short-right {
-        display: block;
-        position: absolute;
-        top: 188px;
-        left: -6px;
+      .problems, .and, .solutions {
+        margin-left: 12px;
       }
     }
 

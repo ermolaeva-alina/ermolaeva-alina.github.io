@@ -58,9 +58,22 @@
           rotate: -15deg;
         }
       }
+    }
+  }
 
+  .description-container {
+    .i-love-container {
+      .i-love-transforming, .emotional-text {
+        margin-right: 5%;
+      }
 
+      .problems, .and, .solutions {
+        margin-left: 0;
+      }
+
+      .emotional-text, .human-friendly-text {
+        margin-left: 12px;
+      }
     }
   }
 }
-

@@ -76,21 +76,10 @@
   }
 
   .description-container {
+    padding: 32px;
+
     .i-love-container {
-      width: 821px;
-
-      .emotional-image {
-        width: 266.01px;
-        height: 17.99px;
-        top: 115px;
-        left: -15px;
-      }
-
-      .human-friendly-image {
-        width: 371px;
-        top: 122px;
-        left: 350px;
-      }
+      max-width: 821px;
     }
 
     .expertise-container {
