@@ -402,7 +402,7 @@ h1, h2, h3 {
 .case-container {
   border-radius: 16px;
   margin-top: 16px;
-  height: calc(100vh - 80px - 80px - 8px);
+  height: calc(100svh - 80px - 80px - 8px);
   display: flex;
 
   .left-block-container {
