@@ -25,8 +25,8 @@ export class AnimatedTags {
 
   init() {
     this.engine = Engine.create({
-      positionIterations: 6,
-      velocityIterations: 6,
+      positionIterations: 1,
+      velocityIterations: 1,
       timing: {
         timeScale: 0.8
       }
