@@ -23,7 +23,7 @@ const mainScreenTags = (() => {
     "Interaction design"
   ];
 
-  const animatedTags = new AnimatedTags(".main-container-content .canvas-container:visible", tagTexts, colors, true, false)
+  const animatedTags = new AnimatedTags(".main-container-content .matter-js-container:visible", tagTexts, colors, true, false)
   animatedTags.render();
   return animatedTags;
 })();
@@ -40,7 +40,7 @@ const case1Tags = (() => {
     "2022"
   ];
 
-  const animatedTags = new AnimatedTags(".case-1-container .canvas-container", tagTexts, caseColors);
+  const animatedTags = new AnimatedTags(".case-1-container .matter-js-container", tagTexts, caseColors);
   animatedTags.render();
   return animatedTags;
 })();
@@ -55,7 +55,7 @@ const case2Tags = (() => {
     "2022"
   ];
 
-  const animatedTags = new AnimatedTags(".case-2-container .canvas-container", tagTexts, caseColors);
+  const animatedTags = new AnimatedTags(".case-2-container .matter-js-container", tagTexts, caseColors);
   animatedTags.render();
   return animatedTags;
 })();
@@ -70,7 +70,7 @@ const case3Tags = (() => {
     "2022"
   ];
 
-  const animatedTags = new AnimatedTags(".case-3-container .canvas-container", tagTexts, caseColors);
+  const animatedTags = new AnimatedTags(".case-3-container .matter-js-container", tagTexts, caseColors);
   animatedTags.render();
   return animatedTags;
 })();

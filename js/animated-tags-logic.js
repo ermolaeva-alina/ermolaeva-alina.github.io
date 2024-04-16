@@ -13,7 +13,7 @@ export class AnimatedTags {
 
   constructor(containerSelector, tagTexts, tagColors, mouseDragging = false, debugPhysics = false) {
     this.containerSelector = containerSelector;
-    this.$canvasContainer = $(containerSelector);
+    this.$matterJsContainer = $(containerSelector);
     this.tagTexts = tagTexts;
     this.tagColors = tagColors;
     this.engine = null;
@@ -36,7 +36,7 @@ export class AnimatedTags {
 
     if (this.debugPhysics) {
       this.render = Matter.Render.create({
-        element: this.$canvasContainer.get(0),
+        element: this.$matterJsContainer.get(0),
         engine: this.engine,
         options: {
           width: containerWidth,
@@ -51,8 +51,8 @@ export class AnimatedTags {
   }
 
   #createObjects() {
-    const containerWidth = this.$canvasContainer.width();
-    const containerHeight = this.$canvasContainer.height();
+    const containerWidth = this.$matterJsContainer.width();
+    const containerHeight = this.$matterJsContainer.height();
 
     const wallsHeight = containerHeight + this.#topAdditionalSpace;
 
@@ -60,13 +60,13 @@ export class AnimatedTags {
       const x = getRandomInt(containerWidth * 0.2, containerWidth * 0.8);
       const y = getRandomInt(containerHeight * 0.2 - this.#topAdditionalSpace, containerHeight * 0.8);
       const tagColor = this.tagColors[index % this.tagColors.length];
-      const roundedRectangle = createRoundedRectangle(x, y, text, tagColor, this.$canvasContainer, this.mouseDragging);
+      const roundedRectangle = createRoundedRectangle(x, y, text, tagColor, this.$matterJsContainer, this.mouseDragging);
       Composite.add(this.engine.world, roundedRectangle.body);
       return roundedRectangle;
     });
 
     if (this.mouseDragging) {
-      createMouseConstraint(this.engine, this.$canvasContainer);
+      createMouseConstraint(this.engine, this.$matterJsContainer);
     }
 
     Composite.add(this.engine.world, createWalls(containerWidth, containerHeight, wallsHeight, this.#topAdditionalSpace));
@@ -91,11 +91,11 @@ export class AnimatedTags {
 
   #reinit = _.throttle(() => {
     this.removeObjects()
-    this.$canvasContainer = $(this.containerSelector);
+    this.$matterJsContainer = $(this.containerSelector);
     this.#createObjects()
     if (this.debugPhysics) {
-      this.render.canvas.height = this.$canvasContainer.height()
-      this.render.canvas.width = this.$canvasContainer.width()
+      this.render.canvas.height = this.$matterJsContainer.height()
+      this.render.canvas.width = this.$matterJsContainer.width()
     }
   }, 1000)
 
@@ -111,9 +111,9 @@ const createWalls = (containerWidth, containerHeight, wallsHeight, topAdditional
   Bodies.rectangle(containerWidth, (containerHeight - topAdditionalSpace) / 2, 1, wallsHeight, {isStatic: true}) // right
 ];
 
-const createRoundedRectangle = (x, y, text, color, $canvasContainer, mouseDragging) => {
+const createRoundedRectangle = (x, y, text, color, $matterJsContainer, mouseDragging) => {
   const index = getRandomInt(0, 100000);
-  $canvasContainer.append(`<div id="tag${index}" class="interactive-tag tag-24">${text}</div>`);
+  $matterJsContainer.append(`<div id="tag${index}" class="interactive-tag tag-24">${text}</div>`);
   const $tag1 = $("#tag" + index);
 
   const height = $tag1.height();
@@ -155,9 +155,9 @@ const createRoundedRectangle = (x, y, text, color, $canvasContainer, mouseDraggi
   }
 }
 
-const createMouseConstraint = (engine, $canvasContainer) => {
+const createMouseConstraint = (engine, $matterJsContainer) => {
   const mouseConstraint = Matter.MouseConstraint.create(
-   engine, {element: $canvasContainer.get(0)}
+    engine, {element: $matterJsContainer.get(0)}
   );
 
   // todo: makes a lot of errors to console
