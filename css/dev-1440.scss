@@ -127,16 +127,25 @@
       margin-top: 120px;
 
       .card {
-        padding: 24px 0;
+        padding: 24px;
         border-radius: 16px;
 
-        .card-border-container {
-          height: 440-48px;
-          padding: 0 24px;
+        .card-x-border-container {
+          padding: 24px 0;
+          margin: -24px 0;
+
+          .card-y-border-container {
+            padding: 0 24px;
+            margin: 0 -24px;
+
+            .card-content-container {
+              height: 440-48px;
+            }
+          }
         }
 
         .ux {
-          top: 110px;
+          top: 36%;
           left: -5px;
           rotate: -15deg;
           width: 124px;
@@ -144,26 +153,22 @@
         }
 
         .ui {
-          top: 144px;
           width: 104px;
           height: 72px;
         }
 
         .heart {
-          top: 55px;
           width: 180px;
           height: 189px;
         }
 
         .plane {
-          top: 65px;
           width: 136px;
           height: 160px;
         }
 
         .new {
-          top: 65px;
-          right: 22px;
+          right: 6%;
           rotate: 30deg;
           width: 156px;
           height: 56px;

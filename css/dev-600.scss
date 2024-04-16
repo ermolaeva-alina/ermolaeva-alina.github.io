@@ -294,44 +294,57 @@
       margin-top: 40px;
 
       .card {
-        .card-border-container {
-          flex-direction: column;
-          height: unset;
-          padding: 0 16px;
+        padding: 16px;
 
-          .card-content {
-            width: 100%;
-            margin-top: 80px;
+        .card-x-border-container {
+          padding: 16px 0;
+          margin: -16px 0;
+
+          .card-y-border-container {
+            padding: 0 16px;
+            margin: 0 -16px;
+
+            .card-content-container {
+              flex-direction: column;
+              height: unset;
+
+              .card-content {
+                width: 100%;
+                margin-top: 80px;
+              }
+            }
           }
         }
 
         .ux {
           rotate: -15deg;
-          top: 8px;
-          left: -12px;
+          top: 27%;
+          left: -5%;
         }
 
         .ui {
           rotate: 30deg;
-          top: 53px;
-          left: 232px;
+          top: 48%;
+          right: -2%;
+          left: unset;
         }
 
         .heart {
-          top: -32px;
+          top: -2%;
           left: unset;
-          right: -36px;
+          right: -9%;
         }
 
         .plane {
+          top: 9%;
           rotate: 0deg;
-          right: 16px;
+          right: 5%;
           left: unset;
         }
 
         .new {
-          top: 52px;
-          left: 10px;
+          top: 22%;
+          left: 1%;
         }
       }
     }
