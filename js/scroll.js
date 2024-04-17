@@ -71,7 +71,8 @@ export const animateMenuButtons = () => {
   const $home = $visibleHeaderMenu.children(".home").first();
   const $work = $visibleHeaderMenu.children(".work").first();
   const $contacts = $visibleHeaderMenu.children(".contacts").first();
-  if (window.scrollY < calculateCasesScrollPosition() - 5) {
+  const mobileErrorEps = 5;
+  if (window.scrollY < calculateCasesScrollPosition() - mobileErrorEps) {
     $home.addClass("selected-menu-button")
     $work.removeClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
