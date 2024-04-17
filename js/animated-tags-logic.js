@@ -27,6 +27,7 @@ export class AnimatedTags {
     this.engine = Engine.create({
       positionIterations: 10,
       velocityIterations: 10,
+      constraintIterations: 10,
       timing: {
         timeScale: 0.8
       }
@@ -81,7 +82,6 @@ export class AnimatedTags {
 
   render() {
     if (!this.initialized) {
-      console.log("Not initialized")
       this.init();
     }
     this.tags.forEach(box => box.render());
