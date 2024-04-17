@@ -71,11 +71,12 @@ export const animateMenuButtons = () => {
   const $home = $visibleHeaderMenu.children(".home").first();
   const $work = $visibleHeaderMenu.children(".work").first();
   const $contacts = $visibleHeaderMenu.children(".contacts").first();
+  const viewportHeight = document.documentElement.clientHeight;
   if (window.scrollY < calculateCasesScrollPosition()) {
     $home.addClass("selected-menu-button")
     $work.removeClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
-  } else if (window.innerHeight + window.scrollY < calculateFooterTopPosition()) {
+  } else if (window.scrollY + viewportHeight < calculateFooterTopPosition()) {
     $home.removeClass("selected-menu-button")
     $work.addClass("selected-menu-button")
     $contacts.removeClass("selected-menu-button")
