@@ -3,6 +3,7 @@
 
 * {
   font-family: 'ClashGrotesk-Variable', sans-serif;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 h1, h2, h3 {
@@ -35,6 +36,11 @@ html {
   right: 0;
   top: 0;
 
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
   .merged-header {
     display: none;
   }
@@ -57,7 +63,7 @@ html {
       cursor: pointer;
     }
 
-    .cv-block:hover {
+    .cv-block:not(.no-hover):hover {
       background-color: $black-3;
 
       .arrow {
@@ -95,7 +101,7 @@ html {
         color: $black-2;
       }
 
-      div:not(.selected-menu-button):hover {
+      div:not(.selected-menu-button):not(.no-hover):hover {
         background-color: $black-3;
       }
 
@@ -190,6 +196,10 @@ html {
       color: $light;
 
       cursor: pointer;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
 
       .explore-case-studies-arrow-down {
         background-color: $light;
@@ -210,7 +220,7 @@ html {
       }
     }
 
-    .explore-case-studies-button:hover {
+    .explore-case-studies-button:not(.no-hover):hover {
       background-color: $black-3;
 
       .explore-case-studies-arrow-down {
@@ -262,6 +272,11 @@ html {
   right: 16px;
   z-index: 30;
 
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+
   .main-footer-section {
     margin-top: 12px;
     margin-bottom: 12px;
@@ -302,7 +317,7 @@ html {
           margin-left: -16px;
         }
 
-        .link-block:hover {
+        .link-block:not(.no-hover):hover {
           background-color: $black-3;
         }
       }
@@ -482,6 +497,11 @@ html {
     .full-case-link-container {
       flex-grow: 0;
 
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
+
       .full-case-link-button {
         border-radius: 1000px;
         background-color: $black;
@@ -507,7 +527,7 @@ html {
         }
       }
 
-      .full-case-link-button:hover {
+      .full-case-link-button:not(.no-hover):hover {
         background-color: $black-3;
 
         .arrow-button {
@@ -713,6 +733,10 @@ html {
     color: $light;
 
     cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
 
     .icon-container {
       background-color: $light;
@@ -734,7 +758,7 @@ html {
     }
   }
 
-  .footer-button:hover {
+  .footer-button:not(.no-hover):hover {
     background-color: $black-3;
 
     .icon-container {
@@ -761,6 +785,11 @@ html {
   display: flex;
   justify-content: space-between;
   margin-top: 12px;
+
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 
   .links-block-container {
     display: flex;
@@ -794,7 +823,7 @@ html {
       margin-left: -16px;
     }
 
-    .link-block:hover {
+    .link-block:not(.no-hover):hover {
       background-color: $black-3;
       color: $light;
 

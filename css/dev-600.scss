@@ -54,7 +54,7 @@
             }
           }
 
-          .cv-button:hover {
+          .cv-button:not(.no-hover):hover {
             background-color: $black-3;
 
             .cv {

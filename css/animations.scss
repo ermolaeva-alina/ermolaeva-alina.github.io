@@ -3,7 +3,7 @@
   transition: 0.3s;
 }
 
-.easy-in-out-slow:hover {
+.easy-in-out-slow:not(.no-hover):hover {
   transition-timing-function: ease-out;
   transition: 0.3s;
 }
@@ -13,7 +13,7 @@
   transition: 0.2s;
 }
 
-.easy-in-out-fast:hover {
+.easy-in-out-fast:not(.no-hover):hover {
   transition-timing-function: ease-out;
   transition: 0.2s;
 }
