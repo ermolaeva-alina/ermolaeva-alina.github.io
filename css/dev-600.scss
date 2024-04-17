@@ -94,6 +94,10 @@
             height: 40px;
           }
 
+          div:not(.selected-menu-button):not(.no-hover):hover {
+            background-color: $black-3;
+          }
+
           div:last-child {
             margin-left: -16px;
           }
