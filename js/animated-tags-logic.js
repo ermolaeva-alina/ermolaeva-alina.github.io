@@ -35,7 +35,7 @@ export class AnimatedTags {
     const {containerWidth, containerHeight} = this.#createObjects();
 
     if (this.debugPhysics) {
-      this.render = Matter.Render.create({
+      this.matterRender = Matter.Render.create({
         element: this.$matterJsContainer.get(0),
         engine: this.engine,
         options: {
@@ -44,7 +44,7 @@ export class AnimatedTags {
           wireframes: true
         }
       });
-      Matter.Render.run(render);
+      Matter.Render.run(this.matterRender);
     }
 
     this.initialized = true;
@@ -85,7 +85,7 @@ export class AnimatedTags {
       this.init();
     }
     this.tags.forEach(box => box.render());
-    Engine.update(this.engine);
+    Engine.update(this.engine, 12);
     requestAnimationFrame(this.render.bind(this));
   }
 
@@ -94,8 +94,8 @@ export class AnimatedTags {
     this.$matterJsContainer = $(this.containerSelector);
     this.#createObjects()
     if (this.debugPhysics) {
-      this.render.canvas.height = this.$matterJsContainer.height()
-      this.render.canvas.width = this.$matterJsContainer.width()
+      this.matterRender.canvas.height = this.$matterJsContainer.height()
+      this.matterRender.canvas.width = this.$matterJsContainer.width()
     }
   }, 1000)
 
