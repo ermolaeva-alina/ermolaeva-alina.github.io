@@ -151,3 +151,18 @@
     }
   }
 }
+
+@media screen and (max-height: 900px) and (max-width: 900px) {
+  .main-container-content {
+    height: unset;
+
+    .main-section {
+      .main-blocks-container {
+        .right-main-block {
+          height: 250px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
