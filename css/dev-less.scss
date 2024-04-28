@@ -112,6 +112,32 @@
   }
 }
 
+@media screen and (max-width: 364px) {
+  .copied-popup-flying-container-background {
+    left: 8px;
+    right: 8px;
+    transform: none;
+    max-width: 348px;
+    min-width: 304px;
+
+
+    .copied-popup-flying-container {
+      width: unset;
+
+      .copied-popup-content-container {
+        .text-container {
+          line-height: 20px;
+
+          br {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 @media screen and (max-width: 301px) {
   .description-container {
     .i-love-container {

@@ -104,6 +104,20 @@
       }
     }
   }
+
+  .copied-popup-flying-container-background {
+    .copied-popup-flying-container {
+      .copied-popup-content-container {
+        .text-container {
+          line-height: 20px;
+
+          br {
+            //display: block;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 681px) {

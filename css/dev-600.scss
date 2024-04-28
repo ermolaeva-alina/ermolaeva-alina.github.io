@@ -139,7 +139,7 @@
           margin-top: 8px;
           height: 48px;
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
 
           .email-full {
             display: block;
@@ -180,7 +180,7 @@
             }
 
             .paragraph-1 {
-              margin-top: 40px;
+              margin-top: 24px;
               max-width: unset;
               min-width: unset;
             }
@@ -279,11 +279,17 @@
 
       .case-img-container {
         height: 208px;
+        margin-bottom: 0;
       }
 
       .header-and-description {
+        margin-top: 16px;
         padding: 8px;
         max-width: unset;
+
+        .text-2 {
+          margin-top: 24px;
+        }
       }
 
       .interactive-tags-block {
@@ -419,19 +425,7 @@
   }
 
   .copied-popup-flying-container-background {
-    left: 16px;
-    right: 16px;
-    bottom: 8px;
-    transform: none;
-
-    .copied-popup-flying-container {
-      .copied-popup-content-container {
-        .text-container {
-          br {
-            display: block;
-          }
-        }
-      }
-    }
+    top: 64px;
+    bottom: unset;
   }
 }
