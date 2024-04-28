@@ -137,8 +137,12 @@
   }
 
   .my-approach-container {
+    .header {
+      margin-left: 16px;
+    }
+
     .cards-container {
-      margin-top: 120px;
+      margin-top: 80px;
 
       .card {
         padding: 24px;
