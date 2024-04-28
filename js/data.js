@@ -1,4 +1,4 @@
-export default data = {
+const data = {
   cv: "https://google.com",
   behance: "https://google.com",
   linkedin: "https://google.com",
@@ -65,4 +65,5 @@ export default data = {
       ]
     }
   ]
-}
+};
+export default data
