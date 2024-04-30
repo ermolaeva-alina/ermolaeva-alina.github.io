@@ -43,7 +43,7 @@ jobs:
         run: |
           git add docs
           files_changed=`git whatchanged -1 --format=oneline | wc -l`
-
+          echo files_changed
           if [ files_changed > 0 ]; then
             git checkout origin/gh-pages
             hash=`git rev-parse --short HEAD`
