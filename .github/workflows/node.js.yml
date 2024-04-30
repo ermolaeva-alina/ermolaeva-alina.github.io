@@ -36,6 +36,7 @@ jobs:
           git add docs
           git commit -m "Automated build"
           hash=`git rev-parse --short HEAD`
+          git fetch
           git branch -r
           git checkout origin/gh-pages
           git cherry-pick ${hash}
