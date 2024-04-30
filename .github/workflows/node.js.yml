@@ -28,12 +28,12 @@ jobs:
         cache: 'npm'
     - run: npm i
     - run: npm run build
-    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
-      with:
-        token: '${{ secrets.TOKEN }}'
-    - uses: EndBug/add-and-commit@v9
-      with:
-        add: 'docs'
-        author_name: GitHub Actions
-        message: build
-        
+
+    - name: Commit and push
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add docs
+        git commit -m "Automated build"
+        git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:master
+
