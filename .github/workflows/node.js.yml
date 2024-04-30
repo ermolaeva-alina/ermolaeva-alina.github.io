@@ -47,6 +47,5 @@ jobs:
           if [ $files_changed -gt 0 ]; then
             git commit -m "Automated build"
             git checkout origin/gh-pages
-            hash=$(git rev-parse --short HEAD)
             git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
           fi
