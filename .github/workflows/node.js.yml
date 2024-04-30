@@ -39,6 +39,6 @@ jobs:
           git fetch
           git branch -r
           git checkout origin/gh-pages
-          git cherry-pick ${hash}
+          git cherry-pick ${hash} --allow-empty
           git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
 
