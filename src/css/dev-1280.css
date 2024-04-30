@@ -1,0 +1,90 @@
+@media screen and (max-width: 1280px) {
+  .description-container .i-love-container {
+    max-width: 747px;
+  }
+
+  .description-container .expertise-container {
+    max-width: 480px;
+  }
+
+  .my-approach-container .cards-container {
+    flex-wrap: wrap;
+    margin-top: 72px;
+  }
+
+  .my-approach-container .cards-container .card {
+    padding: 24px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    max-width: 50%;
+    margin-right: 0 !important;
+  }
+
+  .my-approach-container .cards-container .card .card-x-border-container {
+    padding: 24px 0;
+    margin: -24px 0;
+  }
+
+  .my-approach-container .cards-container .card .card-x-border-container .card-y-border-container {
+    padding: 0 24px;
+    margin: 0 -24px;
+  }
+
+  .my-approach-container .cards-container .card .card-x-border-container .card-y-border-container .card-content-container {
+    height: 312px;
+  }
+
+  .my-approach-container .cards-container .card .card-4-header {
+    max-width: 253px;
+  }
+
+  .my-approach-container .cards-container .card .ux {
+    width: 124px;
+    height: 72px;
+    top: 29%;
+  }
+
+  .my-approach-container .cards-container .card .ui {
+    top: 45%;
+    right: 0;
+    width: 104px;
+    height: 72px;
+  }
+
+  .my-approach-container .cards-container .card .heart {
+    width: 180px;
+    height: 189px;
+  }
+
+  .my-approach-container .cards-container .card .plane {
+    width: 136px;
+    height: 160px;
+  }
+
+  .my-approach-container .cards-container .card .new {
+    width: 156px;
+    height: 56px;
+  }
+
+  .my-approach-container .cards-container .card-1 .card-x-border-container, .my-approach-container .cards-container .card-2 .card-x-border-container {
+    border-bottom: 2px dashed #2C2925;
+  }
+
+  .my-approach-container .cards-container .card-1 .card-x-border-container .card-y-border-container, .my-approach-container .cards-container .card-2 .card-x-border-container .card-y-border-container {
+    border-right: 2px dashed #2C2925;
+  }
+
+  .my-approach-container .cards-container .card-3 .card-x-border-container .card-y-border-container {
+    border-right: 2px dashed #2C2925;
+  }
+
+  .my-approach-container .cards-container .card-2 .card-x-border-container .card-y-border-container {
+    border-right: none;
+  }
+
+  .my-approach-container .cards-container .card-2 .card-x-border-container .card-y-border-container, .my-approach-container .cards-container .card-3 .card-x-border-container .card-y-border-container, .my-approach-container .cards-container .card-4 .card-x-border-container .card-y-border-container {
+    border-left: none;
+  }
+}
+
+/*# sourceMappingURL=dev-1280.css.map */

@@ -1,0 +1,193 @@
+h1 {
+  font-weight: 450;
+  font-size: 72px;
+  line-height: 72px;
+}
+
+h2 {
+  font-weight: 450;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+h3 {
+  font-weight: 450;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+h4 {
+  font-weight: 450;
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.text-1 {
+  font-weight: 450;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.text-2 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.text-3 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.tag-24 {
+  font-weight: 450;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.tag-18 {
+  font-weight: 450;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.tag-16 {
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.black-3 {
+  color: #423D38;
+}
+
+.black-2 {
+  color: #37332F;
+}
+
+.light {
+  color: #F6ECC9;
+}
+
+.black {
+  color: #2C2925;
+}
+
+.green {
+  color: #B3DDC7;
+}
+
+.red {
+  color: #EB7A53;
+}
+
+.blue {
+  color: #CDE0FE;
+}
+
+.yellow {
+  color: #F9E398;
+}
+
+.purple {
+  color: #D5B8F0;
+}
+
+.purple-2 {
+  color: #BF90EA;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+@media screen and (max-width: 1440px) {
+  h1 {
+    font-size: 56px;
+    line-height: 64px;
+  }
+
+  h2 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+
+  h3 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  h4 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .text-1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .text-2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .text-3 {
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .tag-24 {
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .tag-24 {
+    font-weight: 450;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  h3 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  h4 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
+  .text-1 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .text-2 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .text-3 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+/*# sourceMappingURL=components.css.map */

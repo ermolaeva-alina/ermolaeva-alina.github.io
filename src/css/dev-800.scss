@@ -1,0 +1,139 @@
+@import "variables";
+
+@media screen and (max-width: 800px) {
+  .my-approach-container {
+    .main-header {
+      margin-left: 8px;
+    }
+
+    .cards-container {
+      flex-wrap: wrap;
+
+      .card {
+        max-width: unset;
+
+        .card-x-border-container {
+          border-top: 2px dashed $black;
+          border-bottom: none;
+
+          .card-y-border-container {
+            border-left: none;
+            border-right: none;
+
+            .card-content-container {
+              height: auto;
+              flex-direction: row;
+
+              .card-header {
+                width: 240px;
+              }
+
+              .card-content {
+                width: 360px;
+              }
+            }
+          }
+        }
+
+        .card-4-header {
+          max-width: 253px;
+        }
+
+        .ux {
+          top: 62%;
+          left: 1%;
+          width: 124px;
+          height: 72px;
+        }
+
+        .ui {
+          top: 40%;
+          left: 29%;
+          width: 104px;
+          height: 72px;
+        }
+
+        .heart {
+          top: 35%;
+          left: 0;
+        }
+
+        .plane {
+          top: 35%;
+          left: 13%;
+          rotate: 45deg;
+        }
+
+        .new {
+          top: 67%;
+          left: 14%;
+          rotate: -15deg;
+        }
+      }
+
+      .card-1 {
+        .card-x-border-container {
+          border-top: none;
+        }
+      }
+    }
+  }
+
+  .description-container {
+    .i-love-container {
+      .i-love-transforming, .emotional-text {
+        margin-right: 5%;
+      }
+
+      .problems, .and, .solutions {
+        margin-left: 0;
+      }
+
+      .emotional-text, .human-friendly-text {
+        margin-left: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 712px) {
+  .description-container {
+    .i-love-container {
+      .i-love-transforming, .emotional-text {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .copied-popup-flying-container-background {
+    .copied-popup-flying-container {
+      .copied-popup-content-container {
+        .text-container {
+          line-height: 20px;
+
+          br {
+            //display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 681px) {
+  .description-container {
+    .i-love-container {
+      .problems {
+        margin-right: 5%;
+      }
+
+      .and {
+        margin-left: 12px;
+      }
+
+      .emotional-text, .human-friendly-text {
+        margin-left: 0;
+      }
+    }
+  }
+}
