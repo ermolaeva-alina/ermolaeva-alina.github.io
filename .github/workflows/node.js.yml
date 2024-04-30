@@ -31,6 +31,6 @@ jobs:
     - uses: EndBug/add-and-commit@v9
       with:
         add: 'docs'
-        author_name: pipeline
+        author_name: GitHub Actions
         message: build
         
