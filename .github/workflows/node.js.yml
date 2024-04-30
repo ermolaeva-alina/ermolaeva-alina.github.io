@@ -26,19 +26,24 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
+      - name: Clear old build
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git fetch
+          git checkout origin/gh-pages
+          git rm rf docs
+          git checkout origin/main
+          
       - run: npm i
       - run: npm run build
 
       - name: Commit and push
         run: |
-          git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@github.com'
           git add docs
-          git commit -m "Automated build" --allow-empty
-          git fetch
-          hash=`git rev-parse --short HEAD`
-          git branch -r
           git checkout origin/gh-pages
-          git cherry-pick ${hash} 
+          hash=`git rev-parse --short HEAD`
+          git commit -m "Automated build"
           git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
 
