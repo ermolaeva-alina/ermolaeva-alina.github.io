@@ -35,8 +35,8 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add docs
           git commit -m "Automated build" --allow-empty
-          hash=`git rev-parse --short HEAD`
           git fetch
+          hash=`git rev-parse --short HEAD`
           git branch -r
           git checkout origin/gh-pages
           git cherry-pick ${hash} 
