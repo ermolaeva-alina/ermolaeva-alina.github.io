@@ -35,5 +35,8 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git add docs
           git commit -m "Automated build"
+          hash=`git rev-parse --short HEAD`
+          git checkout gh-pages
+          git cherry-pick ${hash}
           git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
 
