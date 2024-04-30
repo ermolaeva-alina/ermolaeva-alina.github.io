@@ -42,8 +42,12 @@ jobs:
       - name: Commit and push
         run: |
           git add docs
-          git checkout origin/gh-pages
-          hash=`git rev-parse --short HEAD`
-          git commit -m "Automated build"
-          git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
+          files_changed=`git whatchanged -1 --format=oneline | wc -l`
+
+          if [ files_changed > 0 ]; then
+            git checkout origin/gh-pages
+            hash=`git rev-parse --short HEAD`
+            git commit -m "Automated build"
+            git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
+          fi
 
