@@ -45,8 +45,8 @@ jobs:
           files_changed=$(git diff --cached --numstat | wc -l)
           echo $files_changed
           if [ $files_changed -gt 0 ]; then
+            git commit -m "Automated build"
             git checkout origin/gh-pages
             hash=$(git rev-parse --short HEAD)
-            git commit -m "Automated build"
             git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
           fi
