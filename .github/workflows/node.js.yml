@@ -36,19 +36,27 @@ jobs:
           git config --global user.email 'github-actions@github.com'
           git fetch
 
+      - name: Stash changes
+        run: |
           git add docs/*
           git stash save
           git stash list
           git stash show
 
+      - name: Prepare old branch
+        run: |
           git diff
-          git checkout origin/gh-pages
-          git pull
+          git checkout -b gh-pages
+          git pull origin gh-pages
           git rm -rf docs
 
+      - name: Unstash changes
+        run: |
           git stash pop
           git add docs
 
+      - name: Commit and push changes
+        run: |
           files_changed=$(git diff --cached --numstat | wc -l)
           echo $files_changed " files changed"
           if [ $files_changed -gt 0 ]; then
