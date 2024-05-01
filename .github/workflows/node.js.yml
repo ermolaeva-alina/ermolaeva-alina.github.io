@@ -47,7 +47,7 @@ jobs:
         run: |
           git diff
           git checkout -b gh-pages
-          git pull origin gh-pages
+          git pull --rebase origin gh-pages
           git rm -rf docs
 
       - name: Unstash changes
