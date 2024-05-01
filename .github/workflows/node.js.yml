@@ -39,19 +39,20 @@ jobs:
       - name: Stash changes
         run: |
           git add docs/*
-          git stash save --keep-index
-          git diff
+          git stash save
+          git stash list
+          git stash show -p
 
       - name: Prepare old branch
         run: |
-          git branch -d gh-pages
+          git diff
           git checkout origin/gh-pages
           git pull
           git rm -rf docs
 
       - name: Unstash changes
         run: |
-          git stash apply
+          git stash pop
           git add docs
 
       - name: Commit and push changes
