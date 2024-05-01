@@ -27,24 +27,35 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Clear old build
+      - run: npm i
+      - run: npm run build
+
+      - name: Prepare git
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
           git fetch
-          git checkout origin/gh-pages
-          git rm -rf docs
-          git checkout origin/main
 
-      - run: npm i
-      - run: npm run build
-
-      - name: Commit and push
+      - name: Stash changes
         run: |
           git add docs
+          git stash save --keep-index
+
+      - name: Prepare old branch
+        run: |
           git checkout origin/gh-pages
+          git pull
+          git rm -rf docs
+
+      - name: Unstash changes
+        run: |
+          git stash apply
+          git add docs
+
+      - name: Commit and push changes
+        run: |
           files_changed=$(git diff --cached --numstat | wc -l)
-          echo $files_changed
+          echo $files_changed " files changed"
           if [ $files_changed -gt 0 ]; then
             git commit -m "Automated build"
             git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
