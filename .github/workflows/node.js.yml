@@ -43,7 +43,7 @@ jobs:
 
       - name: Prepare old branch
         run: |
-          git checkout -b gh-pages
+          git checkout -b gh-pages origin/gh-pages
           git pull --rebase origin gh-pages
           if [ -d "docs" ]; then
             git rm -rf docs
