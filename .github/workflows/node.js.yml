@@ -41,7 +41,7 @@ jobs:
           git add docs/*
           git stash save
           git stash list
-          git stash show -p
+          git stash show
 
       - name: Prepare old branch
         run: |
