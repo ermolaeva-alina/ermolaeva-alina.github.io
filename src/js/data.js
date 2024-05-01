@@ -1,5 +1,5 @@
 const data = {
-  cv: "https://google.com",
+  cv: "https://github.com/",
   behance: "https://google.com",
   linkedin: "https://google.com",
   telegram: "https://google.com",
