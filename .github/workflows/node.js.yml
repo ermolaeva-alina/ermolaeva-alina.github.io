@@ -44,6 +44,7 @@ jobs:
 
       - name: Prepare old branch
         run: |
+          git branch -d gh-pages
           git checkout origin/gh-pages
           git pull
           git rm -rf docs
