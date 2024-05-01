@@ -38,8 +38,9 @@ jobs:
 
       - name: Stash changes
         run: |
-          git add docs
+          git add docs/*
           git stash save --keep-index
+          git diff
 
       - name: Prepare old branch
         run: |
