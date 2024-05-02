@@ -81,9 +81,6 @@ export class AnimatedTags {
   }
 
   render() {
-    if (!this.initialized) {
-      this.init();
-    }
     this.tags.forEach(box => box.render());
     Engine.update(this.engine, 12);
     requestAnimationFrame(this.render.bind(this));
@@ -133,24 +130,16 @@ const createRoundedRectangle = (x, y, text, color, $matterJsContainer, mouseDrag
     h: height + borderSize,
     body: Bodies.rectangle(x, y, width + borderSize, height + borderSize, {chamfer: {radius}}),
     elem: document.querySelector("#tag" + index),
-    prevX: truncNumber(x),
-    prevY: truncNumber(y),
     render() {
       const {x, y} = this.body.position;
       let xFixed = truncNumber(x);
       let yFixed = truncNumber(y);
-
-      if (this.prevX === xFixed && this.prevY === yFixed) {
-        return;
-      }
 
       const top = yFixed - this.h / 2;
       this.elem.style.top = `${top}px`;
       const left = xFixed - this.w / 2;
       this.elem.style.left = `${left}px`;
       this.elem.style.transform = `rotate(${this.body.angle}rad)`;
-      this.prevX = xFixed;
-      this.prevY = yFixed;
     },
   }
 }
