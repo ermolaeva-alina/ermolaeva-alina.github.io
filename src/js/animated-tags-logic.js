@@ -84,7 +84,7 @@ export class AnimatedTags {
     if (!this.initialized) {
       this.init();
     }
-    this.tags.forEach(box => box.render());
+    // this.tags.forEach(box => box.render());
     Engine.update(this.engine, 12);
     requestAnimationFrame(this.render.bind(this));
   }

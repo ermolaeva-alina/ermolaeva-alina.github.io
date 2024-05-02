@@ -7,7 +7,7 @@ const mainTagColors = ["#D5B8F0", "#C1D8FE", "#F9E398", "#EB7A53", "#B3DDC7"];
 
 const mainScreenTags = (() => {
   const containerSelector = ".main-container-content .matter-js-container:visible";
-  const animatedTags = new AnimatedTags(containerSelector, data.mainTags, colors, true, false)
+  const animatedTags = new AnimatedTags(containerSelector, data.mainTags, colors, true, true)
   animatedTags.render();
   return animatedTags;
 })();
