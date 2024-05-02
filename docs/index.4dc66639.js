@@ -1,4 +1,4 @@
-var e,t,n=globalThis;function r(e){return e&&e.__esModule?e.default:e}var i={},o={},a=n.parcelRequireffc5;null==a&&((a=function(e){if(e in i)return i[e].exports;if(e in o){var t=o[e];delete o[e];var n={id:e,exports:{}};return i[e]=n,t.call(n.exports,n,n.exports),n.exports}var r=Error("Cannot find module '"+e+"'");throw r.code="MODULE_NOT_FOUND",r}).register=function(e,t){o[e]=t},n.parcelRequireffc5=a),(0,a.register)("f1q41",function(e,t){(function(){/** Error message constants. */var r,i="Expected a function",o="__lodash_hash_undefined__",a="__lodash_placeholder__",s=1/0,u=0/0,l=[["ary",128],["bind",1],["bindKey",2],["curry",8],["curryRight",16],["flip",512],["partial",32],["partialRight",64],["rearg",256]],c="[object Arguments]",f="[object Array]",p="[object Boolean]",d="[object Date]",h="[object Error]",v="[object Function]",g="[object GeneratorFunction]",y="[object Map]",m="[object Number]",x="[object Object]",b="[object Promise]",w="[object RegExp]",_="[object Set]",S="[object String]",A="[object Symbol]",C="[object WeakMap]",k="[object ArrayBuffer]",T="[object DataView]",P="[object Float32Array]",E="[object Float64Array]",j="[object Int8Array]",M="[object Int16Array]",D="[object Int32Array]",R="[object Uint8Array]",I="[object Uint8ClampedArray]",B="[object Uint16Array]",L="[object Uint32Array]",O=/\b__p \+= '';/g,H=/\b(__p \+=) '' \+/g,N=/(__e\(.*?\)|\b__t\)) \+\n'';/g,q=/&(?:amp|lt|gt|quot|#39);/g,F=/[&<>"']/g,W=RegExp(q.source),U=RegExp(F.source),V=/<%-([\s\S]+?)%>/g,$=/<%([\s\S]+?)%>/g,z=/<%=([\s\S]+?)%>/g,X=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,G=/^\w*$/,Y=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,J=/[\\^$.*+?()[\]{}|]/g,Q=RegExp(J.source),Z=/^\s+/,K=/\s/,ee=/\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,et=/\{\n\/\* \[wrapped with (.+)\] \*/,en=/,? & /,er=/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,ei=/[()=,{}\[\]\/\s]/,eo=/\\(\\)?/g,ea=/\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,es=/\w*$/,eu=/^[-+]0x[0-9a-f]+$/i,el=/^0b[01]+$/i,ec=/^\[object .+?Constructor\]$/,ef=/^0o[0-7]+$/i,ep=/^(?:0|[1-9]\d*)$/,ed=/[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g,eh=/($^)/,ev=/['\n\r\u2028\u2029\\]/g,eg="\ud800-\udfff",ey="\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff",em="\\u2700-\\u27bf",ex="a-z\\xdf-\\xf6\\xf8-\\xff",eb="A-Z\\xc0-\\xd6\\xd8-\\xde",ew="\\ufe0e\\ufe0f",e_="\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",eS="['’]",eA="["+e_+"]",eC="["+ey+"]",ek="["+ex+"]",eT="[^"+eg+e_+"\\d+"+em+ex+eb+"]",eP="\ud83c[\udffb-\udfff]",eE="[^"+eg+"]",ej="(?:\ud83c[\udde6-\uddff]){2}",eM="[\ud800-\udbff][\udc00-\udfff]",eD="["+eb+"]",eR="\\u200d",eI="(?:"+ek+"|"+eT+")",eB="(?:"+eS+"(?:d|ll|m|re|s|t|ve))?",eL="(?:"+eS+"(?:D|LL|M|RE|S|T|VE))?",eO="(?:"+eC+"|"+eP+")?",eH="["+ew+"]?",eN="(?:"+eR+"(?:"+[eE,ej,eM].join("|")+")"+eH+eO+")*",eq=eH+eO+eN,eF="(?:"+["["+em+"]",ej,eM].join("|")+")"+eq,eW="(?:"+[eE+eC+"?",eC,ej,eM,"["+eg+"]"].join("|")+")",eU=RegExp(eS,"g"),eV=RegExp(eC,"g"),e$=RegExp(eP+"(?="+eP+")|"+eW+eq,"g"),ez=RegExp([eD+"?"+ek+"+"+eB+"(?="+[eA,eD,"$"].join("|")+")","(?:"+eD+"|"+eT+")+"+eL+"(?="+[eA,eD+eI,"$"].join("|")+")",eD+"?"+eI+"+"+eB,eD+"+"+eL,"\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])","\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])","\\d+",eF].join("|"),"g"),eX=RegExp("["+eR+eg+ey+ew+"]"),eG=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,eY=["Array","Buffer","DataView","Date","Error","Float32Array","Float64Array","Function","Int8Array","Int16Array","Int32Array","Map","Math","Object","Promise","RegExp","Set","String","Symbol","TypeError","Uint8Array","Uint8ClampedArray","Uint16Array","Uint32Array","WeakMap","_","clearTimeout","isFinite","parseInt","setTimeout"],eJ=-1,eQ={};eQ[P]=eQ[E]=eQ[j]=eQ[M]=eQ[D]=eQ[R]=eQ[I]=eQ[B]=eQ[L]=!0,eQ[c]=eQ[f]=eQ[k]=eQ[p]=eQ[T]=eQ[d]=eQ[h]=eQ[v]=eQ[y]=eQ[m]=eQ[x]=eQ[w]=eQ[_]=eQ[S]=eQ[C]=!1;/** Used to identify `toStringTag` values supported by `_.clone`. */var eZ={};eZ[c]=eZ[f]=eZ[k]=eZ[T]=eZ[p]=eZ[d]=eZ[P]=eZ[E]=eZ[j]=eZ[M]=eZ[D]=eZ[y]=eZ[m]=eZ[x]=eZ[w]=eZ[_]=eZ[S]=eZ[A]=eZ[R]=eZ[I]=eZ[B]=eZ[L]=!0,eZ[h]=eZ[v]=eZ[C]=!1;/** Used to escape characters for inclusion in compiled string literals. */var eK={"\\":"\\","'":"'","\n":"n","\r":"r","\u2028":"u2028","\u2029":"u2029"},e0=parseFloat,e1=parseInt,e2="object"==typeof n&&n&&n.Object===Object&&n,e5="object"==typeof self&&self&&self.Object===Object&&self,e3=e2||e5||Function("return this")(),e4=t&&!t.nodeType&&t,e9=e4&&e&&!e.nodeType&&e,e6=e9&&e9.exports===e4,e8=e6&&e2.process,e7=function(){try{// Use `util.types` for Node.js 10+.
+var e,t,n=globalThis;function r(e){return e&&e.__esModule?e.default:e}var i={},o={},a=n.parcelRequireffc5;null==a&&((a=function(e){if(e in i)return i[e].exports;if(e in o){var t=o[e];delete o[e];var n={id:e,exports:{}};return i[e]=n,t.call(n.exports,n,n.exports),n.exports}var r=Error("Cannot find module '"+e+"'");throw r.code="MODULE_NOT_FOUND",r}).register=function(e,t){o[e]=t},n.parcelRequireffc5=a),(0,a.register)("f1q41",function(e,t){(function(){/** Error message constants. */var r,i="Expected a function",o="__lodash_hash_undefined__",a="__lodash_placeholder__",s=1/0,u=0/0,l=[["ary",128],["bind",1],["bindKey",2],["curry",8],["curryRight",16],["flip",512],["partial",32],["partialRight",64],["rearg",256]],c="[object Arguments]",f="[object Array]",p="[object Boolean]",d="[object Date]",h="[object Error]",v="[object Function]",g="[object GeneratorFunction]",y="[object Map]",m="[object Number]",x="[object Object]",b="[object Promise]",w="[object RegExp]",_="[object Set]",S="[object String]",A="[object Symbol]",C="[object WeakMap]",k="[object ArrayBuffer]",T="[object DataView]",P="[object Float32Array]",E="[object Float64Array]",j="[object Int8Array]",M="[object Int16Array]",D="[object Int32Array]",R="[object Uint8Array]",I="[object Uint8ClampedArray]",B="[object Uint16Array]",L="[object Uint32Array]",O=/\b__p \+= '';/g,H=/\b(__p \+=) '' \+/g,N=/(__e\(.*?\)|\b__t\)) \+\n'';/g,q=/&(?:amp|lt|gt|quot|#39);/g,F=/[&<>"']/g,W=RegExp(q.source),U=RegExp(F.source),V=/<%-([\s\S]+?)%>/g,$=/<%([\s\S]+?)%>/g,z=/<%=([\s\S]+?)%>/g,G=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,X=/^\w*$/,Y=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,J=/[\\^$.*+?()[\]{}|]/g,Q=RegExp(J.source),Z=/^\s+/,K=/\s/,ee=/\{(?:\n\/\* \[wrapped with .+\] \*\/)?\n?/,et=/\{\n\/\* \[wrapped with (.+)\] \*/,en=/,? & /,er=/[^\x00-\x2f\x3a-\x40\x5b-\x60\x7b-\x7f]+/g,ei=/[()=,{}\[\]\/\s]/,eo=/\\(\\)?/g,ea=/\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g,es=/\w*$/,eu=/^[-+]0x[0-9a-f]+$/i,el=/^0b[01]+$/i,ec=/^\[object .+?Constructor\]$/,ef=/^0o[0-7]+$/i,ep=/^(?:0|[1-9]\d*)$/,ed=/[\xc0-\xd6\xd8-\xf6\xf8-\xff\u0100-\u017f]/g,eh=/($^)/,ev=/['\n\r\u2028\u2029\\]/g,eg="\ud800-\udfff",ey="\\u0300-\\u036f\\ufe20-\\ufe2f\\u20d0-\\u20ff",em="\\u2700-\\u27bf",ex="a-z\\xdf-\\xf6\\xf8-\\xff",eb="A-Z\\xc0-\\xd6\\xd8-\\xde",ew="\\ufe0e\\ufe0f",e_="\\xac\\xb1\\xd7\\xf7\\x00-\\x2f\\x3a-\\x40\\x5b-\\x60\\x7b-\\xbf\\u2000-\\u206f \\t\\x0b\\f\\xa0\\ufeff\\n\\r\\u2028\\u2029\\u1680\\u180e\\u2000\\u2001\\u2002\\u2003\\u2004\\u2005\\u2006\\u2007\\u2008\\u2009\\u200a\\u202f\\u205f\\u3000",eS="['’]",eA="["+e_+"]",eC="["+ey+"]",ek="["+ex+"]",eT="[^"+eg+e_+"\\d+"+em+ex+eb+"]",eP="\ud83c[\udffb-\udfff]",eE="[^"+eg+"]",ej="(?:\ud83c[\udde6-\uddff]){2}",eM="[\ud800-\udbff][\udc00-\udfff]",eD="["+eb+"]",eR="\\u200d",eI="(?:"+ek+"|"+eT+")",eB="(?:"+eS+"(?:d|ll|m|re|s|t|ve))?",eL="(?:"+eS+"(?:D|LL|M|RE|S|T|VE))?",eO="(?:"+eC+"|"+eP+")?",eH="["+ew+"]?",eN="(?:"+eR+"(?:"+[eE,ej,eM].join("|")+")"+eH+eO+")*",eq=eH+eO+eN,eF="(?:"+["["+em+"]",ej,eM].join("|")+")"+eq,eW="(?:"+[eE+eC+"?",eC,ej,eM,"["+eg+"]"].join("|")+")",eU=RegExp(eS,"g"),eV=RegExp(eC,"g"),e$=RegExp(eP+"(?="+eP+")|"+eW+eq,"g"),ez=RegExp([eD+"?"+ek+"+"+eB+"(?="+[eA,eD,"$"].join("|")+")","(?:"+eD+"|"+eT+")+"+eL+"(?="+[eA,eD+eI,"$"].join("|")+")",eD+"?"+eI+"+"+eB,eD+"+"+eL,"\\d*(?:1ST|2ND|3RD|(?![123])\\dTH)(?=\\b|[a-z_])","\\d*(?:1st|2nd|3rd|(?![123])\\dth)(?=\\b|[A-Z_])","\\d+",eF].join("|"),"g"),eG=RegExp("["+eR+eg+ey+ew+"]"),eX=/[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/,eY=["Array","Buffer","DataView","Date","Error","Float32Array","Float64Array","Function","Int8Array","Int16Array","Int32Array","Map","Math","Object","Promise","RegExp","Set","String","Symbol","TypeError","Uint8Array","Uint8ClampedArray","Uint16Array","Uint32Array","WeakMap","_","clearTimeout","isFinite","parseInt","setTimeout"],eJ=-1,eQ={};eQ[P]=eQ[E]=eQ[j]=eQ[M]=eQ[D]=eQ[R]=eQ[I]=eQ[B]=eQ[L]=!0,eQ[c]=eQ[f]=eQ[k]=eQ[p]=eQ[T]=eQ[d]=eQ[h]=eQ[v]=eQ[y]=eQ[m]=eQ[x]=eQ[w]=eQ[_]=eQ[S]=eQ[C]=!1;/** Used to identify `toStringTag` values supported by `_.clone`. */var eZ={};eZ[c]=eZ[f]=eZ[k]=eZ[T]=eZ[p]=eZ[d]=eZ[P]=eZ[E]=eZ[j]=eZ[M]=eZ[D]=eZ[y]=eZ[m]=eZ[x]=eZ[w]=eZ[_]=eZ[S]=eZ[A]=eZ[R]=eZ[I]=eZ[B]=eZ[L]=!0,eZ[h]=eZ[v]=eZ[C]=!1;/** Used to escape characters for inclusion in compiled string literals. */var eK={"\\":"\\","'":"'","\n":"n","\r":"r","\u2028":"u2028","\u2029":"u2029"},e0=parseFloat,e1=parseInt,e2="object"==typeof n&&n&&n.Object===Object&&n,e5="object"==typeof self&&self&&self.Object===Object&&self,e3=e2||e5||Function("return this")(),e4=t&&!t.nodeType&&t,e9=e4&&e&&!e.nodeType&&e,e6=e9&&e9.exports===e4,e8=e6&&e2.process,e7=function(){try{// Use `util.types` for Node.js 10+.
 var e=e9&&e9.require&&e9.require("util").types;if(e)return e;// Legacy `process.binding('util')` for Node.js < 10.
 return e8&&e8.binding&&e8.binding("util")}catch(e){}}(),te=e7&&e7.isArrayBuffer,tt=e7&&e7.isDate,tn=e7&&e7.isMap,tr=e7&&e7.isRegExp,ti=e7&&e7.isSet,to=e7&&e7.isTypedArray;/*--------------------------------------------------------------------------*//**
    * A faster alternative to `Function#apply`, this function invokes `func`
@@ -276,7 +276,7 @@ return e8&&e8.binding&&e8.binding("util")}catch(e){}}(),te=e7&&e7.isArrayBuffer,
    * @private
    * @param {string} string The string to inspect.
    * @returns {boolean} Returns `true` if a symbol is found, else `false`.
-   */function tN(e){return eX.test(e)}/**
+   */function tN(e){return eG.test(e)}/**
    * Converts `map` to its key-value pairs.
    *
    * @private
@@ -334,7 +334,7 @@ return e8&&e8.binding&&e8.binding("util")}catch(e){}}(),te=e7&&e7.isArrayBuffer,
    * @private
    * @param {string} chr The matched character to unescape.
    * @returns {string} Returns the unescaped character.
-   */var tX=tk({"&amp;":"&","&lt;":"<","&gt;":">","&quot;":'"',"&#39;":"'"}),tG=function e(t){/** Built-in constructor references. */var n,K,eg,ey,em=(t=null==t?e3:tG.defaults(e3.Object(),t,tG.pick(e3,eY))).Array,ex=t.Date,eb=t.Error,ew=t.Function,e_=t.Math,eS=t.Object,eA=t.RegExp,eC=t.String,ek=t.TypeError,eT=em.prototype,eP=ew.prototype,eE=eS.prototype,ej=t["__core-js_shared__"],eM=eP.toString,eD=eE.hasOwnProperty,eR=0,eI=(n=/[^.]+$/.exec(ej&&ej.keys&&ej.keys.IE_PROTO||""))?"Symbol(src)_1."+n:"",eB=eE.toString,eL=eM.call(eS),eO=e3._,eH=eA("^"+eM.call(eD).replace(J,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$"),eN=e6?t.Buffer:r,eq=t.Symbol,Uint8Array=t.Uint8Array,eF=eN?eN.allocUnsafe:r,eW=tF(eS.getPrototypeOf,eS),e$=eS.create,eX=eE.propertyIsEnumerable,eK=eT.splice,e2=eq?eq.isConcatSpreadable:r,e5=eq?eq.iterator:r,e4=eq?eq.toStringTag:r,e9=function(){try{var e=is(eS,"defineProperty");return e({},"",{}),e}catch(e){}}(),e8=t.clearTimeout!==e3.clearTimeout&&t.clearTimeout,e7=ex&&ex.now!==e3.Date.now&&ex.now,tm=t.setTimeout!==e3.setTimeout&&t.setTimeout,tk=e_.ceil,tY=e_.floor,tJ=eS.getOwnPropertySymbols,tQ=eN?eN.isBuffer:r,tZ=t.isFinite,tK=eT.join,t0=tF(eS.keys,eS),t1=e_.max,t2=e_.min,t5=ex.now,t3=t.parseInt,t4=e_.random,t9=eT.reverse,DataView=is(t,"DataView"),Map=is(t,"Map"),Promise=is(t,"Promise"),Set=is(t,"Set"),WeakMap=is(t,"WeakMap"),t6=is(eS,"create"),t8=WeakMap&&new WeakMap,t7={},ne=iR(DataView),nt=iR(Map),nn=iR(Promise),nr=iR(Set),ni=iR(WeakMap),no=eq?eq.prototype:r,na=no?no.valueOf:r,ns=no?no.toString:r;/*------------------------------------------------------------------------*//**
+   */var tG=tk({"&amp;":"&","&lt;":"<","&gt;":">","&quot;":'"',"&#39;":"'"}),tX=function e(t){/** Built-in constructor references. */var n,K,eg,ey,em=(t=null==t?e3:tX.defaults(e3.Object(),t,tX.pick(e3,eY))).Array,ex=t.Date,eb=t.Error,ew=t.Function,e_=t.Math,eS=t.Object,eA=t.RegExp,eC=t.String,ek=t.TypeError,eT=em.prototype,eP=ew.prototype,eE=eS.prototype,ej=t["__core-js_shared__"],eM=eP.toString,eD=eE.hasOwnProperty,eR=0,eI=(n=/[^.]+$/.exec(ej&&ej.keys&&ej.keys.IE_PROTO||""))?"Symbol(src)_1."+n:"",eB=eE.toString,eL=eM.call(eS),eO=e3._,eH=eA("^"+eM.call(eD).replace(J,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$"),eN=e6?t.Buffer:r,eq=t.Symbol,Uint8Array=t.Uint8Array,eF=eN?eN.allocUnsafe:r,eW=tF(eS.getPrototypeOf,eS),e$=eS.create,eG=eE.propertyIsEnumerable,eK=eT.splice,e2=eq?eq.isConcatSpreadable:r,e5=eq?eq.iterator:r,e4=eq?eq.toStringTag:r,e9=function(){try{var e=is(eS,"defineProperty");return e({},"",{}),e}catch(e){}}(),e8=t.clearTimeout!==e3.clearTimeout&&t.clearTimeout,e7=ex&&ex.now!==e3.Date.now&&ex.now,tm=t.setTimeout!==e3.setTimeout&&t.setTimeout,tk=e_.ceil,tY=e_.floor,tJ=eS.getOwnPropertySymbols,tQ=eN?eN.isBuffer:r,tZ=t.isFinite,tK=eT.join,t0=tF(eS.keys,eS),t1=e_.max,t2=e_.min,t5=ex.now,t3=t.parseInt,t4=e_.random,t9=eT.reverse,DataView=is(t,"DataView"),Map=is(t,"Map"),Promise=is(t,"Promise"),Set=is(t,"Set"),WeakMap=is(t,"WeakMap"),t6=is(eS,"create"),t8=WeakMap&&new WeakMap,t7={},ne=iR(DataView),nt=iR(Map),nn=iR(Promise),nr=iR(Set),ni=iR(WeakMap),no=eq?eq.prototype:r,na=no?no.valueOf:r,ns=no?no.toString:r;/*------------------------------------------------------------------------*//**
      * Creates a `lodash` object which wraps `value` to enable implicit method
      * chain sequences. Methods that operate on and return arrays, collections,
      * and functions can be chained together. Methods that retrieve a single value
@@ -512,7 +512,7 @@ return e8&&e8.binding&&e8.binding("util")}catch(e){}}(),te=e7&&e7.isArrayBuffer,
      * @param {*} value The value to query.
      * @param {boolean} inherited Specify returning inherited property names.
      * @returns {Array} Returns the array of property names.
-     */function nm(e,t){var n=oE(e),r=!n&&oP(e),i=!n&&!r&&oR(e),o=!n&&!r&&!i&&oG(e),a=n||r||i||o,s=a?tE(e.length,eC):[],u=s.length;for(var l in e)(t||eD.call(e,l))&&!(a&&// Safari 9 has enumerable `arguments.length` in strict mode.
+     */function nm(e,t){var n=oE(e),r=!n&&oP(e),i=!n&&!r&&oR(e),o=!n&&!r&&!i&&oX(e),a=n||r||i||o,s=a?tE(e.length,eC):[],u=s.length;for(var l in e)(t||eD.call(e,l))&&!(a&&// Safari 9 has enumerable `arguments.length` in strict mode.
 ("length"==l||// Node.js 0.10 has enumerable non-index properties on buffers.
 i&&("offset"==l||"parent"==l)||// PhantomJS 2 has enumerable non-index properties on typed arrays.
 o&&("buffer"==l||"byteLength"==l||"byteOffset"==l)||// Skip index properties.
@@ -884,7 +884,7 @@ ny.prototype.clear=/**
      * @param {Function} iteratee The iteratee invoked per iteration.
      * @param {Function} comparator The comparator used to compare values.
      * @returns {*} Returns the extremum value.
-     */function nB(e,t,n){for(var i=-1,o=e.length;++i<o;){var a=e[i],s=t(a);if(null!=s&&(u===r?s==s&&!oX(s):n(s,u)))var u=s,l=a}return l}/**
+     */function nB(e,t,n){for(var i=-1,o=e.length;++i<o;){var a=e[i],s=t(a);if(null!=s&&(u===r?s==s&&!oG(s):n(s,u)))var u=s,l=a}return l}/**
      * The base implementation of `_.filter` without support for iteratee shorthands.
      *
      * @private
@@ -977,14 +977,14 @@ ny.prototype.clear=/**
      * @param {Object} [object] The object to query.
      * @param {Array|string} key The key to check.
      * @returns {boolean} Returns `true` if `key` exists, else `false`.
-     */function nX(e,t){return null!=e&&eD.call(e,t)}/**
+     */function nG(e,t){return null!=e&&eD.call(e,t)}/**
      * The base implementation of `_.hasIn` without support for deep paths.
      *
      * @private
      * @param {Object} [object] The object to query.
      * @param {Array|string} key The key to check.
      * @returns {boolean} Returns `true` if `key` exists, else `false`.
-     */function nG(e,t){return null!=e&&t in eS(e)}/**
+     */function nX(e,t){return null!=e&&t in eS(e)}/**
      * The base implementation of methods like `_.intersection`, without support
      * for iteratee shorthands, that accepts an array of arrays to inspect.
      *
@@ -1034,7 +1034,7 @@ ny.prototype.clear=/**
      * @param {Function} equalFunc The function to determine equivalents of values.
      * @param {Object} [stack] Tracks traversed `object` and `other` objects.
      * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
-     */function(e,t,n,i,o,a){var s=oE(e),u=oE(t),l=s?f:ic(e),v=u?f:ic(t);l=l==c?x:l,v=v==c?x:v;var g=l==x,b=v==x,C=l==v;if(C&&oR(e)){if(!oR(t))return!1;s=!0,g=!1}if(C&&!g)return a||(a=new ny),s||oG(e)?r9(e,t,n,i,o,a):/**
+     */function(e,t,n,i,o,a){var s=oE(e),u=oE(t),l=s?f:ic(e),v=u?f:ic(t);l=l==c?x:l,v=v==c?x:v;var g=l==x,b=v==x,C=l==v;if(C&&oR(e)){if(!oR(t))return!1;s=!0,g=!1}if(C&&!g)return a||(a=new ny),s||oX(e)?r9(e,t,n,i,o,a):/**
      * A specialized version of `baseIsEqualDeep` for comparing objects of
      * the same `toStringTag`.
      *
@@ -1154,7 +1154,7 @@ x!=b&&"constructor"in e&&"constructor"in t&&!("function"==typeof x&&x instanceof
      * @param {Function} [customizer] The function to customize assigned values.
      * @param {Object} [stack] Tracks traversed source values and their merged
      *  counterparts.
-     */(function(e,t,n,i,o,a,s){var u=iA(e,n),l=iA(t,n),c=s.get(l);if(c){nb(e,n,c);return}var f=a?a(u,l,n+"",e,t,s):r,p=f===r;if(p){var d=oE(l),h=!d&&oR(l),v=!d&&!h&&oG(l);f=l,d||h||v?oE(u)?f=u:oD(u)?f=rI(u):h?(p=!1,f=rP(l,!0)):v?(p=!1,f=rj(l,!0)):f=[]:oU(l)||oP(l)?(f=u,oP(u)?f=o2(u):(!oN(u)||oL(u))&&(f=id(l))):p=!1}p&&(// Recursively merge objects and arrays (susceptible to call stack limits).
+     */(function(e,t,n,i,o,a,s){var u=iA(e,n),l=iA(t,n),c=s.get(l);if(c){nb(e,n,c);return}var f=a?a(u,l,n+"",e,t,s):r,p=f===r;if(p){var d=oE(l),h=!d&&oR(l),v=!d&&!h&&oX(l);f=l,d||h||v?oE(u)?f=u:oD(u)?f=rI(u):h?(p=!1,f=rP(l,!0)):v?(p=!1,f=rj(l,!0)):f=[]:oU(l)||oP(l)?(f=u,oP(u)?f=o2(u):(!oN(u)||oL(u))&&(f=id(l))):p=!1}p&&(// Recursively merge objects and arrays (susceptible to call stack limits).
 s.set(l,f),o(f,l,i,a,s),s.delete(l)),nb(e,n,f)})(e,t,s,n,n6,i,o);else{var u=i?i(iA(e,s),a,s+"",e,t,o):r;u===r&&(u=a),nb(e,s,u)}},as)}/**
      * The base implementation of `_.nth` which doesn't coerce arguments.
      *
@@ -1292,7 +1292,7 @@ do t%2&&(n+=e),(t=tY(t/2))&&(e+=e);while(t)return n}/**
      * @param {boolean} [retHighest] Specify returning the highest qualified index.
      * @returns {number} Returns the index at which `value` should be inserted
      *  into `array`.
-     */function rf(e,t,n){var r=0,i=null==e?r:e.length;if("number"==typeof t&&t==t&&i<=2147483647){for(;r<i;){var o=r+i>>>1,a=e[o];null!==a&&!oX(a)&&(n?a<=t:a<t)?r=o+1:i=o}return i}return rp(e,t,aD,n)}/**
+     */function rf(e,t,n){var r=0,i=null==e?r:e.length;if("number"==typeof t&&t==t&&i<=2147483647){for(;r<i;){var o=r+i>>>1,a=e[o];null!==a&&!oG(a)&&(n?a<=t:a<t)?r=o+1:i=o}return i}return rp(e,t,aD,n)}/**
      * The base implementation of `_.sortedIndexBy` and `_.sortedLastIndexBy`
      * which invokes `iteratee` for `value` and each element of `array` to compute
      * their sort ranking. The iteratee is invoked with one argument; (value).
@@ -1304,7 +1304,7 @@ do t%2&&(n+=e),(t=tY(t/2))&&(e+=e);while(t)return n}/**
      * @param {boolean} [retHighest] Specify returning the highest qualified index.
      * @returns {number} Returns the index at which `value` should be inserted
      *  into `array`.
-     */function rp(e,t,n,i){var o=0,a=null==e?0:e.length;if(0===a)return 0;for(var s=(t=n(t))!=t,u=null===t,l=oX(t),c=t===r;o<a;){var f=tY((o+a)/2),p=n(e[f]),d=p!==r,h=null===p,v=p==p,g=oX(p);if(s)var y=i||v;else y=c?v&&(i||d):u?v&&d&&(i||!h):l?v&&d&&!h&&(i||!g):!h&&!g&&(i?p<=t:p<t);y?o=f+1:a=f}return t2(a,4294967294)}/**
+     */function rp(e,t,n,i){var o=0,a=null==e?0:e.length;if(0===a)return 0;for(var s=(t=n(t))!=t,u=null===t,l=oG(t),c=t===r;o<a;){var f=tY((o+a)/2),p=n(e[f]),d=p!==r,h=null===p,v=p==p,g=oG(p);if(s)var y=i||v;else y=c?v&&(i||d):u?v&&d&&(i||!h):l?v&&d&&!h&&(i||!g):!h&&!g&&(i?p<=t:p<t);y?o=f+1:a=f}return t2(a,4294967294)}/**
      * The base implementation of `_.sortedUniq` and `_.sortedUniqBy` without
      * support for iteratee shorthands.
      *
@@ -1319,7 +1319,7 @@ do t%2&&(n+=e),(t=tY(t/2))&&(e+=e);while(t)return n}/**
      * @private
      * @param {*} value The value to process.
      * @returns {number} Returns the number.
-     */function rh(e){return"number"==typeof e?e:oX(e)?u:+e}/**
+     */function rh(e){return"number"==typeof e?e:oG(e)?u:+e}/**
      * The base implementation of `_.toString` which doesn't convert nullish
      * values to empty strings.
      *
@@ -1327,7 +1327,7 @@ do t%2&&(n+=e),(t=tY(t/2))&&(e+=e);while(t)return n}/**
      * @param {*} value The value to process.
      * @returns {string} Returns the string.
      */function rv(e){// Exit early for strings to avoid a performance hit in some environments.
-if("string"==typeof e)return e;if(oE(e))return td(e,rv)+"";if(oX(e))return ns?ns.call(e):"";var t=e+"";return"0"==t&&1/e==-s?"-0":t}/**
+if("string"==typeof e)return e;if(oE(e))return td(e,rv)+"";if(oG(e))return ns?ns.call(e):"";var t=e+"";return"0"==t&&1/e==-s?"-0":t}/**
      * The base implementation of `_.uniqBy` without support for iteratee shorthands.
      *
      * @private
@@ -1446,7 +1446,7 @@ if("string"==typeof e)return e;if(oE(e))return td(e,rv)+"";if(oX(e))return ns?ns
      * @param {*} value The value to compare.
      * @param {*} other The other value to compare.
      * @returns {number} Returns the sort order indicator for `value`.
-     */function rM(e,t){if(e!==t){var n=e!==r,i=null===e,o=e==e,a=oX(e),s=t!==r,u=null===t,l=t==t,c=oX(t);if(!u&&!c&&!a&&e>t||a&&s&&l&&!u&&!c||i&&s&&l||!n&&l||!o)return 1;if(!i&&!a&&!c&&e<t||c&&n&&o&&!i&&!a||u&&n&&o||!s&&o||!l)return -1}return 0}/**
+     */function rM(e,t){if(e!==t){var n=e!==r,i=null===e,o=e==e,a=oG(e),s=t!==r,u=null===t,l=t==t,c=oG(t);if(!u&&!c&&!a&&e>t||a&&s&&l&&!u&&!c||i&&s&&l||!n&&l||!o)return 1;if(!i&&!a&&!c&&e<t||c&&n&&o&&!i&&!a||u&&n&&o||!s&&o||!l)return -1}return 0}/**
      * Creates an array that is the composition of partially applied arguments,
      * placeholders, and provided arguments into a single array of arguments.
      *
@@ -1592,13 +1592,13 @@ return oN(r)?r:n}}/**
      * @param {Function} operator The function to perform the operation.
      * @param {number} [defaultValue] The value used for `undefined` arguments.
      * @returns {Function} Returns the new mathematical operation function.
-     */function rX(e,t){return function(n,i){var o;if(n===r&&i===r)return t;if(n!==r&&(o=n),i!==r){if(o===r)return i;"string"==typeof n||"string"==typeof i?(n=rv(n),i=rv(i)):(n=rh(n),i=rh(i)),o=e(n,i)}return o}}/**
+     */function rG(e,t){return function(n,i){var o;if(n===r&&i===r)return t;if(n!==r&&(o=n),i!==r){if(o===r)return i;"string"==typeof n||"string"==typeof i?(n=rv(n),i=rv(i)):(n=rh(n),i=rh(i)),o=e(n,i)}return o}}/**
      * Creates a function like `_.over`.
      *
      * @private
      * @param {Function} arrayFunc The function to iterate over iteratees.
      * @returns {Function} Returns the new over function.
-     */function rG(e){return r6(function(t){return t=td(t,tM(ii())),ro(function(n){var r=this;return e(t,function(e){return ta(e,r,n)})})})}/**
+     */function rX(e){return r6(function(t){return t=td(t,tM(ii())),ro(function(n){var r=this;return e(t,function(e){return ta(e,r,n)})})})}/**
      * Creates the padding for `string` based on `length`. The `chars` string
      * is truncated if the number of characters exceeds `length`.
      *
@@ -1831,7 +1831,7 @@ if(h){if(!ty(t,function(e,t){if(!tR(h,t)&&(v===e||o(v,e,n,i,a)))return h.push(t)
      * @private
      * @param {Object} object The object to query.
      * @returns {Array} Returns the array of symbols.
-     */var iu=tJ?function(e){return null==e?[]:tc(tJ(e=eS(e)),function(t){return eX.call(e,t)})}:aV,il=tJ?function(e){for(var t=[];e;)th(t,iu(e)),e=eW(e);return t}:aV,ic=n$;/**
+     */var iu=tJ?function(e){return null==e?[]:tc(tJ(e=eS(e)),function(t){return eG.call(e,t)})}:aV,il=tJ?function(e){for(var t=[];e;)th(t,iu(e)),e=eW(e);return t}:aV,ic=n$;/**
      * Checks if `path` exists on `object`.
      *
      * @private
@@ -1874,7 +1874,7 @@ if(h){if(!ty(t,function(e,t){if(!tR(h,t)&&(v===e||o(v,e,n,i,a)))return h.push(t)
      * @param {*} value The value to check.
      * @param {Object} [object] The object to query keys on.
      * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
-     */function iy(e,t){if(oE(e))return!1;var n=typeof e;return!!("number"==n||"symbol"==n||"boolean"==n||null==e||oX(e))||G.test(e)||!X.test(e)||null!=t&&e in eS(t)}/**
+     */function iy(e,t){if(oE(e))return!1;var n=typeof e;return!!("number"==n||"symbol"==n||"boolean"==n||null==e||oG(e))||X.test(e)||!G.test(e)||null!=t&&e in eS(t)}/**
      * Checks if `func` has a lazy counterpart.
      *
      * @private
@@ -1979,7 +1979,7 @@ if(h){if(!ty(t,function(e,t){if(!tR(h,t)&&(v===e||o(v,e,n,i,a)))return h.push(t)
      * @private
      * @param {*} value The value to inspect.
      * @returns {string|symbol} Returns the key.
-     */function iD(e){if("string"==typeof e||oX(e))return e;var t=e+"";return"0"==t&&1/e==-s?"-0":t}/**
+     */function iD(e){if("string"==typeof e||oG(e))return e;var t=e+"";return"0"==t&&1/e==-s?"-0":t}/**
      * Converts `func` to its source code.
      *
      * @private
@@ -2160,7 +2160,7 @@ if(h){if(!ty(t,function(e,t){if(!tR(h,t)&&(v===e||o(v,e,n,i,a)))return h.push(t)
      * _.pull(array, 'a', 'c');
      * console.log(array);
      * // => ['b', 'b']
-     */var iz=ro(iX);/**
+     */var iz=ro(iG);/**
      * This method is like `_.pull` except that it accepts an array of values to remove.
      *
      * **Note:** Unlike `_.difference`, this method mutates `array`.
@@ -2179,7 +2179,7 @@ if(h){if(!ty(t,function(e,t){if(!tR(h,t)&&(v===e||o(v,e,n,i,a)))return h.push(t)
      * _.pullAll(array, ['a', 'c']);
      * console.log(array);
      * // => ['b', 'b']
-     */function iX(e,t){return e&&e.length&&t&&t.length?rt(e,t):e}/**
+     */function iG(e,t){return e&&e.length&&t&&t.length?rt(e,t):e}/**
      * Removes elements from `array` corresponding to `indexes` and returns an
      * array of removed elements.
      *
@@ -2202,7 +2202,7 @@ if(h){if(!ty(t,function(e,t){if(!tR(h,t)&&(v===e||o(v,e,n,i,a)))return h.push(t)
      *
      * console.log(pulled);
      * // => ['b', 'd']
-     */var iG=r6(function(e,t){var n=null==e?0:e.length,r=nk(e,t);return rn(e,td(t,function(e){return iv(e,n)?+e:e}).sort(rM)),r});/**
+     */var iX=r6(function(e,t){var n=null==e?0:e.length,r=nk(e,t);return rn(e,td(t,function(e){return iv(e,n)?+e:e}).sort(rM)),r});/**
      * Reverses `array` so that the first element becomes the last, the second
      * element becomes the second to last, and so on.
      *
@@ -2806,7 +2806,7 @@ ox.Cache=nv;/**
      *
      * _.gt(1, 3);
      * // => false
-     */var ok=rQ(nz),oT=rQ(function(e,t){return e>=t}),oP=nQ(function(){return arguments}())?nQ:function(e){return oq(e)&&eD.call(e,"callee")&&!eX.call(e,"callee")},oE=em.isArray,oj=te?tM(te):/**
+     */var ok=rQ(nz),oT=rQ(function(e,t){return e>=t}),oP=nQ(function(){return arguments}())?nQ:function(e){return oq(e)&&eD.call(e,"callee")&&!eG.call(e,"callee")},oE=em.isArray,oj=te?tM(te):/**
      * The base implementation of `_.isArrayBuffer` without Node.js optimizations.
      *
      * @private
@@ -3148,7 +3148,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * _.isSymbol('abc');
      * // => false
-     */function oX(e){return"symbol"==typeof e||oq(e)&&n$(e)==A}/**
+     */function oG(e){return"symbol"==typeof e||oq(e)&&n$(e)==A}/**
      * Checks if `value` is classified as a typed array.
      *
      * @static
@@ -3164,7 +3164,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * _.isTypedArray([]);
      * // => false
-     */var oG=to?tM(to):/**
+     */var oX=to?tM(to):/**
      * The base implementation of `_.isTypedArray` without Node.js optimizations.
      *
      * @private
@@ -3293,7 +3293,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * _.toNumber('3.2');
      * // => 3.2
-     */function o1(e){if("number"==typeof e)return e;if(oX(e))return u;if(oN(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=oN(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=tj(e);var n=el.test(e);return n||ef.test(e)?e1(e.slice(2),n?2:8):eu.test(e)?u:+e}/**
+     */function o1(e){if("number"==typeof e)return e;if(oG(e))return u;if(oN(e)){var t="function"==typeof e.valueOf?e.valueOf():e;e=oN(t)?t+"":t}if("string"!=typeof e)return 0===e?e:+e;e=tj(e);var n=el.test(e);return n||ef.test(e)?e1(e.slice(2),n?2:8):eu.test(e)?u:+e}/**
      * Converts `value` to a plain object flattening inherited enumerable string
      * keyed properties of `value` to own properties of the plain object.
      *
@@ -3416,7 +3416,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * _.hasIn(object, 'b');
      * // => false
-     */function an(e,t){return null!=e&&ip(e,t,nG)}/**
+     */function an(e,t){return null!=e&&ip(e,t,nX)}/**
      * Creates an object composed of the inverted keys and values of `object`.
      * If `object` contains duplicate values, subsequent values overwrite
      * property assignments of previous values.
@@ -3679,7 +3679,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * _.words('fred, barney, & pebbles', /[^, ]+/g);
      * // => ['fred', 'barney', '&', 'pebbles']
-     */function ak(e,t,n){if(e=o5(e),(t=n?r:t)===r){var i;return(i=e,eG.test(i))?e.match(ez)||[]:e.match(er)||[]}return e.match(t)||[]}/*------------------------------------------------------------------------*//**
+     */function ak(e,t,n){if(e=o5(e),(t=n?r:t)===r){var i;return(i=e,eX.test(i))?e.match(ez)||[]:e.match(er)||[]}return e.match(t)||[]}/*------------------------------------------------------------------------*//**
      * Attempts to invoke `func`, returning either the result or the caught error
      * object. Any additional arguments are provided to `func` when it's invoked.
      *
@@ -3882,7 +3882,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * func(1, 2, 3, 4);
      * // => [4, 1]
-     */var aH=rG(td),aN=rG(tl),aq=rG(ty);/**
+     */var aH=rX(td),aN=rX(tl),aq=rX(ty);/**
      * Creates a function that returns the value at `path` of a given object.
      *
      * @static
@@ -3986,7 +3986,7 @@ var t=n$(e);return t==v||t==g||"[object AsyncFunction]"==t||"[object Proxy]"==t}
      *
      * _.add(6, 4);
      * // => 10
-     */var az=rX(function(e,t){return e+t},0),aX=rK("ceil"),aG=rX(function(e,t){return e/t},1),aY=rK("floor"),aJ=rX(function(e,t){return e*t},1),aQ=rK("round"),aZ=rX(function(e,t){return e-t},0);return(/*------------------------------------------------------------------------*/// Add methods that return wrapped values in chain sequences.
+     */var az=rG(function(e,t){return e+t},0),aG=rK("ceil"),aX=rG(function(e,t){return e/t},1),aY=rK("floor"),aJ=rG(function(e,t){return e*t},1),aQ=rK("round"),aZ=rG(function(e,t){return e-t},0);return(/*------------------------------------------------------------------------*/// Add methods that return wrapped values in chain sequences.
 nu.after=/*------------------------------------------------------------------------*//**
      * The opposite of `_.before`; this method creates a function that invokes
      * `func` once it's called `n` or more times.
@@ -4846,7 +4846,7 @@ nu.after=/*---------------------------------------------------------------------
      *
      * _.map([['a', '2'], ['c', '0']], _.propertyOf(object));
      * // => [2, 0]
-     */function(e){return function(t){return null==e?r:nU(e,t)}},nu.pull=iz,nu.pullAll=iX,nu.pullAllBy=/**
+     */function(e){return function(t){return null==e?r:nU(e,t)}},nu.pull=iz,nu.pullAll=iG,nu.pullAllBy=/**
      * This method is like `_.pullAll` except that it accepts `iteratee` which is
      * invoked for each element of `array` and `values` to generate the criterion
      * by which they're compared. The iteratee is invoked with one argument: (value).
@@ -4890,7 +4890,7 @@ nu.after=/*---------------------------------------------------------------------
      * _.pullAllWith(array, [{ 'x': 3, 'y': 4 }], _.isEqual);
      * console.log(array);
      * // => [{ 'x': 1, 'y': 2 }, { 'x': 5, 'y': 6 }]
-     */function(e,t,n){return e&&e.length&&t&&t.length?rt(e,t,r,n):e},nu.pullAt=iG,nu.range=aW,nu.rangeRight=aU,nu.rearg=oA,nu.reject=/**
+     */function(e,t,n){return e&&e.length&&t&&t.length?rt(e,t,r,n):e},nu.pullAt=iX,nu.range=aW,nu.rangeRight=aU,nu.rearg=oA,nu.reject=/**
      * The opposite of `_.filter`; this method returns the elements of `collection`
      * that `predicate` does **not** return truthy for.
      *
@@ -5388,7 +5388,7 @@ nu.after=/*---------------------------------------------------------------------
      *
      * _.toPath('a[0].b.c');
      * // => ['a', '0', 'b', 'c']
-     */function(e){return oE(e)?td(e,iD):oX(e)?[e]:rI(iM(o5(e)))},nu.toPlainObject=o2,nu.transform=/**
+     */function(e){return oE(e)?td(e,iD):oG(e)?[e]:rI(iM(o5(e)))},nu.toPlainObject=o2,nu.transform=/**
      * An alternative to `_.reduce`; this method transforms `object` to a new
      * `accumulator` object which is the result of running each of its own
      * enumerable string keyed properties thru `iteratee`, with each invocation
@@ -5417,7 +5417,7 @@ nu.after=/*---------------------------------------------------------------------
      *   (result[value] || (result[value] = [])).push(key);
      * }, {});
      * // => { '1': ['a', 'c'], '2': ['b'] }
-     */function(e,t,n){var r=oE(e),i=r||oR(e)||oG(e);if(t=ii(t,4),null==n){var o=e&&e.constructor;n=i?r?new o:[]:oN(e)&&oL(o)?nl(eW(e)):{}}return(i?tu:nq)(e,function(e,r,i){return t(n,e,r,i)}),n},nu.unary=/**
+     */function(e,t,n){var r=oE(e),i=r||oR(e)||oX(e);if(t=ii(t,4),null==n){var o=e&&e.constructor;n=i?r?new o:[]:oN(e)&&oL(o)?nl(eW(e)):{}}return(i?tu:nq)(e,function(e,r,i){return t(n,e,r,i)}),n},nu.unary=/**
      * Creates a function that accepts up to one argument, ignoring any
      * additional arguments.
      *
@@ -5640,7 +5640,7 @@ nu.after=/*---------------------------------------------------------------------
      */function(e,t){return r_(e||[],t||[],ra)},nu.zipWith=i9,// Add aliases.
 nu.entries=ad,nu.entriesIn=ah,nu.extend=o4,nu.extendWith=o9,// Add methods to `lodash.prototype`.
 aL(nu,nu),/*------------------------------------------------------------------------*/// Add methods that return unwrapped values in chain sequences.
-nu.add=az,nu.attempt=aT,nu.camelCase=ag,nu.capitalize=ay,nu.ceil=aX,nu.clamp=/*------------------------------------------------------------------------*//**
+nu.add=az,nu.attempt=aT,nu.camelCase=ag,nu.capitalize=ay,nu.ceil=aG,nu.clamp=/*------------------------------------------------------------------------*//**
      * Clamps `number` within the inclusive `lower` and `upper` bounds.
      *
      * @static
@@ -5799,7 +5799,7 @@ nu.add=az,nu.attempt=aT,nu.camelCase=ag,nu.capitalize=ay,nu.ceil=aX,nu.clamp=/*-
      *
      * _.defaultTo(undefined, 10);
      * // => 10
-     */function(e,t){return null==e||e!=e?t:e},nu.divide=aG,nu.endsWith=/**
+     */function(e,t){return null==e||e!=e?t:e},nu.divide=aX,nu.endsWith=/**
      * Checks if `string` ends with the given target string.
      *
      * @static
@@ -6100,7 +6100,7 @@ nu.add=az,nu.attempt=aT,nu.camelCase=ag,nu.capitalize=ay,nu.ceil=aX,nu.clamp=/*-
      *
      * _.has(other, 'a');
      * // => false
-     */function(e,t){return null!=e&&ip(e,t,nX)},nu.hasIn=an,nu.head=iF,nu.identity=aD,nu.includes=/**
+     */function(e,t){return null!=e&&ip(e,t,nG)},nu.hasIn=an,nu.head=iF,nu.identity=aD,nu.includes=/**
      * Checks if `value` is in `collection`. If `collection` is a string, it's
      * checked for a substring of `value`, otherwise
      * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
@@ -6252,7 +6252,7 @@ nu.add=az,nu.attempt=aT,nu.camelCase=ag,nu.capitalize=ay,nu.ceil=aX,nu.clamp=/*-
      *
      * _.isEmpty({ 'a': 1 });
      * // => false
-     */function(e){if(null==e)return!0;if(oM(e)&&(oE(e)||"string"==typeof e||"function"==typeof e.splice||oR(e)||oG(e)||oP(e)))return!e.length;var t=ic(e);if(t==y||t==_)return!e.size;if(ib(e))return!n2(e).length;for(var n in e)if(eD.call(e,n))return!1;return!0},nu.isEqual=/**
+     */function(e){if(null==e)return!0;if(oM(e)&&(oE(e)||"string"==typeof e||"function"==typeof e.splice||oR(e)||oX(e)||oP(e)))return!e.length;var t=ic(e);if(t==y||t==_)return!e.size;if(ib(e))return!n2(e).length;for(var n in e)if(eD.call(e,n))return!1;return!0},nu.isEqual=/**
      * Performs a deep comparison between two values to determine if they are
      * equivalent.
      *
@@ -6509,7 +6509,7 @@ return oW(e)&&e!=+e},nu.isNative=/**
      *
      * _.isSafeInteger('3');
      * // => false
-     */function(e){return oO(e)&&e>=-9007199254740991&&e<=9007199254740991},nu.isSet=o$,nu.isString=oz,nu.isSymbol=oX,nu.isTypedArray=oG,nu.isUndefined=/**
+     */function(e){return oO(e)&&e>=-9007199254740991&&e<=9007199254740991},nu.isSet=o$,nu.isString=oz,nu.isSymbol=oG,nu.isTypedArray=oX,nu.isUndefined=/**
      * Checks if `value` is `undefined`.
      *
      * @static
@@ -7578,7 +7578,7 @@ g.source=p,oB(g))throw g;return g},nu.times=/**
      *
      * _.unescape('fred, barney, &amp; pebbles');
      * // => 'fred, barney, & pebbles'
-     */function(e){return(e=o5(e))&&W.test(e)?e.replace(q,tX):e},nu.uniqueId=/**
+     */function(e){return(e=o5(e))&&W.test(e)?e.replace(q,tG):e},nu.uniqueId=/**
      * Generates a unique ID. If `prefix` is given, the ID is appended to it.
      *
      * @static
@@ -7790,11 +7790,11 @@ nu.prototype.first=nu.prototype.head,e5&&(nu.prototype[e5]=/**
 // loaded by a script tag in the presence of an AMD loader.
 // See http://requirejs.org/docs/errors.html#mismatch for more details.
 // Use `_.noConflict` to remove Lodash from the global object.
-e3._=tG,// Define as an anonymous module so, through path mapping, it can be
+e3._=tX,// Define as an anonymous module so, through path mapping, it can be
 // referenced as the "underscore" module.
-define(function(){return tG})):e9?(// Export for Node.js.
-(e9.exports=tG)._=tG,// Export for CommonJS support.
-e4._=tG):e3._=tG}).call(this)});var s={cv:"https://github.com/",behance:"https://google.com",linkedin:"https://google.com",telegram:"https://google.com",mainTags:["JTBD","User & Market Research","Usability testing","Accessibility","CJM","Qualitative research","UX design","Wireframing","UX research","Quantitative research","Design systems","Problem solving","User centred design","User-Centered Design","Prototyping","Interaction design"],cases:[{title:"rTIM | AI Application for architects and urbanists",description:"rTIM is an application that empowers architects, urban planners and developers to plan and design areas for districts and cities using AI",imageName:"case-1.png",link:"https://google.com",tags:["Design system","UI design","B2B","Qualitative research","Usability testing","2022"]},{title:"Case 2",description:"Description 2",imageName:"case-1.png",link:"https://google.com",tags:["Design system","UI design","B2B","Qualitative research","Usability testing","2022"]},{title:"Case 3",description:"Description 3",imageName:"case-1.png",link:"https://google.com",tags:["Design system","UI design","B2B","Qualitative research","Usability testing","2022"]}]},u={};e="undefined"!=typeof window?window:u,t=function(e,t){var n,r=[],i=Object.getPrototypeOf,o=r.slice,a=r.flat?function(e){return r.flat.call(e)}:function(e){return r.concat.apply([],e)},s=r.push,u=r.indexOf,l={},c=l.toString,f=l.hasOwnProperty,p=f.toString,d=p.call(Object),h={},v=function(e){// Support: Chrome <=57, Firefox <=52
+define(function(){return tX})):e9?(// Export for Node.js.
+(e9.exports=tX)._=tX,// Export for CommonJS support.
+e4._=tX):e3._=tX}).call(this)});var s={cv:"https://github.com/",behance:"https://google.com",linkedin:"https://google.com",telegram:"https://google.com",mainTags:["JTBD","User & Market Research","Usability testing","Accessibility","CJM","Qualitative research","UX design","Wireframing","UX research","Quantitative research","Design systems","Problem solving","User centred design","User-Centered Design","Prototyping","Interaction design"],cases:[{title:"rTIM | AI Application for architects and urbanists",description:"rTIM is an application that empowers architects, urban planners and developers to plan and design areas for districts and cities using AI",imageName:"case-1.png",link:"https://google.com",tags:["Design system","UI design","B2B","Qualitative research","Usability testing","2022"]},{title:"Case 2",description:"Description 2",imageName:"case-1.png",link:"https://google.com",tags:["Design system","UI design","B2B","Qualitative research","Usability testing","2022"]},{title:"Case 3",description:"Description 3",imageName:"case-1.png",link:"https://google.com",tags:["Design system","UI design","B2B","Qualitative research","Usability testing","2022"]}]},u={};e="undefined"!=typeof window?window:u,t=function(e,t){var n,r=[],i=Object.getPrototypeOf,o=r.slice,a=r.flat?function(e){return r.flat.call(e)}:function(e){return r.concat.apply([],e)},s=r.push,u=r.indexOf,l={},c=l.toString,f=l.hasOwnProperty,p=f.toString,d=p.call(Object),h={},v=function(e){// Support: Chrome <=57, Firefox <=52
 // In some browsers, typeof returns "function" for HTML <object> elements
 // (i.e., `typeof document.createElement( "object" ) === "function"`).
 // We don't want to classify *any* DOM node as a function.
@@ -7869,7 +7869,7 @@ B="(?:\\\\[\\da-fA-F]{1,6}"+E+"?|\\\\[^\\r\\n\\f]|[\\w-]|[^\x00-\\x7f])+",L="\\[
 "*([*^$|!~]?=)"+E+// "Attribute values must be CSS identifiers [capture 5] or strings [capture 3 or capture 4]"
 "*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|("+B+"))|)"+E+"*\\]",O=":("+B+")(?:\\((('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|((?:\\\\.|[^\\\\()[\\]]|"+L+")*)|.*)\\)|)",H=RegExp(E+"+","g"),N=RegExp("^"+E+"*,"+E+"*"),q=RegExp("^"+E+"*([>+~]|"+E+")"+E+"*"),F=RegExp(E+"|>"),W=new RegExp(O),U=RegExp("^"+B+"$"),V={ID:RegExp("^#("+B+")"),CLASS:RegExp("^\\.("+B+")"),TAG:RegExp("^("+B+"|[*])"),ATTR:RegExp("^"+L),PSEUDO:RegExp("^"+O),CHILD:RegExp("^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\("+E+"*(even|odd|(([+-]|)(\\d*)n|)"+E+"*(?:([+-]|)"+E+"*(\\d+)|))"+E+"*\\)|)","i"),bool:RegExp("^(?:"+I+")$","i"),// For use in libraries implementing .is()
 // We use this for POS matching in `select`
-needsContext:RegExp("^"+E+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+E+"*((?:-\\d)?\\d*)"+E+"*\\)|)(?=[^-]|$)","i")},$=/^(?:input|select|textarea|button)$/i,z=/^h\d$/i,X=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,G=/[+~]/,// https://www.w3.org/TR/CSS21/syndata.html#escaped-characters
+needsContext:RegExp("^"+E+"*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\("+E+"*((?:-\\d)?\\d*)"+E+"*\\)|)(?=[^-]|$)","i")},$=/^(?:input|select|textarea|button)$/i,z=/^h\d$/i,G=/^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,X=/[+~]/,// https://www.w3.org/TR/CSS21/syndata.html#escaped-characters
 Y=RegExp("\\\\[\\da-fA-F]{1,6}"+E+"?|\\\\([^\\r\\n\\f])","g"),J=function(e,t){var n="0x"+e.slice(1)-65536;return t||(n<0?String.fromCharCode(n+65536):String.fromCharCode(n>>10|55296,1023&n|56320))},// Support: IE 9 - 11+, Edge 12 - 18+
 // Removing the function wrapper causes a "Permission Denied"
 // error in IE/Edge.
@@ -7881,7 +7881,7 @@ r[y.childNodes.length].nodeType}catch(e){m={apply:function(e,t){s.apply(e,o.call
 if(n=n||[],"string"!=typeof e||!e||1!==g&&9!==g&&11!==g)return n;// Try to shortcut find operations (as opposed to filters) in HTML documents
 if(!r&&(ea(t),t=t||c,d)){// If the selector is sufficiently simple, try using a "get*By*" DOM method
 // (excepting DocumentFragment context, where the methods don't exist)
-if(11!==g&&(u=X.exec(e))){// ID selector
+if(11!==g&&(u=G.exec(e))){// ID selector
 if(i=u[1]){// Document context
 if(9===g){if(!(a=t.getElementById(i)))return n;if(a.id===i)return m.call(n,a),n;// Element context
 }else // getElementById can match elements by name instead of ID
@@ -7894,7 +7894,7 @@ if(!D[e+" "]&&(!v||!v.test(e))){// qSA considers elements outside a scoping root
 // as such selectors are not recognized by querySelectorAll.
 // Thanks to Andrew Dupont for this technique.
 if(f=e,p=t,1===g&&(F.test(e)||q.test(e))){for(// Expand context for sibling selectors
-(p=G.test(e)&&eo(t.parentNode)||t)==t&&h.scope||((s=t.getAttribute("id"))?s=S.escapeSelector(s):t.setAttribute("id",s=x)),o=// Prefix every selector in the list
+(p=X.test(e)&&eo(t.parentNode)||t)==t&&h.scope||((s=t.getAttribute("id"))?s=S.escapeSelector(s):t.setAttribute("id",s=x)),o=// Prefix every selector in the list
 (l=eu(e)).length;o--;)l[o]=(s?"#"+s:":scope")+" "+el(l[o]);f=l.join(",")}try{return m.apply(n,p.querySelectorAll(f)),n}catch(t){D(e,!0)}finally{s===x&&t.removeAttribute("id")}}}// All others
 return eh(e.replace(j,"$1"),t,n,r)}/**
  * Create key-value caches of limited size
@@ -8150,10 +8150,10 @@ m.apply(s,w),u&&!e&&w.length>0&&g+l.length>1&&S.uniqueSort(s)}return u&&(b=C,i=_
 if(r=r||[],1===f.length){if(// Reduce context if the leading compound selector is an ID
 (a=f[0]=f[0].slice(0)).length>2&&"ID"===(s=a[0]).type&&9===t.nodeType&&d&&n.relative[a[1].type]){if(!(t=(n.find.ID(s.matches[0].replace(Y,J),t)||[])[0]))return r;c&&(t=t.parentNode),e=e.slice(a.shift().value.length)}for(// Fetch a seed set for right-to-left matching
 o=V.needsContext.test(e)?0:a.length;// Abort if we hit a combinator
-o--&&(s=a[o],!n.relative[u=s.type]);)if((l=n.find[u])&&(i=l(s.matches[0].replace(Y,J),G.test(a[0].type)&&eo(t.parentNode)||t))){if(// If seed is empty or no tokens remain, we can return early
+o--&&(s=a[o],!n.relative[u=s.type]);)if((l=n.find[u])&&(i=l(s.matches[0].replace(Y,J),X.test(a[0].type)&&eo(t.parentNode)||t))){if(// If seed is empty or no tokens remain, we can return early
 a.splice(o,1),!(e=i.length&&el(a)))return m.apply(r,i),r;break}}return(// Compile and execute a filtering function if one is not provided
 // Provide `match` to avoid retokenization if we modified the selector above
-(c||ed(e,f))(i,t,!d,r,!t||G.test(e)&&eo(t.parentNode)||t),r)}es.prototype=n.filters=n.pseudos,n.setFilters=new es,// One-time assignments
+(c||ed(e,f))(i,t,!d,r,!t||X.test(e)&&eo(t.parentNode)||t),r)}es.prototype=n.filters=n.pseudos,n.setFilters=new es,// One-time assignments
 // Support: Android <=4.0 - 4.1+
 // Sort stability
 h.sortStable=x.split("").sort(R).join("")===x,// Initialize against the default document
@@ -8294,14 +8294,14 @@ when:function(e){var t=arguments.length,n=t,r=Array(n),i=o.call(arguments),a=S.D
 if(t<=1&&(z(e,a.done(s(n)).resolve,a.reject,!t),"pending"===a.state()||v(i[n]&&i[n].then)))return a.then();// Multiple arguments are aggregated like Promise.all array elements
 for(;n--;)z(i[n],s(n),a.reject);return a.promise()}});// These usually indicate a programmer mistake during development,
 // warn about them ASAP rather than swallowing them by default.
-var X=/^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;// If `jQuery.Deferred.getErrorHook` is defined, `asyncError` is an error
+var G=/^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;// If `jQuery.Deferred.getErrorHook` is defined, `asyncError` is an error
 // captured before the async barrier to get the original error cause
 // which may otherwise be hidden.
 S.Deferred.exceptionHook=function(t,n){// Support: IE 8 - 9 only
 // Console exists when dev tools are open, which can happen at any time
-e.console&&e.console.warn&&t&&X.test(t.name)&&e.console.warn("jQuery.Deferred exception: "+t.message,t.stack,n)},S.readyException=function(t){e.setTimeout(function(){throw t})};// The deferred used on DOM ready
-var G=S.Deferred();// The ready event handler and self cleanup method
-function Y(){y.removeEventListener("DOMContentLoaded",Y),e.removeEventListener("load",Y),S.ready()}S.fn.ready=function(e){return G.then(e)// Wrap jQuery.readyException in a function so that the lookup
+e.console&&e.console.warn&&t&&G.test(t.name)&&e.console.warn("jQuery.Deferred exception: "+t.message,t.stack,n)},S.readyException=function(t){e.setTimeout(function(){throw t})};// The deferred used on DOM ready
+var X=S.Deferred();// The ready event handler and self cleanup method
+function Y(){y.removeEventListener("DOMContentLoaded",Y),e.removeEventListener("load",Y),S.ready()}S.fn.ready=function(e){return X.then(e)// Wrap jQuery.readyException in a function so that the lookup
 // happens at the time of error handling instead of callback
 // registration.
 .catch(function(e){S.readyException(e)}),this},S.extend({// Is the DOM ready to be used? Set to true once it occurs.
@@ -8311,7 +8311,7 @@ readyWait:1,// Handle when the DOM is ready
 ready:function(e){// Abort if there are pending holds or we're already ready
 !(!0===e?--S.readyWait:S.isReady)&&(// Remember that the DOM is ready
 S.isReady=!0,!0!==e&&--S.readyWait>0||// If there are functions bound, to execute
-G.resolveWith(y,[S]))}}),S.ready.then=G.then,"complete"!==y.readyState&&("loading"===y.readyState||y.documentElement.doScroll)?(// Use the handy event callback
+X.resolveWith(y,[S]))}}),S.ready.then=X.then,"complete"!==y.readyState&&("loading"===y.readyState||y.documentElement.doScroll)?(// Use the handy event callback
 y.addEventListener("DOMContentLoaded",Y),// A fallback to window.onload, that will always work
 e.addEventListener("load",Y)):e.setTimeout(S.ready);// Multifunctional method to get and set values of a collection
 // The value/s can optionally be executed if it's a function
@@ -8665,10 +8665,10 @@ n.style.height="1px",r.style.height="9px",// Support: Android 8 Chrome 86+
 // which causes a problem only in Android 8 Chrome 86.
 // Ensuring the div is `display: block`
 // gets around this issue.
-r.style.display="block",ef.appendChild(t).appendChild(n).appendChild(r),s=parseInt((i=e.getComputedStyle(n)).height,10)+parseInt(i.borderTopWidth,10)+parseInt(i.borderBottomWidth,10)===n.offsetHeight,ef.removeChild(t)),s}}))}();var eX=["Webkit","Moz","ms"],eG=y.createElement("div").style,eY={};// Return a potentially-mapped jQuery.cssProps or vendor prefixed property
-function eJ(e){return S.cssProps[e]||eY[e]||(e in eG?e:eY[e]=// Return a vendor-prefixed property or undefined
+r.style.display="block",ef.appendChild(t).appendChild(n).appendChild(r),s=parseInt((i=e.getComputedStyle(n)).height,10)+parseInt(i.borderTopWidth,10)+parseInt(i.borderBottomWidth,10)===n.offsetHeight,ef.removeChild(t)),s}}))}();var eG=["Webkit","Moz","ms"],eX=y.createElement("div").style,eY={};// Return a potentially-mapped jQuery.cssProps or vendor prefixed property
+function eJ(e){return S.cssProps[e]||eY[e]||(e in eX?e:eY[e]=// Return a vendor-prefixed property or undefined
 function(e){for(// Check for vendor prefixed names
-var t=e[0].toUpperCase()+e.slice(1),n=eX.length;n--;)if((e=eX[n]+t)in eG)return e}(e)||e)}var // except "table", "table-cell", or "table-caption"
+var t=e[0].toUpperCase()+e.slice(1),n=eG.length;n--;)if((e=eG[n]+t)in eX)return e}(e)||e)}var // except "table", "table-cell", or "table-caption"
 // See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 eQ=/^(none|table(?!-c[ea]).+)/,eZ={position:"absolute",visibility:"hidden",display:"block"},eK={letterSpacing:"0",fontWeight:"400"};function e0(e,t,n){// Any relative (+/-) values have already been
 // normalized at this point
@@ -9112,7 +9112,7 @@ u=e.document?t(e,!0):function(e){if(!e.document)throw Error("jQuery requires a w
         </div>
       </div>
     </section>
-  `},D=/*@__PURE__*/r(u)("#cases-section");s.cases.forEach((e,t)=>{D.append(M(t,e)),/*@__PURE__*/r(u)(`#full-case-button-${t}`).on("click",()=>window.open(e.link))});const R=/*@__PURE__*/r(u)(".copied-popup-flying-container");let I=!1;async function B(){if(await navigator.clipboard.writeText("alinaermolaeva044@gmail.com"),I)return;I=!0;let e=L();R.css("display","block").addClass(e.show).removeClass(e.hide),setTimeout(()=>{R.addClass(e.hide).removeClass(e.show)},3e3),R.on("animationend",()=>{R.hasClass(e.hide)&&(R.css("display","none"),I=!1),R.removeClass(e.hide)})}const L=()=>window.matchMedia("(max-width: 600px)").matches?{show:"animate__fadeInDown",hide:"animate__fadeOutUp"}:{show:"animate__fadeInUp",hide:"animate__fadeOutDown"},O=()=>{if(0===window.scrollY&&!window.matchMedia("(max-width: 600px)").matches){let e=/*@__PURE__*/r(u)(".floating-footer-container").height(),t=Number.parseInt(/*@__PURE__*/r(u)(".main-footer-section").css("margin-top").replace("px",""));return e-t}return 0},H=()=>{let e=/*@__PURE__*/r(u)("#description-section");return e.position().top+e.outerHeight()},N=()=>{let e=/*@__PURE__*/r(u)(".floating-header-container > *").not((e,t)=>"none"===/*@__PURE__*/r(u)(t).css("display"));return Number.parseInt(e.css("padding-bottom").replace("px",""))},q=()=>{let e=O(),t=H(),n=N(),i=/*@__PURE__*/r(u)(".floating-header-container").height();return t-e-(i-n)},F=()=>/*@__PURE__*/r(u)(".footer-links").position().top,W=()=>/*@__PURE__*/r(u)("footer").position().top,U=/*@__PURE__*/r(u)(".floating-footer-container"),V=/*@__PURE__*/r(u)(".description-container");let $=window.scrollY;const z=()=>{if(window.matchMedia("(max-width: 600px)").matches)return;let e=0===window.scrollY;e?V.addClass("description-container-margin").removeClass("description-container-margin-scrolled"):V.addClass("description-container-margin-scrolled").removeClass("description-container-margin");let t=window.scrollY<$,n=window.scrollY+window.innerHeight<F();e||t&&n?U.addClass("animate__slideInUp").removeClass("animate__slideOutDown"):U.addClass("animate__slideOutDown").removeClass("animate__slideInUp"),$=window.scrollY},X=()=>{let e=/*@__PURE__*/r(u)(".floating-header-container > *").not((e,t)=>"none"===/*@__PURE__*/r(u)(t).css("display")).find(".menu-buttons").first(),t=e.children(".home").first(),n=e.children(".work").first(),i=e.children(".contacts").first();window.scrollY<q()-5?(t.addClass("selected-menu-button"),n.removeClass("selected-menu-button"),i.removeClass("selected-menu-button")):window.innerHeight+window.scrollY<W()?(t.removeClass("selected-menu-button"),n.addClass("selected-menu-button"),i.removeClass("selected-menu-button")):(t.removeClass("selected-menu-button"),n.removeClass("selected-menu-button"),i.addClass("selected-menu-button"))};/*@__PURE__*/r(u)(".email-container").on("click",async()=>B()),/*@__PURE__*/r(u)("#up-button").on("click",()=>window.scrollTo({top:0,behavior:"smooth"})),/*@__PURE__*/r(u)("#explore-cases-button").on("click",()=>window.scrollTo({top:q(),behavior:"smooth"})),/*@__PURE__*/r(u)(".menu-buttons > .home").on("click",()=>window.scrollTo({top:0,behavior:"smooth"})),/*@__PURE__*/r(u)(".menu-buttons > .work").on("click",()=>window.scrollTo({top:q(),behavior:"smooth"})),/*@__PURE__*/r(u)(".menu-buttons > .contacts").on("click",()=>window.scrollTo({top:document.body.offsetHeight,behavior:"smooth"})),/*@__PURE__*/r(u)(window).scroll(()=>{z(),X()}),/*@__PURE__*/r(u)(window).on("resize",()=>z()),/*@__PURE__*/r(u)(".cv-block").on("click",()=>window.open(s.cv)),/*@__PURE__*/r(u)(".cv-button").on("click",()=>window.open(s.cv)),/*@__PURE__*/r(u)(".behance").on("click",()=>window.open(s.behance)),/*@__PURE__*/r(u)(".linkedin").on("click",()=>window.open(s.linkedin)),/*@__PURE__*/r(u)(".telegram").on("click",()=>window.open(s.telegram));var G={};G=/******/function(e){/******/// The module cache
+  `},D=/*@__PURE__*/r(u)("#cases-section");s.cases.forEach((e,t)=>{D.append(M(t,e)),/*@__PURE__*/r(u)(`#full-case-button-${t}`).on("click",()=>window.open(e.link))});const R=/*@__PURE__*/r(u)(".copied-popup-flying-container");let I=!1;async function B(){if(await navigator.clipboard.writeText("alinaermolaeva044@gmail.com"),I)return;I=!0;let e=L();R.css("display","block").addClass(e.show).removeClass(e.hide),setTimeout(()=>{R.addClass(e.hide).removeClass(e.show)},3e3),R.on("animationend",()=>{R.hasClass(e.hide)&&(R.css("display","none"),I=!1),R.removeClass(e.hide)})}const L=()=>window.matchMedia("(max-width: 600px)").matches?{show:"animate__fadeInDown",hide:"animate__fadeOutUp"}:{show:"animate__fadeInUp",hide:"animate__fadeOutDown"},O=()=>{if(0===window.scrollY&&!window.matchMedia("(max-width: 600px)").matches){let e=/*@__PURE__*/r(u)(".floating-footer-container").height(),t=Number.parseInt(/*@__PURE__*/r(u)(".main-footer-section").css("margin-top").replace("px",""));return e-t}return 0},H=()=>{let e=/*@__PURE__*/r(u)("#description-section");return e.position().top+e.outerHeight()},N=()=>{let e=/*@__PURE__*/r(u)(".floating-header-container > *").not((e,t)=>"none"===/*@__PURE__*/r(u)(t).css("display"));return Number.parseInt(e.css("padding-bottom").replace("px",""))},q=()=>{let e=O(),t=H(),n=N(),i=/*@__PURE__*/r(u)(".floating-header-container").height();return t-e-(i-n)},F=()=>/*@__PURE__*/r(u)(".footer-links").position().top,W=()=>/*@__PURE__*/r(u)("footer").position().top,U=/*@__PURE__*/r(u)(".floating-footer-container"),V=/*@__PURE__*/r(u)(".description-container");let $=window.scrollY;const z=()=>{if(window.matchMedia("(max-width: 600px)").matches)return;let e=0===window.scrollY;e?V.addClass("description-container-margin").removeClass("description-container-margin-scrolled"):V.addClass("description-container-margin-scrolled").removeClass("description-container-margin");let t=window.scrollY<$,n=window.scrollY+window.innerHeight<F();e||t&&n?U.addClass("animate__slideInUp").removeClass("animate__slideOutDown"):U.addClass("animate__slideOutDown").removeClass("animate__slideInUp"),$=window.scrollY},G=()=>{let e=/*@__PURE__*/r(u)(".floating-header-container > *").not((e,t)=>"none"===/*@__PURE__*/r(u)(t).css("display")).find(".menu-buttons").first(),t=e.children(".home").first(),n=e.children(".work").first(),i=e.children(".contacts").first();window.scrollY<q()-5?(t.addClass("selected-menu-button"),n.removeClass("selected-menu-button"),i.removeClass("selected-menu-button")):window.innerHeight+window.scrollY<W()?(t.removeClass("selected-menu-button"),n.addClass("selected-menu-button"),i.removeClass("selected-menu-button")):(t.removeClass("selected-menu-button"),n.removeClass("selected-menu-button"),i.addClass("selected-menu-button"))};/*@__PURE__*/r(u)(".email-container").on("click",async()=>B()),/*@__PURE__*/r(u)("#up-button").on("click",()=>window.scrollTo({top:0,behavior:"smooth"})),/*@__PURE__*/r(u)("#explore-cases-button").on("click",()=>window.scrollTo({top:q(),behavior:"smooth"})),/*@__PURE__*/r(u)(".menu-buttons > .home").on("click",()=>window.scrollTo({top:0,behavior:"smooth"})),/*@__PURE__*/r(u)(".menu-buttons > .work").on("click",()=>window.scrollTo({top:q(),behavior:"smooth"})),/*@__PURE__*/r(u)(".menu-buttons > .contacts").on("click",()=>window.scrollTo({top:document.body.offsetHeight,behavior:"smooth"})),/*@__PURE__*/r(u)(window).scroll(()=>{z(),G()}),/*@__PURE__*/r(u)(window).on("resize",()=>z()),/*@__PURE__*/r(u)(".cv-block").on("click",()=>window.open(s.cv)),/*@__PURE__*/r(u)(".cv-button").on("click",()=>window.open(s.cv)),/*@__PURE__*/r(u)(".behance").on("click",()=>window.open(s.behance)),/*@__PURE__*/r(u)(".linkedin").on("click",()=>window.open(s.linkedin)),/*@__PURE__*/r(u)(".telegram").on("click",()=>window.open(s.telegram));var X={};X=/******/function(e){/******/// The module cache
 /******/var t={};/******//******/// The require function
 /******/function n(r){/******//******/// Check if module is in cache
 /******/if(t[r])/******/return t[r].exports;/******/// Create a new module (and put it into the cache)
@@ -10619,7 +10619,7 @@ var g=c.x*h+f.x*v,y=c.y*h+f.y*v;u.isStatic||u.isSleeping||(u.positionPrev.x+=g*u
      */r.solveVelocity=function(e,t){var n,i,a,s,u=t/o._baseDelta,l=u*u*u,c=-r._restingThresh*u,f=r._restingThreshTangent,p=r._frictionNormalMultiplier*u,d=r._frictionMaxStatic,h=e.length;for(a=0;a<h;a++){var v=e[a];if(v.isActive&&!v.isSensor){var g=v.collision,y=g.parentA,m=g.parentB,x=y.velocity,b=m.velocity,w=g.normal.x,_=g.normal.y,S=g.tangent.x,A=g.tangent.y,C=v.activeContacts,k=C.length,T=1/k,P=y.inverseMass+m.inverseMass,E=v.friction*v.frictionStatic*p;// resolve each contact
 for(s=0,// update body velocities
 x.x=y.position.x-y.positionPrev.x,x.y=y.position.y-y.positionPrev.y,b.x=m.position.x-m.positionPrev.x,b.y=m.position.y-m.positionPrev.y,y.angularVelocity=y.angle-y.anglePrev,m.angularVelocity=m.angle-m.anglePrev;s<k;s++){var j=C[s],M=j.vertex,D=M.x-y.position.x,R=M.y-y.position.y,I=M.x-m.position.x,B=M.y-m.position.y,L=x.x-R*y.angularVelocity,O=x.y+D*y.angularVelocity,H=b.x-B*m.angularVelocity,N=b.y+I*m.angularVelocity,q=L-H,F=O-N,W=w*q+_*F,U=S*q+A*F,V=v.separation+W,$=Math.min(V,1),z=($=V<0?0:$)*E;U<-z||U>z?(i=U>0?U:-U,(n=v.friction*(U>0?1:-1)*l)<-i?n=-i:n>i&&(n=i)):(n=U,i=d);// account for mass, inertia and contact offset
-var X=D*_-R*w,G=I*_-B*w,Y=T/(P+y.inverseInertia*X*X+m.inverseInertia*G*G),J=(1+v.restitution)*W*Y;// handle high velocity and resting collisions separately
+var G=D*_-R*w,X=I*_-B*w,Y=T/(P+y.inverseInertia*G*G+m.inverseInertia*X*X),J=(1+v.restitution)*W*Y;// handle high velocity and resting collisions separately
 if(n*=Y,W<c)j.normalImpulse=0;else{// solve resting collision constraints using Erin Catto's method (GDC08)
 // impulse constraint tends to 0
 var Q=j.normalImpulse;j.normalImpulse+=J,j.normalImpulse>0&&(j.normalImpulse=0),J=j.normalImpulse-Q}// handle high velocity and resting collisions separately
@@ -11291,8 +11291,8 @@ for(n=0,o=c.length;n<o;++n)b(c[n]);return v},r._svgPathToAbsolute=function(e){fo
 * @class World
 */var r={};e.exports=r;var i=n(6);n(0),/**
      * See above, aliases for back compatibility only
-     */r.create=i.create,r.add=i.add,r.remove=i.remove,r.clear=i.clear,r.addComposite=i.addComposite,r.addBody=i.addBody,r.addConstraint=i.addConstraint;/***/}]);const Y=e=>Math.round(100*e)/100,J=(e,t)=>(e=Math.ceil(e),Math.floor(Math.random()*((t=Math.floor(t))-e+1))+e);var Q=a("f1q41");const Z=/*@__PURE__*/r(G).Engine,K=/*@__PURE__*/r(G).Bodies,ee=/*@__PURE__*/r(G).Composite;class et{#e=500;constructor(e,t,n,i=!1,o=!1){this.containerSelector=e,this.$matterJsContainer=/*@__PURE__*/r(u)(e),this.tagTexts=t,this.tagColors=n,this.engine=null,this.initialized=!1,this.tags=[],this.debugPhysics=o,this.mouseDragging=i}init(){this.engine=Z.create({positionIterations:10,velocityIterations:10,constraintIterations:10,timing:{timeScale:.8}});let{containerWidth:e,containerHeight:t}=this.#t();this.debugPhysics&&(this.matterRender=/*@__PURE__*/r(G).Render.create({element:this.$matterJsContainer.get(0),engine:this.engine,options:{width:e,height:t,wireframes:!0}}),/*@__PURE__*/r(G).Render.run(this.matterRender)),this.initialized=!0}#t(){let e=this.$matterJsContainer.width(),t=this.$matterJsContainer.height(),n=t+this.#e;return this.tags=this.tagTexts.map((n,r)=>{let i=J(.2*e,.8*e),o=J(.2*t-this.#e,.8*t),a=this.tagColors[r%this.tagColors.length],s=er(i,o,n,a,this.$matterJsContainer,this.mouseDragging);return ee.add(this.engine.world,s.body),s}),this.mouseDragging&&ei(this.engine,this.$matterJsContainer),ee.add(this.engine.world,en(e,t,n,this.#e)),{containerWidth:e,containerHeight:t}}removeObjects(){ee.clear(this.engine.world,!1),this.tags.forEach(e=>e.elem.remove()),this.tags=[]}render(){this.initialized||this.init(),this.tags.forEach(e=>e.render()),Z.update(this.engine,12),requestAnimationFrame(this.render.bind(this))}#n=/*@__PURE__*/r(Q).throttle(()=>{this.removeObjects(),this.$matterJsContainer=/*@__PURE__*/r(u)(this.containerSelector),this.#t(),this.debugPhysics&&(this.matterRender.canvas.height=this.$matterJsContainer.height(),this.matterRender.canvas.width=this.$matterJsContainer.width())},1e3);onWindowResizing(){this.#n()}}const en=(e,t,n,r)=>[K.rectangle(e/2,-r,e,1,{isStatic:!0}),K.rectangle(e/2,t,e,1,{isStatic:!0}),K.rectangle(0,(t-r)/2,1,n,{isStatic:!0}),K.rectangle(e,(t-r)/2,1,n,{isStatic:!0})// right
-    ],er=(e,t,n,i,o,a)=>{let s=J(0,1e5);o.append(`<div id="tag${s}" class="interactive-tag tag-24">${n}</div>`);let l=/*@__PURE__*/r(u)("#tag"+s),c=l.height(),f=l.outerWidth();l.css({width:f+"px",padding:0,"background-color":i,cursor:a?"pointer":"default"});let p=Number.parseInt(l.css("border-radius").replace("px","")),d=2*Number.parseInt(l.css("border").replace(/px.*/,""));return{w:f+d,h:c+d,body:K.rectangle(e,t,f+d,c+d,{chamfer:{radius:p}}),elem:document.querySelector("#tag"+s),prevX:Y(e),prevY:Y(t),render(){let{x:e,y:t}=this.body.position,n=Y(e),r=Y(t);if(this.prevX===n&&this.prevY===r)return;let i=r-this.h/2;this.elem.style.top=`${i}px`;let o=n-this.w/2;this.elem.style.left=`${o}px`,this.elem.style.transform=`rotate(${this.body.angle}rad)`,this.prevX=n,this.prevY=r}}},ei=(e,t)=>{let n=/*@__PURE__*/r(G).MouseConstraint.create(e,{element:t.get(0)}),i=n.mouse;i.element.removeEventListener("mousewheel",i.mousewheel),i.element.removeEventListener("DOMMouseScroll",i.mousewheel),// mouse.element.removeEventListener('touchstart', mouse.mousedown);
+     */r.create=i.create,r.add=i.add,r.remove=i.remove,r.clear=i.clear,r.addComposite=i.addComposite,r.addBody=i.addBody,r.addConstraint=i.addConstraint;/***/}]);const Y=e=>Math.round(100*e)/100,J=(e,t)=>(e=Math.ceil(e),Math.floor(Math.random()*((t=Math.floor(t))-e+1))+e);var Q=a("f1q41");const Z=/*@__PURE__*/r(X).Engine,K=/*@__PURE__*/r(X).Bodies,ee=/*@__PURE__*/r(X).Composite;class et{#e=500;constructor(e,t,n,i=!1,o=!1){this.containerSelector=e,this.$matterJsContainer=/*@__PURE__*/r(u)(e),this.tagTexts=t,this.tagColors=n,this.engine=null,this.initialized=!1,this.tags=[],this.debugPhysics=o,this.mouseDragging=i}init(){this.engine=Z.create({positionIterations:10,velocityIterations:10,constraintIterations:10,timing:{timeScale:.8}});let{containerWidth:e,containerHeight:t}=this.#t();this.debugPhysics&&(this.matterRender=/*@__PURE__*/r(X).Render.create({element:this.$matterJsContainer.get(0),engine:this.engine,options:{width:e,height:t,wireframes:!0}}),/*@__PURE__*/r(X).Render.run(this.matterRender)),this.initialized=!0}#t(){let e=this.$matterJsContainer.width(),t=this.$matterJsContainer.height(),n=t+this.#e;return this.tags=this.tagTexts.map((n,r)=>{let i=J(.2*e,.8*e),o=J(.2*t-this.#e,.8*t),a=this.tagColors[r%this.tagColors.length],s=er(i,o,n,a,this.$matterJsContainer,this.mouseDragging);return ee.add(this.engine.world,s.body),s}),this.mouseDragging&&ei(this.engine,this.$matterJsContainer),ee.add(this.engine.world,en(e,t,n,this.#e)),{containerWidth:e,containerHeight:t}}removeObjects(){ee.clear(this.engine.world,!1),this.tags.forEach(e=>e.elem.remove()),this.tags=[]}render(){this.tags.forEach(e=>e.render()),Z.update(this.engine,12),requestAnimationFrame(this.render.bind(this))}#n=/*@__PURE__*/r(Q).throttle(()=>{this.removeObjects(),this.$matterJsContainer=/*@__PURE__*/r(u)(this.containerSelector),this.#t(),this.debugPhysics&&(this.matterRender.canvas.height=this.$matterJsContainer.height(),this.matterRender.canvas.width=this.$matterJsContainer.width())},1e3);onWindowResizing(){this.#n()}}const en=(e,t,n,r)=>[K.rectangle(e/2,-r,e,1,{isStatic:!0}),K.rectangle(e/2,t,e,1,{isStatic:!0}),K.rectangle(0,(t-r)/2,1,n,{isStatic:!0}),K.rectangle(e,(t-r)/2,1,n,{isStatic:!0})// right
+    ],er=(e,t,n,i,o,a)=>{let s=J(0,1e5);o.append(`<div id="tag${s}" class="interactive-tag tag-24">${n}</div>`);let l=/*@__PURE__*/r(u)("#tag"+s),c=l.height(),f=l.outerWidth();l.css({width:f+"px",padding:0,"background-color":i,cursor:a?"pointer":"default"});let p=Number.parseInt(l.css("border-radius").replace("px","")),d=2*Number.parseInt(l.css("border").replace(/px.*/,""));return{w:f+d,h:c+d,body:K.rectangle(e,t,f+d,c+d,{chamfer:{radius:p}}),elem:document.querySelector("#tag"+s),render(){let{x:e,y:t}=this.body.position,n=Y(e),r=Y(t),i=r-this.h/2;this.elem.style.top=`${i}px`;let o=n-this.w/2;this.elem.style.left=`${o}px`,this.elem.style.transform=`rotate(${this.body.angle}rad)`}}},ei=(e,t)=>{let n=/*@__PURE__*/r(X).MouseConstraint.create(e,{element:t.get(0)}),i=n.mouse;i.element.removeEventListener("mousewheel",i.mousewheel),i.element.removeEventListener("DOMMouseScroll",i.mousewheel),// mouse.element.removeEventListener('touchstart', mouse.mousedown);
 // mouse.element.removeEventListener('touchmove', mouse.mousemove);
 // mouse.element.removeEventListener('touchend', mouse.mouseup);
 //
@@ -11307,6 +11307,6 @@ for(n=0,o=c.length;n<o;++n)b(c[n]);return v},r._svgPathToAbsolute=function(e){fo
 //     mouse.mouseup(e);
 //   }
 // });
-ee.add(e.world,[n])},eo=["#B3DDC7","#F9E398","#EB7A53","#C1D8FE"],ea=["#D5B8F0","#C1D8FE","#F9E398","#EB7A53","#B3DDC7"],es=(()=>{let e=new et(".main-container-content .matter-js-container:visible",s.mainTags,eo,!0,!1);return e.render(),e})(),eu=s.cases.map((e,t)=>{let n=`.case-${t}-container .matter-js-container`,r=new et(n,e.tags,ea);return r.render(),r});let el=/*@__PURE__*/r(u)(window).width(),ec=/*@__PURE__*/r(u)(window).height();/*@__PURE__*/r(u)(window).resize(()=>{(el!==/*@__PURE__*/r(u)(window).width()||ec!==/*@__PURE__*/r(u)(window).height())&&(el=/*@__PURE__*/r(u)(window).width(),ec=/*@__PURE__*/r(u)(window).height(),es.onWindowResizing(),eu.forEach(e=>e.render()))}),("ontouchstart"in window||navigator.maxTouchPoints)&&[".cv-button",".explore-case-studies-button",".link-block",".full-case-link-button",".footer-button"].forEach(e=>{/*@__PURE__*/r(u)(e).each((e,t)=>{let n=/*@__PURE__*/r(u)(t);n.on("click",()=>{n.removeClass("no-hover"),setTimeout(()=>{n.addClass("no-hover")},1e3)})})}),window.matchMedia("(max-width: 600px)").matches||(0===window.scrollY?V.addClass("description-container-margin").removeClass("description-container-margin-scrolled"):V.addClass("description-container-margin-scrolled").removeClass("description-container-margin"));//# sourceMappingURL=index.ea78c82c.js.map
+ee.add(e.world,[n])},eo=["#B3DDC7","#F9E398","#EB7A53","#C1D8FE"],ea=["#D5B8F0","#C1D8FE","#F9E398","#EB7A53","#B3DDC7"],es=(()=>{let e=new et(".main-container-content .matter-js-container:visible",s.mainTags,eo,!0,!1);return e.init(),e.render(),e})(),eu=s.cases.map((e,t)=>{let n=`.case-${t}-container .matter-js-container`,r=new et(n,e.tags,ea);return r.init(),r.render(),r});let el=/*@__PURE__*/r(u)(window).width(),ec=/*@__PURE__*/r(u)(window).height();/*@__PURE__*/r(u)(window).resize(()=>{(el!==/*@__PURE__*/r(u)(window).width()||ec!==/*@__PURE__*/r(u)(window).height())&&(el=/*@__PURE__*/r(u)(window).width(),ec=/*@__PURE__*/r(u)(window).height(),es.onWindowResizing(),eu.forEach(e=>e.render()))}),("ontouchstart"in window||navigator.maxTouchPoints)&&[".cv-button",".explore-case-studies-button",".link-block",".full-case-link-button",".footer-button"].forEach(e=>{/*@__PURE__*/r(u)(e).each((e,t)=>{let n=/*@__PURE__*/r(u)(t);n.on("click",()=>{n.removeClass("no-hover"),setTimeout(()=>{n.addClass("no-hover")},1e3)})})}),window.matchMedia("(max-width: 600px)").matches||(0===window.scrollY?V.addClass("description-container-margin").removeClass("description-container-margin-scrolled"):V.addClass("description-container-margin-scrolled").removeClass("description-container-margin"));//# sourceMappingURL=index.4dc66639.js.map
 
-//# sourceMappingURL=index.ea78c82c.js.map
+//# sourceMappingURL=index.4dc66639.js.map
