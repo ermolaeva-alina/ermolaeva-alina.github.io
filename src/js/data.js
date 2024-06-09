@@ -33,6 +33,7 @@ const data = {
         "B2B",
         "Qualitative research",
         "Usability testing",
+        "2023",
       ]
     },
     {
@@ -46,7 +47,8 @@ const data = {
         "B2C",
         "Qualitative research",
         "Usability testing",
-        "Mentoring"
+        "Mentoring",
+        "2022"
       ]
     },
     /*{
