@@ -49,7 +49,7 @@ const data = {
         "Mentoring"
       ]
     },
-    {
+    /*{
       title: "Case 3",
       description: "Description 3",
       imageName: "case-1.png",
@@ -62,7 +62,7 @@ const data = {
         "Usability testing",
         "2022"
       ]
-    }
+    }*/
   ]
 };
 export default data
