@@ -26,7 +26,7 @@ const data = {
       title: "rTIM | AI Application for architects and urbanists",
       description: "rTIM is an application that empowers architects, urban planners and developers to plan and design areas for districts and cities using AI",
       imageName: "case-1.png",
-      link: "https://google.com",
+      link: "https://www.figma.com/proto/4d5IYD5jVNmOqNwZLiYwWC/Alina-Ermolaeva-Portfolio?page-id=1489%3A11747&node-id=1489-20564&viewport=2%2C76%2C0.02&t=YttaTJyBqKK9uRtO-1&scaling=contain",
       tags: [
         "Design system",
         "UI design",
@@ -39,7 +39,7 @@ const data = {
       title: "Life in science | Educational platform",
       description: "Life in Science is an educational platform for ITMO University students studying soft skills. It was created as an alternative to offline courses for students who cannot attend in-person classes.",
       imageName: "case-2.png",
-      link: "https://google.com",
+      link: "https://www.figma.com/proto/4d5IYD5jVNmOqNwZLiYwWC/Alina-Ermolaeva-Portfolio?page-id=1647%3A13692&node-id=1647-13780&viewport=696%2C31%2C0.03&t=ah7Egu2D5auqomlQ-1&scaling=contain",
       tags: [
         "Design system",
         "UI design",
