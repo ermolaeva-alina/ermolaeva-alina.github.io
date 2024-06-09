@@ -1,8 +1,8 @@
 const data = {
-  cv: "https://github.com/",
-  behance: "https://google.com",
-  linkedin: "https://google.com",
-  telegram: "https://google.com",
+  cv: "https://drive.google.com/file/d/11zjUD0ZbuDjELT10Cdpn_O0P_wzyzoKz/view?usp=sharing",
+  behance: "https://www.behance.net/mandxalinka",
+  linkedin: "https://www.linkedin.com/in/alina-ermolaeva-/",
+  telegram: "https://t.me/mandxalinka",
   mainTags: [
     "JTBD",
     "User & Market Research",
