@@ -32,25 +32,41 @@
 </head>
 
 <body>
+
 <div class="main-container">
+  <div class="lang-switcher" id="lang-switcher"
+       style="height: 50px;
+       width: 50px;
+       position:fixed;
+       right:0;
+       top: 50%;
+       background-color: white;
+       z-index: 100;
+       cursor:pointer;">
+    Switch lang
+  </div>
   <section class="floating-header-container">
     <div class="main-header">
       <div class="cv-block easy-in-out-slow">
-        <img src="./img/avatar.png" class="avatar" alt="avatar"/>
+        <img src="./img/avatar.png" class="avatar" alt="avatar" />
         <div class="name-container">
-          <span class="tag-16 light">Alina Ermolaeva (CV)</span>
-          <img class="arrow easy-in-out-slow" src="./img/arrow.svg" alt="arrow"/>
+          <span class="tag-16 light">
+            <span translatable-value="name"></span>
+            <span translatable-value="surname"></span>
+            (CV)
+          </span>
+          <img class="arrow easy-in-out-slow" src="./img/arrow.svg" alt="arrow" />
         </div>
       </div>
       <div class="menu-buttons">
         <div class="home selected-menu-button easy-in-out-fast">
-          <span class="tag-16">Home</span>
+          <span class="tag-16" translatable-value="menuButtons.home"></span>
         </div>
         <div class="work easy-in-out-fast">
-          <span class="tag-16">Work</span>
+          <span class="tag-16" translatable-value="menuButtons.work"></span>
         </div>
         <div class="contacts easy-in-out-fast">
-          <span class="tag-16">Contacts</span>
+          <span class="tag-16" translatable-value="menuButtons.contacts"></span>
         </div>
       </div>
     </div>
@@ -58,19 +74,19 @@
       <div class="merged-header-common-background">
         <div class="cv-button-container">
           <div class="cv-button easy-in-out-slow">
-            <img src="./img/avatar.png" class="avatar" alt="avatar"/>
+            <img src="./img/avatar.png" class="avatar" alt="avatar" />
             <span class="tag-16 light cv easy-in-out-slow">CV</span>
           </div>
         </div>
         <div class="menu-buttons">
           <div class="home selected-menu-button easy-in-out-fast">
-            <span class="tag-16">Home</span>
+            <span class="tag-16" translatable-value="menuButtons.home"></span>
           </div>
           <div class="work easy-in-out-fast">
-            <span class="tag-16">Work</span>
+            <span class="tag-16" translatable-value="menuButtons.work"></span>
           </div>
           <div class="contacts easy-in-out-fast">
-            <span class="tag-16">Contacts</span>
+            <span class="tag-16" translatable-value="menuButtons.contacts"></span>
           </div>
         </div>
       </div>
@@ -82,32 +98,23 @@
         <div class="left-main-block">
           <div class="left-main-block-header">
             <div class="hi-container">
-              <h1>Hi!</h1>
-              <img src="./img/hand.svg" alt="" style=""/>
-              <h1>My name is</h1>
-              <h1>Alina</h1>
-              <h1>Ermolaeva</h1>
+              <h1 translatable-value="mainSection.hi"></h1>
+              <img src="./img/hand.svg" alt="" />
+              <h1 translatable-value="mainSection.myNameIs"></h1>
+              <h1 translatable-value="name"></h1>
+              <h1 translatable-value="surname"></h1>
             </div>
-            <div class="text-2 paragraph-1">
-              I'm a product designer with 4+ years of experience creating user experiences
-              and developing design systems. Committed to research and finding innovative solutions, and a data-driven
-              professional who uses data to make informed decisions.
-            </div>
-            <div class="text-2 paragraph-2">
-              I have a master's degree in Computer Science.
-            </div>
-            <div class="text-2 paragraph-3">
-              Currently living in Finland
-              <img class="flag" src="./img/flag.png" alt=""/>
+            <div class="text-2 paragraph-1" translatable-value="mainSection.paragraph1"></div>
+            <div class="text-2 paragraph-2" translatable-value="mainSection.paragraph2"></div>
+            <div class="text-2 paragraph-3" translatable-value="mainSection.paragraph3">
+              <img class="flag" src="./img/flag.png" alt="" />
             </div>
           </div>
           <div id="explore-cases-button" class="explore-case-studies-button easy-in-out-slow">
             <div class="explore-case-studies-arrow-down">
               <img src="./img/arrow-down.svg" alt="arrow" class="easy-in-out-slow">
             </div>
-            <div class="explore-case-studies-text tag-16">
-              Explore case studies
-            </div>
+            <div class="explore-case-studies-text tag-16" translatable-value="buttons.exploreCaseStudies"></div>
           </div>
         </div>
         <div class="right-main-block">
@@ -134,7 +141,7 @@
           </div>
           <div class="email-container easy-in-out-fast">
             <div class="email email-full">alinaermolaeva044@gmail.com</div>
-            <div class="email email-short">Copy e-mail</div>
+            <div class="email email-short" translatable-value="buttons.copyEmail"></div>
             <img src="./img/copy.svg" alt="">
           </div>
         </div>
@@ -200,8 +207,8 @@
               </div>
             </div>
           </div>
-          <img class="ux" src="./img/ux.svg" alt=""/>
-          <img class="ui" src="./img/ui.svg" alt=""/>
+          <img class="ux" src="./img/ux.svg" alt="" />
+          <img class="ui" src="./img/ui.svg" alt="" />
         </div>
         <div class="card card-2">
           <div class="card-x-border-container">
@@ -217,7 +224,7 @@
               </div>
             </div>
           </div>
-          <img class="heart" src="./img/heart.svg" alt=""/>
+          <img class="heart" src="./img/heart.svg" alt="" />
         </div>
         <div class="card card-3">
           <div class="card-x-border-container">
@@ -231,7 +238,7 @@
               </div>
             </div>
           </div>
-          <img class="plane" src="./img/plane.svg" alt=""/>
+          <img class="plane" src="./img/plane.svg" alt="" />
         </div>
         <div class="card card-4">
           <div class="card-x-border-container">
@@ -247,7 +254,7 @@
               </div>
             </div>
           </div>
-          <img class="new" src="./img/new.svg" alt=""/>
+          <img class="new" src="./img/new.svg" alt="" />
         </div>
       </div>
     </div>
@@ -291,16 +298,16 @@
                     stroke="#2C2925"
                     stroke-width="1.25"
                     stroke-linecap="square"
-                    stroke-linejoin="round"/>
+                    stroke-linejoin="round" />
               <path class="easy-in-out-fast"
                     d="M6.875 5H15V13.125"
                     stroke="#2C2925"
                     stroke-width="1.25"
-                    stroke-linecap="square"/>
+                    stroke-linecap="square" />
             </g>
             <defs>
               <clipPath id="clip0_849_3099">
-                <rect width="20" height="20" fill="white"/>
+                <rect width="20" height="20" fill="white" />
               </clipPath>
             </defs>
           </svg>
@@ -319,16 +326,16 @@
                     stroke="#2C2925"
                     stroke-width="1.25"
                     stroke-linecap="square"
-                    stroke-linejoin="round"/>
+                    stroke-linejoin="round" />
               <path class="easy-in-out-fast"
                     d="M6.875 5H15V13.125"
                     stroke="#2C2925"
                     stroke-width="1.25"
-                    stroke-linecap="square"/>
+                    stroke-linecap="square" />
             </g>
             <defs>
               <clipPath id="clip0_849_3099">
-                <rect width="20" height="20" fill="white"/>
+                <rect width="20" height="20" fill="white" />
               </clipPath>
             </defs>
           </svg>
@@ -347,16 +354,16 @@
                     stroke="#2C2925"
                     stroke-width="1.25"
                     stroke-linecap="square"
-                    stroke-linejoin="round"/>
+                    stroke-linejoin="round" />
               <path class="easy-in-out-fast"
                     d="M6.875 5H15V13.125"
                     stroke="#2C2925"
                     stroke-width="1.25"
-                    stroke-linecap="square"/>
+                    stroke-linecap="square" />
             </g>
             <defs>
               <clipPath id="clip0_849_3099">
-                <rect width="20" height="20" fill="white"/>
+                <rect width="20" height="20" fill="white" />
               </clipPath>
             </defs>
           </svg>
@@ -375,7 +382,7 @@
       <div class="copied-popup-flying-container animate__animated animate__faster">
         <div class="copied-popup-content-container">
           <div class="icon-container">
-            <img src="./img/check.svg" alt=""/>
+            <img src="./img/check.svg" alt="" />
           </div>
           <div class="text-container tag-16">
             Email copied to clipboard. <br> Let’s chat :)
