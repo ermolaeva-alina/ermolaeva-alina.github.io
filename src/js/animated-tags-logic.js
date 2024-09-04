@@ -17,7 +17,6 @@ export class AnimatedTags {
     this.tagTexts = tagTexts;
     this.tagColors = tagColors;
     this.engine = null;
-    this.initialized = false;
     this.tags = [];
     this.debugPhysics = debugPhysics;
     this.mouseDragging = mouseDragging;
@@ -47,8 +46,6 @@ export class AnimatedTags {
       });
       Matter.Render.run(this.matterRender);
     }
-
-    this.initialized = true;
   }
 
   #createObjects() {
