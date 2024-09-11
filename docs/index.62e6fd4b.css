@@ -1,0 +1,2 @@
+.easy-in-out-slow{transition:all .3s}@media (hover:hover){.easy-in-out-slow:hover{transition:all .3s}}@media (hover:none){.easy-in-out-slow:active{transition:all .3s}}.easy-in-out-fast{transition:all .2s}@media (hover:hover){.easy-in-out-fast:hover{transition:all .2s}}@media (hover:none){.easy-in-out-fast:active{transition:all .2s}}.animate__super_fast{--animate-duration:.2s}
+/*# sourceMappingURL=index.62e6fd4b.css.map */
