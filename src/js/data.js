@@ -23,6 +23,21 @@ const data = {
   ],
   cases: [
     {
+      title: 'DocsDNA | AI-powered document review',
+      description: 'DocsDNA helps people review documents like contracts and agreements, making tasks easier and extracting information quickly and cost-effectively using AI.',
+      imageName: 'case-3.png',
+      link: 'https://www.figma.com/proto/4d5IYD5jVNmOqNwZLiYwWC/Alina-Ermolaeva-Portfolio?page-id=3164%3A2340&node-id=3164-2861&node-type=frame&viewport=939%2C46%2C0.03&t=v77Ct7hCguA72fTp-1&scaling=contain&content-scaling=fixed',
+      tags: [
+        'Design system',
+        'UI design',
+        'B2B',
+        'B2C',
+        'UX research',
+        'Usability testing',
+        '2023-2024'
+      ]
+    },
+    {
       title: "rTIM | AI Application for architects and urbanists",
       description: "rTIM is an application that empowers architects, urban planners and developers to plan and design areas for districts and cities using AI",
       imageName: "case-1.png",
@@ -51,20 +66,6 @@ const data = {
         "2022"
       ]
     },
-    /*{
-      title: "Case 3",
-      description: "Description 3",
-      imageName: "case-1.png",
-      link: "https://google.com",
-      tags: [
-        "Design system",
-        "UI design",
-        "B2B",
-        "Qualitative research",
-        "Usability testing",
-        "2022"
-      ]
-    }*/
   ]
 };
 export default data
