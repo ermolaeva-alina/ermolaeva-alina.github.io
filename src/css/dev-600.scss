@@ -54,7 +54,7 @@
             }
           }
 
-          .cv-button:not(.no-hover):hover {
+          .cv-button:active {
             background-color: $black-3;
 
             .cv {
@@ -94,7 +94,7 @@
             height: 40px;
           }
 
-          div:not(.selected-menu-button):not(.no-hover):hover {
+          div:not(.selected-menu-button):active {
             background-color: $black-3;
           }
 

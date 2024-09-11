@@ -1,0 +1,23 @@
+@mixin animations-hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}
+
+@mixin buttons-hover {
+  @media (hover: hover) {
+    @content(non-touch);
+  }
+
+  @media (hover: none) {
+    @content(touch);
+  }
+}
