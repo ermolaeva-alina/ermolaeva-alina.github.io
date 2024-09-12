@@ -26,7 +26,7 @@ const data = {
       title: 'DocsDNA | AI-powered document review',
       description: 'DocsDNA helps people review documents like contracts and agreements, making tasks easier and extracting information quickly and cost-effectively using AI.',
       imageName: 'case-3.png',
-      link: 'https://www.figma.com/proto/4d5IYD5jVNmOqNwZLiYwWC/Alina-Ermolaeva-Portfolio?page-id=3164%3A2340&node-id=3164-2861&node-type=frame&viewport=939%2C46%2C0.03&t=v77Ct7hCguA72fTp-1&scaling=contain&content-scaling=fixed',
+      link: 'https://www.figma.com/proto/4d5IYD5jVNmOqNwZLiYwWC/Alina-Ermolaeva-Portfolio?page-id=3164%3A2340&node-id=3164-2577&node-type=frame&viewport=939%2C46%2C0.03&t=v77Ct7hCguA72fTp-1&scaling=contain&content-scaling=fixed',
       tags: [
         'Design system',
         'UI design',
