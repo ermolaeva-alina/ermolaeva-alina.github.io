@@ -2,6 +2,10 @@
 @import "mixins";
 @import "variables";
 
+:root {
+  --max-content-width: 1920px;
+}
+
 * {
   font-family: 'ClashGrotesk-Variable', sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -19,9 +23,16 @@ html {
   scrollbar-width: none;
 }
 
-.main-container {
+.background {
   background-color: $black;
-  padding: 12px 16px;
+  height: 100%;
+  width: 100vw;
+
+  .main-container {
+    padding: 12px 16px;
+    margin: auto;
+    max-width: var(--max-content-width);
+  }
 }
 
 .main-container-content {
@@ -47,6 +58,8 @@ html {
   }
 
   .main-header {
+    margin: auto;
+    max-width: var(--max-content-width);
     padding: 12px 16px 12px 16px;
     display: flex;
     align-items: center;
@@ -338,8 +351,8 @@ html {
   user-select: none; /* Standard */
 
   .main-footer-section {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    max-width: var(--max-content-width);
+    margin: 12px auto;
 
     .main-block-footer {
       display: flex;
