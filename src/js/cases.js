@@ -1,17 +1,17 @@
-import data from "./data.js";
-import $ from "jquery";
-import images from '../img/**';
+import data from './data.js'
+import $ from 'jquery'
+import images from '../img/**'
 
 const arrowUrl = new URL(
   '../img/arrow-right.svg',
   import.meta.url
-);
+)
 
 const getCaseHtml = (index, item) => {
   const imageUrl = new URL(
     images[item.imageName],
     import.meta.url
-  );
+  )
   return `
     <section>
       <div class="case-container case-${index}-container">
@@ -42,11 +42,11 @@ const getCaseHtml = (index, item) => {
         </div>
       </div>
     </section>
-  `;
+  `
 }
 
-const $cases = $('#cases-section');
+const $cases = $('#cases-section')
 data.cases.forEach((item, index) => {
-  $cases.append(getCaseHtml(index, item));
+  $cases.append(getCaseHtml(index, item))
   $(`#full-case-button-${index}`).on('click', () => window.open(item.link))
 })

@@ -5,5 +5,5 @@ import './listeners.js'
 import './animated-tags.js'
 import { initFooter } from './scroll'
 
-initFooter();
+initFooter()
 
