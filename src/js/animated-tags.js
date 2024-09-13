@@ -33,5 +33,5 @@ $(window).resize(() => {
   heightWidth = $(window).height();
 
   mainScreenTags.onWindowResizing();
-  caseTags.forEach(value => value.render());
+  caseTags.forEach(value => value.onWindowResizing())
 })
