@@ -1,8 +1,11 @@
 @import "variables";
 
 @media screen and (max-width: 600px) {
-  .main-container {
-    padding: 8px;
+
+  .background {
+    .main-container {
+      padding: 8px;
+    }
   }
 
   .main-container-content {
