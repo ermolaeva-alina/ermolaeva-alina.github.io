@@ -23,8 +23,11 @@ html {
   scrollbar-width: none;
 }
 
-.background {
+body {
   background-color: $black;
+}
+
+.background {
   height: 100%;
   width: 100vw;
 
