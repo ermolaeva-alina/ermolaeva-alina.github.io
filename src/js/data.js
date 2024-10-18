@@ -52,6 +52,17 @@ const data = {
       ]
     },
     {
+      title: 'DocsDNA website',
+      description: 'Website for AI Powered Document Analysis app',
+      imageName: 'case-4.png',
+      link: 'https://www.behance.net/gallery/210120265/DocsDNA-AI-Powered-Document-Analysis-Website',
+      tags: [
+        'Web design',
+        'UI design',
+        '2024'
+      ]
+    },
+    {
       title: 'Life in science | Educational platform',
       description: 'Life in Science is an educational platform for ITMO University students studying soft skills. It was created as an alternative to offline courses for students who cannot attend in-person classes.',
       imageName: 'case-2.png',
