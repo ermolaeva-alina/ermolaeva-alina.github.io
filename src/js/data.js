@@ -1,5 +1,5 @@
 const data = {
-  cv: 'https://drive.google.com/file/d/1eR3HFNEtYtQK3cl2v5xcQKmjlMp_4FAs/view?usp=sharing',
+  cv: '',
   behance: 'https://www.behance.net/mandxalinka',
   linkedin: 'https://www.linkedin.com/in/alina-ermolaeva-/',
   telegram: '',
