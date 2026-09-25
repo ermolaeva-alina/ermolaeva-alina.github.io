@@ -1,11 +1,12 @@
 // Scroll paint cost: Chrome trace of a full-page scroll at DPR 2, with CSS variants
 // that switch suspects off. Compare "total" (mostly RasterTask) between rows.
-//   node scripts/scroll-perf.mjs   (dev server running)
+//   node scripts/scroll-perf.mjs [variant names…]   (dev server running)
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 const b = await chromium.launch();
 const variants = {
   baseline: '',
+  'no progressive blur': '.progressive-blur{display:none!important}',
   'png tile': '.cell--hatch,.contacts__texture{background:url(/images/hatch-tile.png) 0 0/220px 220px repeat!important}',
   'no navbar blur': '.navbar{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}',
   'no screens': '.screen{visibility:hidden!important}',
@@ -16,7 +17,8 @@ const variants = {
   'no text': '*{color:transparent!important;-webkit-text-stroke:0!important}',
   'no inline svgs': '.inline-svg{visibility:hidden!important}',
 };
-for (const [name, css] of Object.entries(variants)) {
+const only = process.argv.slice(2);
+for (const [name, css] of Object.entries(variants).filter(([n]) => !only.length || only.includes(n))) {
   const ctx = await b.newContext({ viewport: { width: 1728, height: 1000 }, deviceScaleFactor: 2 });
   const p = await ctx.newPage();
   await p.goto('http://localhost:4321/'); await p.addStyleTag({ content: css + 'astro-dev-toolbar{display:none!important}' });

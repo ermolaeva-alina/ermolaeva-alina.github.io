@@ -127,7 +127,7 @@ for (const block of blocks) {
 
   await page.goto(SITE + (block.path ?? '/'), { waitUntil: 'networkidle' });
   await page.addStyleTag({
-    content: `*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}
+    content: `.progressive-blur{display:none!important}*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}
       astro-dev-toolbar{display:none!important}
       ${block.css ?? ''}
       ${process.env.EXTRA_CSS ?? ''}`,

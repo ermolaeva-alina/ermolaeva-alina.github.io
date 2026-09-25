@@ -1,0 +1,34 @@
+---
+// Progressive blur along the bottom edge of the screen (like midu.design):
+// 8 stacked layers, each blurring twice as much as the one before, each masked to
+// its own band, so the blur fades in smoothly toward the bottom edge.
+const LAYERS = 8;
+const MAX_BLUR = 17.5; // px, the bottom-most layer
+const step = 100 / LAYERS; // mask band, %
+const layers = Array.from({ length: LAYERS }, (_, i) => ({
+  blur: +(MAX_BLUR / 2 ** (LAYERS - 1 - i)).toFixed(3),
+  mask: `linear-gradient(to bottom, transparent ${i * step}%, #000 ${(i + 1) * step}%, #000 ${(i + 2) * step}%, transparent ${(i + 3) * step}%)`,
+}));
+---
+
+<div class="progressive-blur" aria-hidden="true">
+  {layers.map((l, i) => (
+    <div style={`z-index: ${i + 1}; backdrop-filter: blur(${l.blur}px); -webkit-backdrop-filter: blur(${l.blur}px); mask-image: ${l.mask}; -webkit-mask-image: ${l.mask}`} />
+  ))}
+</div>
+
+<style>
+  .progressive-blur {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100px;
+    z-index: 50; /* above the page, below the navbar (100) */
+    pointer-events: none;
+  }
+  .progressive-blur > div {
+    position: absolute;
+    inset: 0;
+  }
+</style>
