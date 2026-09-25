@@ -1,8 +1,9 @@
 ---
 // Figma: "Content" 553:660058 — contacts block below the main page frame.
 // Floating screenshot cards around a "Let's connect" headline with a screen-blended glow.
-// The cards drift left in an endless loop: the set is repeated every LOOP px
-// (Figma keeps copies ~2000px to the left and right) and the track moves by one LOOP.
+// The cards float above the headline and slide left as the page scrolls into the block,
+// coming to rest at their Figma positions when the page reaches the bottom.
+// The set is repeated LOOP px to the left (Figma keeps copies there) to fill the gap.
 import Chip from './Chip.astro';
 import Button from './Button.astro';
 import InlineSvg from './InlineSvg.astro';
@@ -16,7 +17,7 @@ const EMAIL = 'alinaermolaeva044@gmail.com';
 const links = { linkedin: '#', behance: '#', cv: '#' };
 
 const LOOP = 1996; // Figma: left copies sit 1996px before the visible set
-const SETS = [-1, 0, 1]; // enough copies to fill screens up to ~2500px wide
+const SETS = [-1, 0]; // the track only moves right of its rest position
 
 // Card frames relative to the section (Figma "Container" 718:558613)
 const cards = [
@@ -73,6 +74,25 @@ const cards = [
 </section>
 
 <script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Cards slide in from the right while the block scrolls into view (scrubbed to the scroll)
+  const SLIDE = 800; // px the cards travel over the block's scroll range
+  const initCards = () => {
+    const section = document.querySelector<HTMLElement>('.contacts');
+    const track = section?.querySelector<HTMLElement>('.contacts__track');
+    if (!section || !track || track.dataset.ready) return;
+    track.dataset.ready = '1';
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    gsap.fromTo(track, { x: SLIDE }, {
+      x: 0,
+      ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom bottom', scrub: true },
+    });
+  };
+
   // Copy the email on click; the label reads "Copied!" for a moment
   const init = () => {
     document.querySelectorAll<HTMLButtonElement>('.email[data-email]').forEach((btn) => {
@@ -92,12 +112,7 @@ const cards = [
         setTimeout(() => (label.textContent = email), 1500);
       });
     });
-    // Pause the card loop while the block is off screen
-    document.querySelectorAll<HTMLElement>('.contacts').forEach((el) => {
-      if (el.dataset.observed) return;
-      el.dataset.observed = '1';
-      new IntersectionObserver(([e]) => el.classList.toggle('is-offscreen', !e.isIntersecting)).observe(el);
-    });
+    initCards();
   };
   init();
   document.addEventListener('astro:page-load', init);
@@ -129,22 +144,14 @@ const cards = [
     left: 50%;
     width: 1920px;
     translate: -50% 0;
+    z-index: 1; /* above "Let's connect" and the buttons */
+    pointer-events: none; /* the buttons under the cards stay clickable */
   }
-  /* The whole set moves as one compositor layer: no repaint while it runs */
+  /* The whole set moves as one compositor layer: no repaint while it moves */
   .contacts__track {
     position: absolute;
     inset: 0;
-    animation: cards-loop 60s linear infinite;
     will-change: transform;
-  }
-  .contacts.is-offscreen .contacts__track {
-    animation-play-state: paused;
-  }
-  @keyframes cards-loop {
-    to { transform: translateX(-1996px); } /* one LOOP */
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .contacts__track { animation: none; }
   }
 
   .card {
