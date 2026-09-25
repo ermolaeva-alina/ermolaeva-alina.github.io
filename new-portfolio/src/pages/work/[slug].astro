@@ -1,0 +1,42 @@
+---
+// Case study page — placeholder until the case page design exists in Figma.
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Navbar from '../../components/Navbar.astro';
+
+export async function getStaticPaths() {
+  const cases = await getCollection('work');
+  return cases.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Base title={`${entry.data.company.replace(':', '')} — Alina`} description={entry.data.summary}>
+  <Navbar />
+  <main class="case-page">
+    <h1 class="t-label-32">
+      <span style={`color: ${entry.data.accent}; font-family: var(--font-raster-rounded); font-weight: 400`}>{entry.data.company}</span>
+      {' '}{entry.data.title}
+    </h1>
+    <p class="t-body-20">{entry.data.summary}</p>
+    <Content />
+    <a class="back t-new-label-16" href="/#case-studies">← All case studies</a>
+  </main>
+</Base>
+
+<style>
+  .case-page {
+    max-width: var(--content-width-small);
+    margin: 0 auto;
+    padding: 160px var(--space-16) var(--space-56);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24);
+    color: var(--color-black);
+  }
+  .back {
+    color: var(--color-brand);
+  }
+</style>

@@ -1,0 +1,112 @@
+{
+  "viewport": 1920,
+  "pageNodeId": "553:660034",
+  "blocks": [
+    {
+      "name": "navbar",
+      "nodeId": "553:618207",
+      "selector": ".navbar"
+    },
+    {
+      "name": "top",
+      "nodeId": "553:617759",
+      "selector": ".top"
+    },
+    {
+      "name": "widgets",
+      "nodeId": "553:617776",
+      "selector": ".widgets",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "case-studies",
+      "nodeId": "553:617980",
+      "selector": ".cases",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "cases-head",
+      "nodeId": "639:566285",
+      "selector": ".cases .head",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "case-adapty",
+      "nodeId": "553:657926",
+      "selector": ".cases .case:nth-child(1)",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "case-rtim",
+      "nodeId": "553:617988",
+      "selector": ".cases .case:nth-child(2)",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "case-docsdna",
+      "nodeId": "553:617987",
+      "selector": ".cases .case:nth-child(3)",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "my-story",
+      "nodeId": "553:617992",
+      "selector": ".story",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-head",
+      "nodeId": "730:560413",
+      "selector": ".story .head",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-eyes",
+      "nodeId": "730:560443",
+      "selector": ".story .card--eyes",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-heart",
+      "nodeId": "730:560288",
+      "selector": ".story .card--heart",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-glass",
+      "nodeId": "730:560512",
+      "selector": ".story .card--glass",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-photos",
+      "nodeId": "732:560556",
+      "selector": ".story .card--photos",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-icon-eight",
+      "nodeId": "748:561585",
+      "selector": "[data-svg=icon-eight]",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "story-icon-type",
+      "nodeId": "748:561235",
+      "selector": "[data-svg=icon-type]",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "contacts",
+      "nodeId": "553:660058",
+      "selector": ".contacts",
+      "css": ".navbar{display:none!important}"
+    },
+    {
+      "name": "contacts-center",
+      "nodeId": "721:558652",
+      "selector": ".contacts__center",
+      "css": ".navbar{display:none!important}"
+    }
+  ]
+}

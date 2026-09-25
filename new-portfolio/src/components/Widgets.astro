@@ -1,0 +1,404 @@
+---
+// Figma: "Widgets" 553:617776
+import Chip from './Chip.astro';
+import Button from './Button.astro';
+// A 20 × 9 grid of 56px tiles (2px gap). Widgets occupy cells; free cells show a tile.
+const COLS = 20;
+const ROWS = 9;
+
+// Grid placement from Figma (0-based row/col + spans)
+const areas = {
+  ticker: { r: 0, c: 0, rs: 1, cs: 1 },
+  current: { r: 1, c: 11, rs: 1, cs: 7 },
+  pixels: { r: 1, c: 18, rs: 1, cs: 1 },
+  prague: { r: 3, c: 3, rs: 3, cs: 3 },
+  cta: { r: 4, c: 8, rs: 1, cs: 4 },
+  experience: { r: 4, c: 15, rs: 4, cs: 4 },
+  education: { r: 7, c: 0, rs: 2, cs: 3 },
+};
+const place = (a: { r: number; c: number; rs: number; cs: number }) =>
+  `grid-area: ${a.r + 1} / ${a.c + 1} / span ${a.rs} / span ${a.cs}`;
+
+const taken = new Set<string>();
+for (const a of Object.values(areas))
+  for (let r = a.r; r < a.r + a.rs; r++) for (let c = a.c; c < a.c + a.cs; c++) taken.add(`${r}-${c}`);
+const tiles: { r: number; c: number }[] = [];
+for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) if (!taken.has(`${r}-${c}`)) tiles.push({ r, c });
+
+// Text box widths from Figma: browsers measure text 1–2px differently,
+// so fixed widths keep every item on the same pixel as the design.
+const skills = [
+  { t: 'Product Strategy', w: 130 },
+  { t: 'Design Systems', w: 123 },
+  { t: 'User Research', w: 109 },
+  { t: 'Data-Driven Design', w: 152 },
+];
+
+const industries = [
+  [{ t: 'Fintech', w: 50 }, { t: 'AI', w: 17, accent: true }, { t: 'Monetization', w: 88 }],
+  [{ t: 'B2B SaaS', w: 65, accent: true }, { t: 'Data Analytics', w: 96 }],
+  [{ t: 'UrbanTech', w: 74 }, { t: 'EdTech', w: 51 }, { t: 'B2C', w: 30, accent: true }],
+  [{ t: 'DevTools', w: 62 }, { t: 'Generative AI', w: 96, accent: true }],
+];
+---
+
+<section class="widgets" aria-label="About me at a glance">
+  <div class="side cell--hatch"></div>
+
+  <div class="grid">
+    {tiles.map((t) => <div class="tile" style={`grid-area: ${t.r + 1} / ${t.c + 1}`} aria-hidden="true" />)}
+
+    <!-- Skills ticker -->
+    <div class="ticker" style={place(areas.ticker)}>
+      <!-- The card frame is a sibling layer: an outline + shadow on an ancestor of the moving
+           track makes Chrome repaint the card every frame (15 fps instead of 60) -->
+      <div class="card ticker__frame" aria-hidden="true"></div>
+      <div class="ticker__clip">
+      <div class="ticker__track">
+        {[0, 1, 2].map((copy) => (
+          <ul class="ticker__list" aria-hidden={copy > 0 ? 'true' : undefined}>
+            {skills.map((s) => (
+              <li class="ticker__item">
+                <span class="t-raster-18 ticker__text" style={`width: ${s.w}px`}>{s.t}</span>
+                <span class="point point--orange" aria-hidden="true" />
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+      </div>
+    </div>
+
+    <!-- Current position -->
+    <div class="card current" style={place(areas.current)}>
+      <span class="point point--green" aria-hidden="true"></span>
+      <p class="current__text t-new-label-16">
+        <span class="current__role"><span class="muted">Currently </span>Principal Product Designer<span class="muted"> at </span></span>
+        <a class="company" href="https://adapty.io" target="_blank" rel="noopener">
+          <img src="/images/widgets/adapty-favicon.svg" width="20" height="20" alt="" />
+          <span class="outlined company__name">adapty.io</span>
+        </a>
+      </p>
+    </div>
+
+    <!-- Adapty pixel logo -->
+    <div class="pixels" style={place(areas.pixels)}>
+      <img src="/images/widgets/adapty-pixels.svg" width="50" height="50" alt="Adapty logo" />
+    </div>
+
+    <!-- Based in Prague -->
+    <div class="card prague" style={place(areas.prague)}>
+      <img class="prague__photos" src="/images/widgets/prague-photos.webp" width="201" height="115" alt="Three photos of Prague" />
+      <p class="prague__label t-label-12">based in</p>
+      <p class="prague__city outlined">Prague</p>
+    </div>
+
+    <!-- CTA -->
+    <Button class="cta" href="#case-studies" icon="/images/widgets/arrow-dots.svg" style={place(areas.cta)}>View case studies</Button>
+
+    <!-- Experienced at -->
+    <div class="card experience" style={place(areas.experience)}>
+      <img class="experience__dots" src="/images/widgets/dots-pattern.svg" width="222" height="115" alt="" />
+      <Chip size="sm" class="experience__chip">Experienced at</Chip>
+      <ul class="experience__list">
+        {industries.map((row) => (
+          <li class="experience__row">
+            {row.map((tag) => (
+              <span class:list={['tag outlined-3', tag.accent ? 'tag--accent t-raster-16' : 't-body-16']} style={`width: ${tag.w}px`}>{tag.t}</span>
+            ))}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Education -->
+    <div class="card education" style={place(areas.education)}>
+      <p class="education__text t-new-label-16"><span class="muted">MSc in </span><br />Human-Computer Interaction</p>
+      <img class="education__cursor" src="/images/widgets/cursor.svg" width="39" height="39" alt="" />
+      <img class="education__diploma" src="/images/widgets/diploma.svg" width="144" height="204" alt="" />
+    </div>
+  </div>
+
+  <div class="side cell--hatch"></div>
+</section>
+
+<script>
+  // Pause the ticker while it is off screen
+  const initTicker = () => {
+    document.querySelectorAll('.ticker').forEach((el) => {
+      new IntersectionObserver(([e]) => el.classList.toggle('is-offscreen', !e.isIntersecting)).observe(el);
+    });
+  };
+  initTicker();
+  document.addEventListener('astro:page-load', initTicker);
+</script>
+
+<style>
+  .widgets {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 552px;
+  }
+
+  /* Dashed lines along the top and bottom edges */
+  .widgets::before,
+  .widgets::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--line-dash-x);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .widgets::before { top: 0; }
+  .widgets::after { bottom: 0; }
+
+  .side {
+    flex: 1 1 0;
+  }
+
+  .grid {
+    width: var(--content-width);
+    padding: var(--space-16);
+    display: grid;
+    grid-template-columns: repeat(20, 56px);
+    grid-template-rows: repeat(9, 56px);
+    gap: 2px;
+  }
+
+  .tile {
+    border-radius: var(--radius-s);
+    background: rgb(252 253 253 / 0.8); /* Bg light at 80% */
+  }
+
+  /* Shared widget card */
+  .card {
+    position: relative;
+    border-radius: var(--radius-s);
+    background: var(--gradient-surface);
+    outline: 1px solid var(--color-border);
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+    color: var(--color-black);
+  }
+
+  .muted {
+    color: var(--color-gray-light);
+  }
+
+  /* Text with an outside white stroke (Figma stroke OUTSIDE on text) */
+  .outlined {
+    -webkit-text-stroke: 4px var(--color-white);
+    paint-order: stroke fill;
+    filter: drop-shadow(0 1px 1px rgb(54 54 48 / 0.05));
+  }
+  .outlined-3 {
+    -webkit-text-stroke: 6px var(--color-white);
+    paint-order: stroke fill;
+    filter: drop-shadow(0 0.5px 0.5px rgb(54 54 48 / 0.03));
+  }
+
+  .point {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+  }
+  .point--orange {
+    background: var(--color-brand);
+    box-shadow: 0 0 6.4px var(--color-brand);
+  }
+  .point--green {
+    background: var(--color-green);
+    box-shadow: 0 0 6.4px var(--color-green-bright);
+  }
+
+  /* Ticker — 8 cells wide, overflows its single grid cell like in Figma */
+  .ticker {
+    position: relative;
+    width: 462px;
+    height: 56px;
+    color: var(--color-black);
+  }
+  .ticker__frame {
+    position: absolute;
+    inset: 0;
+  }
+  .ticker__clip {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-s);
+    overflow: hidden;
+  }
+  .ticker__track {
+    position: absolute;
+    top: 0;
+    left: -98px; /* Figma: first item starts at -98px */
+    height: 100%;
+    display: flex;
+    animation: ticker 30s linear infinite;
+    will-change: transform; /* own compositor layer: no repaint while it runs */
+  }
+  .ticker.is-offscreen .ticker__track {
+    animation-play-state: paused;
+  }
+  .ticker__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    padding: 0 var(--space-16) 0 0;
+    list-style: none;
+  }
+  .ticker__text {
+    flex: none;
+  }
+  .ticker__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    white-space: nowrap;
+  }
+  @keyframes ticker {
+    to { transform: translateX(-33.3333%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker__track { animation: none; }
+  }
+
+  /* Current position */
+  .current {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+    padding: var(--space-4) var(--space-4) var(--space-4) var(--space-16);
+  }
+  .current__text {
+    display: flex;
+    align-items: center;
+    white-space: pre;
+    height: 32px;
+  }
+  .current__role {
+    width: 260px; /* Figma text box */
+  }
+  .company {
+    display: flex;
+    align-items: center;
+    margin-left: 6px;
+    color: var(--color-blue);
+  }
+  .company__name {
+    width: 63px; /* Figma text box */
+  }
+
+  /* Adapty pixel logo button */
+  .pixels {
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-s);
+    background: #020202; /* Figma: Btn black */
+    box-shadow:
+      inset 0 0 0 1px var(--color-black-dark),
+      inset 0 -2px 9px rgb(255 255 255 / 0.46),
+      inset 0 2px 0 rgb(255 255 255 / 0.28),
+      var(--shadow-dark);
+    overflow: hidden;
+  }
+
+  /* Prague */
+  .prague__photos {
+    position: absolute;
+    left: -18px;
+    top: -24px;
+    width: 201px;
+    height: 115.12px;
+    max-width: none;
+  }
+  .prague__label {
+    position: absolute;
+    left: 18px;
+    top: 100px;
+    color: var(--color-gray);
+  }
+  .prague__city {
+    position: absolute;
+    left: 18px;
+    top: 112px;
+    font: 400 53px/normal var(--font-raster);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  /* CTA — shared Button, fixed to the 4-cell width from Figma */
+  .widgets :global(.cta) {
+    justify-self: center;
+    width: 230px;
+  }
+
+  /* Experienced at */
+  .experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-4);
+  }
+  .experience__dots {
+    width: 222px;
+    height: 115px;
+  }
+  .widgets :global(.experience__chip) {
+    position: absolute;
+    left: 7px;
+    top: 8px;
+  }
+  .experience__list {
+    width: 219px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding: var(--space-4);
+    border-radius: 8px;
+    box-shadow: var(--shadow-xs);
+    list-style: none;
+  }
+  .experience__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 24px;
+  }
+  .tag {
+    white-space: nowrap;
+    text-align: center; /* Figma: text align center inside its box */
+  }
+  .tag--accent {
+    color: var(--color-brand);
+  }
+
+  /* Education */
+  .education {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-8);
+  }
+  .education__cursor {
+    position: absolute;
+    left: 132px;
+    top: 72px;
+    width: 39.19px;
+    height: 39.19px;
+    max-width: none;
+  }
+  .education__diploma {
+    position: absolute;
+    left: 106px;
+    top: -148px;
+    width: 143.56px;
+    height: 204px;
+    max-width: none;
+  }
+</style>

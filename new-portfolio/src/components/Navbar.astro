@@ -1,0 +1,104 @@
+---
+// Figma: "Navbar Container" 553:618207
+// Floating glass pill, centered at the top. Items have fixed widths from Figma
+// so the hover font swap (Inter Tight -> FK Raster) doesn't shift the layout.
+const items = [
+  { label: 'Home', href: '/', width: 67 },
+  { label: 'Case studies', href: '/#case-studies', width: 106 },
+  { label: 'About', href: '/#about', width: 68 },
+  { label: 'Contacts', href: '/#contacts', width: 85 },
+];
+const current = Astro.url.pathname;
+---
+
+<nav class="navbar" aria-label="Main">
+  <ul class="list">
+    {items.map((item) => {
+      const active = item.href === current;
+      return (
+        <li>
+          <a
+            class:list={['item', { active }]}
+            href={item.href}
+            style={`width: ${item.width}px`}
+            aria-current={active ? 'page' : undefined}
+          >
+            {item.label}
+            {active && <span class="dot" aria-hidden="true" />}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 22px;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 100;
+    padding: var(--space-4);
+    border-radius: var(--radius-card);
+    background: rgb(255 255 255 / 0.44);
+    /* Figma GLASS effect, approximated */
+    backdrop-filter: blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+    outline: 1px solid var(--color-border); /* stroke OUTSIDE */
+    box-shadow: 0 10px 13.8px -7px rgb(213 213 213 / 0.25);
+    overflow: hidden;
+  }
+
+  .list {
+    display: flex;
+    gap: var(--space-4);
+    list-style: none;
+    padding: 0;
+  }
+
+  .item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    /* Figma centers a hug-width text box, so the text starts exactly at the 16px padding.
+       Browsers render the text ~1px narrower; left-aligning keeps it on the same pixel. */
+    justify-content: flex-start;
+    height: 48px;
+    padding: var(--space-8) var(--space-16);
+    border-radius: 10px; /* Figma: nav item */
+    font: 500 14px/normal var(--font-sans);
+    letter-spacing: -0.04em;
+    color: var(--color-gray);
+    white-space: nowrap;
+    transition: color var(--duration-hover) var(--ease-out);
+  }
+
+  .item:hover,
+  .item.active {
+    font-family: var(--font-raster-rounded);
+    font-weight: 400;
+  }
+
+  .item.active {
+    color: var(--color-brand);
+  }
+
+  /* Glowing dot, half hidden under the bottom edge of the pill */
+  .dot {
+    position: absolute;
+    left: 50%;
+    top: 48.5px;
+    translate: -50% 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 100px;
+    background: var(--color-brand);
+    box-shadow: 0 0 6.4px var(--color-brand);
+  }
+
+  .item:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: -2px;
+  }
+</style>

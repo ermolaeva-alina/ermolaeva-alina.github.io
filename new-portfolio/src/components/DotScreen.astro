@@ -1,0 +1,114 @@
+---
+// Dot-matrix screen ("Btn" frames in My story). Rendered as inline SVG so every
+// lit dot is a real element you can animate:
+//   <g class="dot" data-r="15" data-c="35">  — lit dot: glow + dot, centered at 0,0
+//   <g class="led">                          — green status LED
+// Animate a whole <g> (opacity, scale) and the glow follows the dot.
+// Unlit dots are one SVG pattern (cheap). The <svg> carries data-pitch-x/y,
+// data-rows/cols, so a script can add or move dots on the same grid:
+//   cx = col * pitchX + 2, cy = row * pitchY + 2, r = 2
+import type { DotScreen } from '../data/dot-screens';
+
+interface Props {
+  screen: DotScreen;
+  id: string; // unique per page — used for SVG pattern/filter ids
+  label: string; // accessible description of the picture
+  inset?: boolean; // glossy inner highlights (eyes, glass); the heart has none
+  class?: string;
+}
+const { screen: s, id, label, inset = true, class: className } = Astro.props;
+const R = 2;
+
+// Figma drop shadow (blur, spread) on a dot = a disk of radius R + spread blurred by σ = blur / 2.
+// Precomputed as a radial gradient: same look as an SVG filter, but nearly free to paint.
+function glow(spread: number, blur: number, alpha: number) {
+  const disk = R + spread;
+  const sigma = blur / 2;
+  const extent = disk + 3 * sigma;
+  const value = (d: number) => {
+    // 2D disk ⊛ Gaussian, integrated numerically along the radius
+    let sum = 0;
+    const N = 48;
+    for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
+      const x = -disk + ((i + 0.5) / N) * 2 * disk, y = -disk + ((j + 0.5) / N) * 2 * disk;
+      if (x * x + y * y > disk * disk) continue;
+      sum += Math.exp(-((d - x) ** 2 + y * y) / (2 * sigma * sigma));
+    }
+    return (sum * (2 * disk / N) ** 2) / (2 * Math.PI * sigma * sigma);
+  };
+  const stops = Array.from({ length: 9 }, (_, i) => {
+    const t = i / 8;
+    return { offset: +t.toFixed(3), opacity: +(alpha * value(t * extent)).toFixed(4) };
+  });
+  return { r: +extent.toFixed(2), stops };
+}
+const shine = glow(2, 6.9, 0.12); // Figma "pixel shine"
+const ledGlow = glow(0, 6.4, 1); // LED: #aeed00, blur 6.4
+const cx = (c: number) => +(c * s.pitchX + R).toFixed(3);
+const cy = (r: number) => +(r * s.pitchY + R).toFixed(3);
+---
+
+<div class:list={['screen', { 'screen--inset': inset }, className]}>
+  <svg
+    class="screen__svg"
+    width={s.width}
+    height={s.height}
+    viewBox={`0 0 ${s.width} ${s.height}`}
+    role="img"
+    aria-label={label}
+    data-rows={s.rows}
+    data-cols={s.cols}
+    data-pitch-x={s.pitchX}
+    data-pitch-y={s.pitchY}
+  >
+    <defs>
+      <pattern id={`${id}-off`} width={s.pitchX} height={s.pitchY} patternUnits="userSpaceOnUse">
+        <circle cx={R} cy={R} r={R} fill="#ffffff" fill-opacity="0.1" />
+      </pattern>
+      <radialGradient id={`${id}-shine`}>
+        {shine.stops.map((st) => <stop offset={st.offset} stop-color="#ffffff" stop-opacity={st.opacity} />)}
+      </radialGradient>
+      <radialGradient id={`${id}-led`}>
+        {ledGlow.stops.map((st) => <stop offset={st.offset} stop-color="#aeed00" stop-opacity={st.opacity} />)}
+      </radialGradient>
+    </defs>
+
+    <rect class="screen__off" width="100%" height="100%" fill={`url(#${id}-off)`} />
+    {s.empty.map(([r, c]) => <rect x={cx(c) - R} y={cy(r) - R} width={R * 2} height={R * 2} fill="#020202" />)}
+    <g class="led" transform={`translate(${cx(s.led[1])} ${cy(s.led[0])})`}>
+      <circle r={ledGlow.r} fill={`url(#${id}-led)`} />
+      <circle r={R} fill="#a1d906" />
+    </g>
+    <g class="screen__on">
+      {s.on.map(([r, c]) => (
+        <g class="dot" data-r={r} data-c={c} transform={`translate(${cx(c)} ${cy(r)})`}>
+          <circle r={shine.r} fill={`url(#${id}-shine)`} />
+          <circle r={R} fill="#fcfdfd" />
+        </g>
+      ))}
+    </g>
+  </svg>
+</div>
+
+<style>
+  .screen {
+    flex: none; /* never shrink inside fixed-height cards */
+    display: flex;
+    padding: var(--space-8);
+    border-radius: var(--radius-card);
+    background: #020202; /* Figma: Btn black */
+    box-shadow: inset 0 0 0 1px var(--color-black-dark), var(--shadow-dark);
+    overflow: hidden;
+  }
+  .screen--inset {
+    box-shadow:
+      inset 0 0 0 1px var(--color-black-dark),
+      inset 0 -2px 9px rgb(255 255 255 / 0.46),
+      inset 0 2px 0 rgb(255 255 255 / 0.28),
+      var(--shadow-dark);
+  }
+  .screen__svg {
+    display: block;
+    overflow: hidden;
+  }
+</style>

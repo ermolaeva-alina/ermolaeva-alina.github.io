@@ -1,0 +1,26 @@
+/* One class per Figma text style. Letter-spacing -2% = -0.02em. */
+
+.t-h0 { font: italic 400 168px/0.75 var(--font-serif); letter-spacing: -0.02em; }
+.t-h1 { font: italic 400 104px/0.85 var(--font-serif); letter-spacing: -0.02em; }
+.t-h2 { font: italic 400 72px/0.9 var(--font-serif); letter-spacing: -0.02em; }
+.t-serif-36 { font: italic 400 36px/1 var(--font-serif); letter-spacing: -0.02em; }   /* "Inst sans 32" */
+.t-serif-28 { font: 400 28px/32px var(--font-serif); letter-spacing: -0.02em; }       /* "Inst Sans 28" */
+
+.t-body-20 { font: 400 20px/28px var(--font-sans); letter-spacing: -0.02em; }
+.t-body-16 { font: 400 16px/24px var(--font-sans); letter-spacing: -0.015em; } /* Figma: -2%; calibrated: Figma sets Regular 16 ~1.25% wider than Chrome */
+.t-label-32 { font: 600 32px/36px var(--font-sans); letter-spacing: -0.02em; }
+.t-label-20 { font: 600 20px/24px var(--font-sans); letter-spacing: -0.02em; }
+.t-label-12 { font: 500 12px/16px var(--font-sans); letter-spacing: -0.02em; }
+.t-sans-32 { font: 500 32px/36px var(--font-sans); letter-spacing: -0.02em; }         /* "Inter tight 32" */
+
+.t-raster-16 { font: 400 16px/20px var(--font-raster); letter-spacing: -0.01em; }
+.t-raster-18 { font: 400 18px/normal var(--font-raster); letter-spacing: -0.02em; }   /* "FK raster 20" */
+.t-raster-20 { font: 400 20px/1 var(--font-raster); letter-spacing: -0.02em; }        /* "FK raster body" */
+.t-raster-32 { font: 400 32px/36px var(--font-raster-rounded); letter-spacing: -0.02em; }
+
+/* "New/…" styles */
+.t-new-h2 { font: 600 48px/52px var(--font-sans); letter-spacing: -0.02em; }
+.t-new-h3 { font: 600 36px/40px var(--font-sans); letter-spacing: -0.02em; }
+.t-new-body-20 { font: 400 20px/28px var(--font-sans); letter-spacing: -0.02em; }
+.t-new-label-20 { font: 500 20px/28px var(--font-sans); letter-spacing: -0.02em; }
+.t-new-label-16 { font: 500 16px/20px var(--font-sans); letter-spacing: -0.02em; }

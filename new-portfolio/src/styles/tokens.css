@@ -1,0 +1,74 @@
+/* Design tokens from Figma "New portfolio".
+   Colors = Paint styles, shadows = Effect styles, sizes = Variables.
+   Anything marked (scan) is not a Figma style but a value repeated across the page. */
+
+:root {
+  /* Colors — Paint styles */
+  --color-black: #484646;
+  --color-black-dark: #1c1717;
+  --color-gray: #6d6d6d;
+  --color-gray-light: #b7b1af; /* second "Gray" style */
+  --color-red: #f20404;
+  --color-bg: #f2f3f3;
+  --color-bg-light: #fcfdfd;
+  --color-border: #dcdcdc;
+  --color-border-dash: #bfbebe;
+  --color-brand: #ff4a09;
+  --color-brand-dark: #ed3f00;
+  --color-stroke: #000000;
+  --color-green: #a1d906;
+  --color-green-bright: #aeed00; /* variable "Green" */
+  --color-blue: #4949f5;
+  --color-white: #ffffff;
+
+  /* Surface gradient — Paint style; direction approximated from gradientTransform */
+  --gradient-surface: linear-gradient(135deg, #fcfdfd 0%, #fafafa 50%, #fcfdfd 100%);
+
+  /* Radius — Variables (+ scan) */
+  --radius-s: 12px;
+  --radius-m: 24px;
+  --radius-full: 10000px;
+  --radius-card: 16px; /* (scan) 18 uses */
+
+  /* Layout — Variables */
+  --content-width: 1190px;
+  --content-width-small: 800px;
+
+  /* Spacing (scan) — auto-layout gaps and paddings used in the file */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-56: 56px;
+
+  /* Shadows — Effect styles */
+  --shadow-xs: 0 1px 2px rgb(54 54 48 / 0.05);
+  --shadow-sm: 0 1px 4px rgb(54 54 48 / 0.1), 0 1px 2px rgb(54 54 48 / 0.05);
+  --shadow-lg: 0 4px 6px -2px rgb(10 13 18 / 0.03), 0 12px 16px -4px rgb(10 13 18 / 0.08);
+  --shadow-photo: 0 2.6px 3.9px -1.3px rgb(10 13 18 / 0.03), 0 7.8px 10.4px -2.6px rgb(10 13 18 / 0.08);
+  --shadow-dark: 0 18px 33.3px rgb(41 35 33 / 0.3), 0 7px 11.7px -6px rgb(36 31 29 / 0.52);
+  --shadow-orange:
+    inset 0 -19px 38.3px 5px rgb(255 74 9 / 0.07),
+    inset 0 -2px 9px rgb(255 255 255 / 0.83),
+    inset 0 2px 0 rgb(255 255 255 / 0.28),
+    0 18px 33.3px rgb(255 78 14 / 0.3),
+    0 7px 11.7px -6px rgb(255 75 10 / 0.52);
+  --shadow-pixel-shine: 0 0 6.9px 2px rgb(255 255 255 / 0.12);
+  /* "IMG" style also has a GLASS effect — approximated where used */
+  --shadow-img: 4px 12px 28.6px -15px rgb(18 21 25 / 0.08), inset 1px 1px 0 rgb(0 11 246 / 0.07);
+
+  /* Motion — from prototype (hover: Smart animate 300ms ease-out) */
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);
+  --duration-hover: 300ms;
+
+  /* Fonts */
+  --font-sans: 'Inter Tight', system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-raster: 'FK Raster Smooth', var(--font-sans);
+  --font-raster-rounded: 'FK Raster Rounded', var(--font-sans);
+}

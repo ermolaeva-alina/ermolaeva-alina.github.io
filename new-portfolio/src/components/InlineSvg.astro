@@ -1,0 +1,35 @@
+---
+// Inline an SVG file exported from Figma, so it can be styled and animated.
+// Figma reuses ids like "filter0_d_…" in every export; they are prefixed here
+// so several SVGs on one page don't collide.
+interface Props {
+  svg: string; // raw file content: import x from '../assets/x.svg?raw'
+  id: string; // unique prefix
+  label?: string; // accessible name; omit for decorative icons
+  class?: string;
+  style?: string;
+}
+const { svg, id, label, class: className, style } = Astro.props;
+
+const ids = [...svg.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+let out = svg;
+for (const old of ids) {
+  out = out.replaceAll(`id="${old}"`, `id="${id}-${old}"`).replaceAll(`#${old})`, `#${id}-${old})`).replaceAll(`"#${old}"`, `"#${id}-${old}"`);
+}
+out = out.replace(
+  '<svg ',
+  `<svg ${label ? `role="img" aria-label="${label}"` : 'aria-hidden="true"'} data-svg="${id}" `,
+);
+---
+
+<span class:list={['inline-svg', className]} style={style} set:html={out} />
+
+<style>
+  .inline-svg {
+    display: block;
+    line-height: 0;
+  }
+  .inline-svg :global(svg) {
+    display: block;
+  }
+</style>

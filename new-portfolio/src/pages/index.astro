@@ -1,0 +1,31 @@
+---
+// Figma: home page "Container" 553:660034 → "Main" 553:617753 (vertical, gap 56, bottom padding 56)
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Top from '../components/Top.astro';
+import Widgets from '../components/Widgets.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import MyStory from '../components/MyStory.astro';
+import Contacts from '../components/Contacts.astro';
+---
+
+<Base>
+  <Navbar />
+  <main class="page">
+    <Top />
+    <Widgets />
+    <CaseStudies />
+    <MyStory />
+  </main>
+  <Contacts />
+</Base>
+
+<style>
+  .page {
+    background: var(--color-bg); /* Figma: Main fill #f2f3f3 over the Container gradient */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-56);
+    padding-bottom: var(--space-56);
+  }
+</style>

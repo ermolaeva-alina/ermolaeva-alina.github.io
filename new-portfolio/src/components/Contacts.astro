@@ -1,0 +1,195 @@
+---
+// Figma: "Content" 553:660058 — contacts block below the main page frame.
+// Floating screenshot cards around a "Let's connect" headline with a screen-blended glow.
+// Figma also holds off-canvas copies of the cards (left and right) — a setup for a
+// horizontal loop animation; only the visible set is rendered for now.
+import Chip from './Chip.astro';
+import Button from './Button.astro';
+import InlineSvg from './InlineSvg.astro';
+import linkedin from '../assets/contacts/linkedin.svg?raw';
+import behance from '../assets/contacts/behance.svg?raw';
+import copy from '../assets/contacts/copy.svg?raw';
+
+const EMAIL = 'alinaermolaeva044@gmail.com';
+
+// TODO: real URLs — the user will send them later
+const links = { linkedin: '#', behance: '#', cv: '#' };
+
+// Card frames relative to the section (Figma "Container" 718:558613)
+const cards = [
+  { src: '/images/contacts/card-1.webp', x: 1392, y: 58, w: 230, h: 288, shadow: 'lg' },
+  { src: '/images/contacts/card-2.webp', x: 174, y: 58, w: 288, h: 346, shadow: 'lg' },
+  { src: '/images/contacts/card-3.webp', x: 1508, y: 638, w: 288, h: 230, shadow: 'lg' },
+  { src: '/images/contacts/card-4.webp', x: 348, y: 522, w: 346, h: 288, shadow: '3xl' },
+  { src: '/images/contacts/card-5.webp', x: 986, y: 638, w: 145, h: 145, shadow: 'lg' },
+  { src: '/images/contacts/card-6.webp', x: 560.07, y: 44.5, w: 145, h: 145, shadow: 'lg' },
+];
+---
+
+<section class="contacts" id="contacts" aria-labelledby="contacts-title">
+  <div class="contacts__texture" aria-hidden="true"></div>
+
+  <div class="contacts__cards" aria-hidden="true">
+    {cards.map((c) => (
+      <img
+        class:list={['card', `card--${c.shadow}`]}
+        src={c.src}
+        width={c.w}
+        height={c.h}
+        alt=""
+        loading="lazy"
+        style={`left: ${c.x}px; top: ${c.y}px; width: ${c.w}px; height: ${c.h}px`}
+      />
+    ))}
+  </div>
+
+  <div class="contacts__center">
+    <Chip point="green" weight={500}>Contacts</Chip>
+
+    <div class="headline">
+      <h2 class="headline__text" id="contacts-title">Let’s connect :)</h2>
+      <img class="headline__glow" src="/images/contacts/glow.webp" width="813" height="234" alt="" aria-hidden="true" />
+    </div>
+
+    <div class="methods">
+      <Button href={links.linkedin} color="black" size={44} iconOnly label="LinkedIn">
+        <InlineSvg slot="icon" svg={linkedin} id="icon-linkedin" />
+      </Button>
+      <Button href={links.behance} color="black" size={44} iconOnly label="Behance">
+        <InlineSvg slot="icon" svg={behance} id="icon-behance" />
+      </Button>
+      <Button href={links.cv} color="black" size={44} class="cv">CV</Button>
+      <Button color="orange" size={44} class="email" data-email={EMAIL} aria-label={`Copy email ${EMAIL}`}>
+        <InlineSvg slot="icon" svg={copy} id="icon-copy" />
+        <span class="email__label">{EMAIL}</span>
+      </Button>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Copy the email on click; the label reads "Copied!" for a moment
+  const init = () => {
+    document.querySelectorAll<HTMLButtonElement>('.email[data-email]').forEach((btn) => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = '1';
+      const label = btn.querySelector('.email__label');
+      btn.addEventListener('click', async () => {
+        const email = btn.dataset.email!;
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          window.location.href = `mailto:${email}`;
+          return;
+        }
+        if (!label) return;
+        label.textContent = 'Copied!';
+        setTimeout(() => (label.textContent = email), 1500);
+      });
+    });
+  };
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .contacts {
+    position: relative;
+    height: 926px;
+    margin-top: var(--space-56); /* Figma: Container gap between Main and Content */
+    overflow-x: clip; /* the 2048px texture is wider than the viewport */
+  }
+
+  /* Figma "image 556": the hatch texture at 28%, starting 411.5px above the block */
+  .contacts__texture {
+    position: absolute;
+    left: 0;
+    top: -411.5px;
+    width: 2048px;
+    height: 1337.5px; /* the texture ends here in Figma; the tile stops with the box */
+    background: url('/images/hatch.svg') 0 0 / 220px 220px repeat;
+    opacity: 0.28;
+    pointer-events: none;
+  }
+
+  .contacts__cards {
+    position: absolute;
+    inset: 0;
+    left: 50%;
+    width: 1920px;
+    translate: -50% 0;
+    overflow: hidden;
+  }
+
+  .card {
+    position: absolute;
+    max-width: none;
+    border-radius: var(--radius-card);
+  }
+  .card--lg {
+    box-shadow: var(--shadow-lg);
+  }
+  .card--3xl {
+    box-shadow: 0 32px 64px -12px rgb(54 54 48 / 0.15); /* Figma: drop-shadow/3xl */
+  }
+
+  .contacts__center {
+    position: absolute;
+    /* centered without transform: a transform would create a stacking context and
+       the glow's Screen blend would mix with nothing instead of the page */
+    left: calc(50% - 289px);
+    top: 250px;
+    width: 578px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .headline {
+    position: relative;
+    width: 578px;
+    height: 114px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .headline__text {
+    font: 400 81.55px/110.56px var(--font-raster-rounded);
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+    white-space: nowrap;
+    /* Figma: white 13.36px stroke OUTSIDE + two soft shadows */
+    -webkit-text-stroke: 26.72px var(--color-white);
+    paint-order: stroke fill;
+    filter: drop-shadow(0.84px 1.67px 1.67px rgb(54 54 48 / 0.05)) drop-shadow(-1.67px 0 1.25px rgb(54 54 48 / 0.05));
+  }
+
+  /* Figma "LIGHT": four blurred ellipses in Screen blend over the text */
+  .headline__glow {
+    position: absolute;
+    left: -123.09px;
+    top: -49.57px;
+    width: 812.61px;
+    height: 233.93px;
+    max-width: none;
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  .methods {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+  }
+
+  .methods :global(.cv) {
+    width: 43px;
+    padding: var(--space-16) 7px;
+  }
+
+  .methods :global(.email) {
+    width: 279px;
+  }
+</style>

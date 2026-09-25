@@ -1,0 +1,84 @@
+---
+// Figma: "Case studies" 553:617980
+import { getCollection } from 'astro:content';
+import Chip from './Chip.astro';
+import CaseCard from './CaseCard.astro';
+
+const cases = (await getCollection('work')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="cases" id="case-studies" aria-labelledby="cases-title">
+  <!-- Each side holds two stacked pattern cells, like in Figma -->
+  <div class="side"><div class="cell--hatch"></div><div class="cell--hatch"></div></div>
+
+  <div class="content">
+    <header class="head">
+      <Chip>Case studies</Chip>
+      <h2 class="title" id="cases-title">Selected Works</h2>
+    </header>
+
+    <div class="list">
+      {cases.map((entry) => <CaseCard entry={entry} />)}
+    </div>
+  </div>
+
+  <div class="side"><div class="cell--hatch"></div><div class="cell--hatch"></div></div>
+</section>
+
+<style>
+  .cases {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cases::before,
+  .cases::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--line-dash-x);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .cases::before { top: 0; }
+  .cases::after { bottom: 0; }
+
+  .side {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .side > * {
+    flex: 1 1 0;
+  }
+
+  .content {
+    width: var(--content-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32);
+    padding: var(--space-16);
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-16);
+  }
+
+  .title {
+    font: 400 40px/57px var(--font-raster); /* Figma: line height auto = 57px box */
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+</style>
