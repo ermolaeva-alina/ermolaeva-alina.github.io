@@ -1,9 +1,10 @@
 ---
 // Figma: "Content" 553:660058 — contacts block below the main page frame.
 // Floating screenshot cards around a "Let's connect" headline with a screen-blended glow.
-// The cards float above the headline and slide left as the page scrolls into the block,
-// coming to rest at their Figma positions when the page reaches the bottom.
-// The set is repeated LOOP px to the left (Figma keeps copies there) to fill the gap.
+// The cards are an endless canvas (like simonrico.com): the Figma set is one tile,
+// repeated in a 3 × 3 grid and wrapped, so it can be panned forever in any direction.
+// Drag, horizontal trackpad scroll, or scrolling down at the page bottom pans it;
+// page scroll adds a parallax drift. The headline group stays in the middle, under the cards.
 import Chip from './Chip.astro';
 import Button from './Button.astro';
 import InlineSvg from './InlineSvg.astro';
@@ -16,8 +17,9 @@ const EMAIL = 'alinaermolaeva044@gmail.com';
 // TODO: real URLs — the user will send them later
 const links = { linkedin: '#', behance: '#', cv: '#' };
 
-const LOOP = 1996; // Figma: left copies sit 1996px before the visible set
-const SETS = [-1, 0]; // the track only moves right of its rest position
+const TILE_W = 1996; // Figma: the off-canvas copies sit 1996px to the left
+const TILE_H = 1000;
+const TILES = [-1, 0, 1].flatMap((r) => [-1, 0, 1].map((c) => ({ r, c })));
 
 // Card frames relative to the section (Figma "Container" 718:558613)
 const cards = [
@@ -34,8 +36,8 @@ const cards = [
   <div class="contacts__texture" aria-hidden="true"></div>
 
   <div class="contacts__cards" aria-hidden="true">
-    <div class="contacts__track">
-    {SETS.flatMap((k) => cards.map((c) => (
+    <div class="contacts__track" data-tile-w={TILE_W} data-tile-h={TILE_H}>
+    {TILES.flatMap((t) => cards.map((c) => (
       <img
         class:list={['card', `card--${c.shadow}`]}
         src={c.src}
@@ -43,7 +45,7 @@ const cards = [
         height={c.h}
         alt=""
         loading="lazy"
-        style={`left: ${c.x + k * LOOP}px; top: ${c.y}px; width: ${c.w}px; height: ${c.h}px`}
+        style={`left: ${c.x + t.c * TILE_W}px; top: ${c.y + t.r * TILE_H}px; width: ${c.w}px; height: ${c.h}px`}
       />
     )))}
     </div>
@@ -74,23 +76,67 @@ const cards = [
 </section>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Cards slide in from the right while the block scrolls into view (scrubbed to the scroll)
-  const SLIDE = 800; // px the cards travel over the block's scroll range
+  // Endless card canvas: target offset follows input, the drawn offset eases toward it
+  const PARALLAX = 0.5; // extra drift per px of page scroll
+  const EASE = 0.12;
   const initCards = () => {
     const section = document.querySelector<HTMLElement>('.contacts');
     const track = section?.querySelector<HTMLElement>('.contacts__track');
     if (!section || !track || track.dataset.ready) return;
     track.dataset.ready = '1';
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    gsap.fromTo(track, { x: SLIDE }, {
-      x: 0,
-      ease: 'none',
-      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom bottom', scrub: true },
+    const W = +track.dataset.tileW!, H = +track.dataset.tileH!;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pan = { x: 0, y: 0 }; // from drag and wheel
+    const cur = { x: 0, y: 0 }; // what is drawn
+    const maxScroll = () => document.documentElement.scrollHeight - innerHeight;
+    const target = () => ({ x: pan.x, y: pan.y + (still ? 0 : (maxScroll() - scrollY) * PARALLAX) });
+    const wrap = (v: number, p: number) => ((v % p) + p) % p;
+    let raf = 0;
+    const draw = () => {
+      const t = target();
+      const k = still ? 1 : EASE;
+      cur.x += (t.x - cur.x) * k;
+      cur.y += (t.y - cur.y) * k;
+      if (Math.abs(t.x - cur.x) < 0.1 && Math.abs(t.y - cur.y) < 0.1) { cur.x = t.x; cur.y = t.y; raf = 0; }
+      else raf = requestAnimationFrame(draw);
+      track.style.transform = `translate3d(${wrap(cur.x, W)}px, ${wrap(cur.y, H)}px, 0)`;
+    };
+    const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
+    const t0 = target(); cur.x = t0.x; cur.y = t0.y; draw();
+
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', kick);
+    section.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) pan.x -= e.deltaX;
+      else if (e.deltaY > 0 && scrollY >= maxScroll() - 1) pan.y -= e.deltaY; // past the page end
+      else return; // normal page scroll
+      e.preventDefault();
+      kick();
+    }, { passive: false });
+
+    let drag: { id: number; x: number; y: number; vx: number; vy: number } | null = null;
+    section.addEventListener('pointerdown', (e) => {
+      if ((e.target as Element).closest('a, button') || e.button !== 0) return;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, vx: 0, vy: 0 };
+      section.setPointerCapture(e.pointerId);
+      section.classList.add('is-dragging');
     });
+    section.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      drag = { ...drag, x: e.clientX, y: e.clientY, vx: dx, vy: dy };
+      pan.x += dx; pan.y += dy;
+      kick();
+    });
+    const end = (e: PointerEvent) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!still) { pan.x += drag.vx * 12; pan.y += drag.vy * 12; } // flick carries on
+      drag = null;
+      section.classList.remove('is-dragging');
+      kick();
+    };
+    section.addEventListener('pointerup', end);
+    section.addEventListener('pointercancel', end);
   };
 
   // Copy the email on click; the label reads "Copied!" for a moment
@@ -138,19 +184,28 @@ const cards = [
     pointer-events: none;
   }
 
+  .contacts {
+    cursor: grab;
+    touch-action: pan-y; /* vertical swipes still scroll the page on touch screens */
+  }
+  .contacts.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
   .contacts__cards {
     position: absolute;
     inset: 0;
-    left: 50%;
-    width: 1920px;
-    translate: -50% 0;
+    overflow: hidden;
     z-index: 1; /* above "Let's connect" and the buttons */
     pointer-events: none; /* the buttons under the cards stay clickable */
   }
   /* The whole set moves as one compositor layer: no repaint while it moves */
   .contacts__track {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: calc(50% - 960px); /* the Figma frame is 1920 wide, centered */
+    width: 1920px;
+    height: 100%;
     will-change: transform;
   }
 

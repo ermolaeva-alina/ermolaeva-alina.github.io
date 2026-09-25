@@ -117,7 +117,7 @@ function pad(png, width, height) {
 }
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: config.viewport ?? 1920, height: 1080 }, deviceScaleFactor: 1 });
+const page = await browser.newPage({ viewport: { width: config.viewport ?? 1920, height: 1080 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });
 const results = [];
 
 for (const block of blocks) {
