@@ -47,7 +47,6 @@ const current = Astro.url.pathname;
     -webkit-backdrop-filter: blur(12px) saturate(1.4);
     outline: 1px solid var(--color-border); /* stroke OUTSIDE */
     box-shadow: 0 10px 13.8px -7px rgb(213 213 213 / 0.25);
-    overflow: hidden;
   }
 
   .list {
@@ -95,6 +94,8 @@ const current = Astro.url.pathname;
     border-radius: 100px;
     background: var(--color-brand);
     box-shadow: 0 0 6.4px var(--color-brand);
+    /* cut at the pill's bottom edge (nav 56px − 4px padding − 48.5px = 3.5px visible) */
+    clip-path: inset(-10px -10px 4.5px -10px);
   }
 
   .item:focus-visible {

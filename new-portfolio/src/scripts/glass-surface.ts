@@ -25,7 +25,7 @@ const PRESETS: Record<string, Glass> = {
 };
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
-const BEND = 0.6; // px of shift per px of depth at full refraction
+const BEND = 1.1; // px of shift per px of depth at full refraction
 const SPLIT = 0.12; // red/blue shift difference at full dispersion
 let count = 0;
 
@@ -60,11 +60,13 @@ function roundedRect(px: number, py: number, hw: number, hh: number, r: number) 
   return { d, nx: nx * Math.sign(px || 1), ny: ny * Math.sign(py || 1) };
 }
 
-// Two bitmaps for one element size:
+// Two bitmaps for the glass layer: the element plus a margin m on every side, so
+// the rim can reach the backdrop just outside the element.
 //  map  — displacement: red = x shift, green = y shift, 128 = none
 //  spec — white rim light with alpha
-function maps(w: number, h: number, radius: number, g: Glass, scale: number) {
-  const W = Math.round(w * scale), H = Math.round(h * scale);
+function maps(w: number, h: number, m: number, radius: number, g: Glass, scale: number) {
+  const LW = w + 2 * m, LH = h + 2 * m;
+  const W = Math.round(LW * scale), H = Math.round(LH * scale);
   const bevel = Math.min(g.depth, h / 2, w / 2);
   const lx = Math.cos((g.lightAngle * Math.PI) / 180);
   const ly = Math.sin((g.lightAngle * Math.PI) / 180);
@@ -76,17 +78,18 @@ function maps(w: number, h: number, radius: number, g: Glass, scale: number) {
   const spec = ctx.createImageData(W, H);
   for (let y = 0; y < H; y++) {
     for (let x = 0; x < W; x++) {
-      const px = (x + 0.5) / scale - w / 2, py = (y + 0.5) / scale - h / 2;
+      const px = (x + 0.5) / scale - LW / 2, py = (y + 0.5) / scale - LH / 2;
       const { d, nx, ny } = roundedRect(px, py, w / 2, h / 2, radius);
       const inside = -d; // px from the edge
       const i = (y * W + x) * 4;
-      // Bevel: a quarter-circle profile, steepest at the rim, flat at `bevel` px in.
-      // The steeper the surface, the further the backdrop is pulled from inside.
+      // Bevel: steepest at the rim, flat at `bevel` px in. Like a glass paperweight,
+      // the rim shows what lies beyond the edge, squeezed in: the steeper the
+      // surface, the further out it looks.
       const t = Math.min(Math.max(inside / bevel, 0), 1);
-      const bend = 1 - Math.sqrt(1 - (1 - t) * (1 - t)); // 1 at the rim → 0 inside
-      // Map value v gives a shift of scale·(v − 0.5); pull toward the centre (−normal)
-      disp.data[i] = 128 - nx * bend * 127;
-      disp.data[i + 1] = 128 - ny * bend * 127;
+      const bend = d > 0 ? 0 : (1 - t) ** 1.5; // 1 at the rim → 0 inside
+      // Map value v gives a shift of scale·(v − 0.5); look outward (+normal)
+      disp.data[i] = 128 + nx * bend * 127;
+      disp.data[i + 1] = 128 + ny * bend * 127;
       disp.data[i + 2] = 128;
       disp.data[i + 3] = 255;
       // Rim light on the sides facing the light, weaker on the opposite ones
@@ -96,7 +99,7 @@ function maps(w: number, h: number, radius: number, g: Glass, scale: number) {
       const glow = 0.18 * bend * bend; // soft sheen across the bevel
       const a = g.lightIntensity * lit * lit * (rim + glow);
       spec.data[i] = spec.data[i + 1] = spec.data[i + 2] = 255;
-      spec.data[i + 3] = Math.min(255, a * 255) * (d <= 0 ? 1 : 0);
+      spec.data[i + 3] = d <= 0 ? Math.min(255, a * 255) : 0;
     }
   }
   ctx.putImageData(disp, 0, 0);
@@ -105,6 +108,9 @@ function maps(w: number, h: number, radius: number, g: Glass, scale: number) {
   const specUrl = canvas.toDataURL();
   return { mapUrl, specUrl };
 }
+
+// Largest shift of any colour channel, px
+const reach = (g: Glass) => BEND * g.depth * g.refraction * (1 + SPLIT * g.dispersion);
 
 function createFilter(id: string, g: Glass) {
   const shift = 2 * BEND * g.depth * g.refraction; // map 0…1 → ±shift/2 px
@@ -130,7 +136,7 @@ function createFilter(id: string, g: Glass) {
   </filter></defs>`;
   document.body.append(holder);
   return {
-    filter: holder.querySelector("filter")!,
+    filter: holder.querySelector('filter')!,
     map: holder.querySelector<SVGFEImageElement>('.glass-map')!,
     spec: holder.querySelector<SVGFEImageElement>('.glass-spec')!,
   };
@@ -143,26 +149,49 @@ export function initGlass() {
     if (!g || el.classList.contains('glass--svg')) return;
     const id = `glass-${++count}`;
     const images = createFilter(id, g);
+    const m = Math.ceil(reach(g)) + 2;
+    // The glass is a layer behind the content, m px bigger than the element on every
+    // side (so it sees the backdrop around it) and clipped back to the element shape.
+    // It takes over the element's fill, so the backdrop it bends is untinted.
+    const cs = getComputedStyle(el);
+    const layer = document.createElement('span');
+    layer.className = 'glass-layer';
+    layer.setAttribute('aria-hidden', 'true');
+    Object.assign(layer.style, {
+      position: 'absolute',
+      inset: `${-m}px`,
+      zIndex: '-1',
+      pointerEvents: 'none',
+      background: cs.backgroundColor,
+      backdropFilter: `url(#${id})`,
+    });
+    layer.style.setProperty('-webkit-backdrop-filter', `url(#${id})`);
+    if (cs.position === 'static') el.style.position = 'relative';
+    el.style.isolation = 'isolate';
+    el.style.background = 'transparent';
+    el.style.backdropFilter = 'none';
+    el.style.setProperty('-webkit-backdrop-filter', 'none');
+    el.prepend(layer);
+
     let size = '';
     const update = () => {
       // offsetWidth ignores transforms (the pixel intro scales the chips in)
       const w = el.offsetWidth, h = el.offsetHeight;
       if (!w || !h || size === `${w}x${h}`) return;
       size = `${w}x${h}`;
-      const radius = Math.min(parseFloat(getComputedStyle(el).borderTopLeftRadius) || 0, h / 2, w / 2);
-      const { mapUrl, specUrl } = maps(w, h, radius, g, Math.min(devicePixelRatio || 1, 2));
+      const radius = Math.min(parseFloat(cs.borderTopLeftRadius) || 0, h / 2, w / 2);
+      layer.style.clipPath = `inset(${m}px round ${radius}px)`;
+      const { mapUrl, specUrl } = maps(w, h, m, radius, g, Math.min(devicePixelRatio || 1, 2));
       // Sizes in px: percentages would resolve against the 0×0 holder <svg>
       for (const n of [images.filter, images.map, images.spec]) {
-        n.setAttribute('width', String(w));
-        n.setAttribute('height', String(h));
+        n.setAttribute('width', String(w + 2 * m));
+        n.setAttribute('height', String(h + 2 * m));
       }
       images.map.setAttribute('href', mapUrl);
       images.spec.setAttribute('href', specUrl);
     };
     update();
     new ResizeObserver(update).observe(el);
-    el.style.backdropFilter = `url(#${id})`;
-    el.style.setProperty('-webkit-backdrop-filter', `url(#${id})`);
     el.classList.add('glass--svg');
   });
 }
