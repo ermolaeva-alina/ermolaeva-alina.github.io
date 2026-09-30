@@ -10,7 +10,7 @@ import Button from './Button.astro';
 import InlineSvg from './InlineSvg.astro';
 import linkedin from '../assets/contacts/linkedin.svg?raw';
 import behance from '../assets/contacts/behance.svg?raw';
-import arrowUp from '../assets/contacts/arrow-up-dots.svg?raw';
+import copy from '../assets/contacts/copy.svg?raw'; // Figma: email button "Group 23"
 
 const EMAIL = 'alinaermolaeva044@gmail.com';
 
@@ -70,8 +70,8 @@ const cards = [
         <InlineSvg slot="icon" svg={behance} id="icon-behance" />
       </Button>
       <Button href={links.cv} color="black" size={44} class="cv">CV</Button>
-      <Button color="orange" size={44} class="email" data-email={EMAIL} data-dot-replay aria-label={`Copy email ${EMAIL}`}>
-        <InlineSvg slot="icon" svg={arrowUp} id="icon-arrow-up" />
+      <Button color="orange" size={44} class="email" data-email={EMAIL} aria-label={`Copy email ${EMAIL}`}>
+        <InlineSvg slot="icon" svg={copy} id="icon-copy" />
         <span class="email__label">{EMAIL}</span>
       </Button>
     </div>
