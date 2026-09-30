@@ -7,6 +7,13 @@ import InlineSvg from './InlineSvg.astro';
 import arrowDots from '../assets/widgets/arrow-dots.svg?raw';
 import { adaptyLogo } from '../data/dot-screens';
 // A 20 × 9 grid of 56px tiles (2px gap). Widgets occupy cells; free cells show a tile.
+// Figma "Photos" 553:617972: three rotated photos (Figma x/y and CCW rotation)
+const praguePhotos = [
+  { src: '/images/widgets/prague-1.webp', x: 0.24, y: 27.77, rot: 13.089 },
+  { src: '/images/widgets/prague-2.webp', x: 81.11, y: -0.88, rot: -10.151 },
+  { src: '/images/widgets/prague-3.webp', x: 124.69, y: 21.6, rot: 2 },
+];
+
 const COLS = 20;
 const ROWS = 9;
 
@@ -91,8 +98,18 @@ const industries = [
     </div>
 
     <!-- Based in Prague -->
-    <div class="card prague" style={place(areas.prague)}>
-      <img class="prague__photos" src="/images/widgets/prague-photos.webp" width="201" height="115" alt="Three photos of Prague" />
+    <div class="card prague" style={place(areas.prague)} data-photo-float>
+      <div class="prague__photos" role="img" aria-label="Three photos of Prague">
+        {praguePhotos.map((p, i) => (
+          <span
+            class="prague__photo"
+            data-float-item
+            style={`left: ${p.x}px; top: ${p.y}px; transform: rotate(${-p.rot}deg); --i: ${i}`}
+          >
+            <img src={p.src} width="73" height="91" alt="" />
+          </span>
+        ))}
+      </div>
       <p class="prague__label t-label-12">based in</p>
       <p class="prague__city outlined">Prague</p>
     </div>
@@ -322,7 +339,32 @@ const industries = [
     top: -24px;
     width: 201px;
     height: 115.12px;
+  }
+  /* Figma "Location Icon": 72.56×90.7, radius 7.78, 2px white inside stroke, two shadows */
+  .prague__photo {
+    position: absolute;
+    width: 72.56px;
+    height: 90.7px;
+    border-radius: 7.78px;
+    transform-origin: 0 0;
+    box-shadow:
+      0 2.6px 3.9px -1.3px rgb(10 13 18 / 0.03),
+      0 7.8px 10.4px -2.6px rgb(10 13 18 / 0.08);
+  }
+  .prague__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
     max-width: none;
+    border-radius: inherit;
+    object-fit: cover;
+  }
+  .prague__photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--color-white);
+    border-radius: inherit;
   }
   .prague__label {
     position: absolute;

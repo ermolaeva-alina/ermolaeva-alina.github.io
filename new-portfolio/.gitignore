@@ -26,3 +26,4 @@ pnpm-debug.log*
 # FK Raster is a trial font: local development only until the license is bought
 public/fonts/fk-raster/
 .pixel-diff/
+.figma-src/
