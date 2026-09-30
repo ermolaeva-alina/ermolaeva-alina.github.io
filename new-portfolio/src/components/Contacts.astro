@@ -10,7 +10,7 @@ import Button from './Button.astro';
 import InlineSvg from './InlineSvg.astro';
 import linkedin from '../assets/contacts/linkedin.svg?raw';
 import behance from '../assets/contacts/behance.svg?raw';
-import copy from '../assets/contacts/copy.svg?raw';
+import copy from '../assets/contacts/copy-dots.svg?raw';
 
 const EMAIL = 'alinaermolaeva044@gmail.com';
 
@@ -70,7 +70,7 @@ const cards = [
         <InlineSvg slot="icon" svg={behance} id="icon-behance" />
       </Button>
       <Button href={links.cv} color="black" size={44} class="cv">CV</Button>
-      <Button color="orange" size={44} class="email" data-email={EMAIL} aria-label={`Copy email ${EMAIL}`}>
+      <Button color="orange" size={44} class="email" data-email={EMAIL} data-dot-replay aria-label={`Copy email ${EMAIL}`}>
         <InlineSvg slot="icon" svg={copy} id="icon-copy" />
         <span class="email__label">{EMAIL}</span>
       </Button>
@@ -288,6 +288,18 @@ const cards = [
   .methods :global(.cv) {
     width: 43px;
     padding: var(--space-16) 7px;
+  }
+  .methods :global(.cv .btn__text) {
+    font-weight: 650; /* optical balance with the solid "in" and "Bē" marks */
+  }
+  /* Optical balance: the solid LinkedIn "in" reads biggest, Behance smallest */
+  .methods :global([data-svg="icon-linkedin"]) {
+    width: 17px;
+    height: auto;
+  }
+  .methods :global([data-svg="icon-behance"]) {
+    width: 22px;
+    height: auto;
   }
 
   .methods :global(.email) {
