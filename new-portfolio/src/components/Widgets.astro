@@ -3,6 +3,8 @@
 import Chip from './Chip.astro';
 import Button from './Button.astro';
 import DotMatrix from './DotMatrix.astro';
+import InlineSvg from './InlineSvg.astro';
+import arrowDots from '../assets/widgets/arrow-dots.svg?raw';
 import { adaptyLogo } from '../data/dot-screens';
 // A 20 × 9 grid of 56px tiles (2px gap). Widgets occupy cells; free cells show a tile.
 const COLS = 20;
@@ -96,7 +98,10 @@ const industries = [
     </div>
 
     <!-- CTA -->
-    <Button class="cta" href="#case-studies" icon="/images/widgets/arrow-dots.svg" iconSize={24} specular style={place(areas.cta)}>View case studies</Button>
+    <Button class="cta" href="#case-studies" specular data-dot-replay style={place(areas.cta)}>
+      <InlineSvg slot="icon" svg={arrowDots} id="arrow-dots" class="cta__arrow" />
+      View case studies
+    </Button>
 
     <!-- Experienced at -->
     <div class="card experience" style={place(areas.experience)}>
@@ -335,6 +340,10 @@ const industries = [
   }
 
   /* CTA — shared Button, fixed to the 4-cell width from Figma */
+  .widgets :global(.cta__arrow svg) {
+    width: 24px;
+    height: 24px;
+  }
   .widgets :global(.cta) {
     justify-self: center;
     width: 230px;
