@@ -26,12 +26,12 @@ const TILES = [-1, 0, 1].flatMap((r) => [-1, 0, 1].map((c) => ({ r, c })));
 
 // Card frames relative to the section (Figma "Container" 718:558613)
 const cards = [
-  { src: '/images/contacts/card-1.webp', x: 1392, y: 58, w: 230, h: 288, shadow: 'lg' },
-  { src: '/images/contacts/card-2.webp', x: 174, y: 58, w: 288, h: 346, shadow: 'lg' },
-  { src: '/images/contacts/card-3.webp', x: 1508, y: 638, w: 288, h: 230, shadow: 'lg' },
-  { src: '/images/contacts/card-4.webp', x: 348, y: 522, w: 346, h: 288, shadow: '3xl' },
-  { src: '/images/contacts/card-5.webp', x: 986, y: 638, w: 145, h: 145, shadow: 'lg' },
-  { src: '/images/contacts/card-6.webp', x: 560.07, y: 44.5, w: 145, h: 145, shadow: 'lg' },
+  { src: '/images/contacts/card-1.webp', x: 1392, y: 58, w: 230, h: 288 },
+  { src: '/images/contacts/card-2.webp', x: 174, y: 58, w: 288, h: 346 },
+  { src: '/images/contacts/card-3.webp', x: 1508, y: 638, w: 288, h: 230 },
+  { src: '/images/contacts/card-4.webp', x: 348, y: 522, w: 346, h: 288 },
+  { src: '/images/contacts/card-5.webp', x: 986, y: 638, w: 145, h: 145 },
+  { src: '/images/contacts/card-6.webp', x: 560.07, y: 44.5, w: 145, h: 145 },
 ];
 ---
 
@@ -42,7 +42,7 @@ const cards = [
     <div class="contacts__track" data-tile-w={TILE_W} data-tile-h={TILE_H}>
     {TILES.flatMap((t) => cards.map((c) => (
       <img
-        class:list={['card', `card--${c.shadow}`]}
+        class="card"
         src={c.src}
         width={c.w}
         height={c.h}
@@ -229,11 +229,9 @@ const cards = [
     max-width: none;
     border-radius: var(--radius-card);
   }
-  .card--lg {
-    box-shadow: var(--shadow-lg);
-  }
-  .card--3xl {
-    box-shadow: 0 32px 64px -12px rgb(54 54 48 / 0.15); /* Figma: drop-shadow/3xl */
+  /* Same light shadow as the page plate (Figma: effects/drop-shadow/xs) */
+  .card {
+    box-shadow: 0 1px 2px rgb(54 54 48 / 0.05);
   }
 
   .contacts__center {
