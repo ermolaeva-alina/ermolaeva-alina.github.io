@@ -37,9 +37,32 @@ const layers = Array.from({ length: LAYERS }, (_, i) => {
     z-index: 50; /* above the page, below the navbar (100) */
     pointer-events: none;
   }
+  /* Faded per layer: opacity on the strip itself would cut the layers off from the page behind */
   .progressive-blur > div {
+    opacity: var(--blur-opacity, 1);
     position: absolute;
     left: 0;
     right: 0;
   }
 </style>
+
+<script>
+  // Over the footer the blur goes away: it fades out as the page plate's bottom edge
+  // rises through the strip, and comes back when the plate covers it again.
+  const strip = document.querySelector<HTMLElement>('.progressive-blur');
+  const plate = document.querySelector<HTMLElement>('main.page');
+  if (strip && plate) {
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const h = strip.offsetHeight;
+      const covered = plate.getBoundingClientRect().bottom - (innerHeight - h); // px of the strip over the plate
+      const o = Math.min(Math.max(covered / h, 0), 1);
+      strip.style.setProperty('--blur-opacity', o.toFixed(3));
+      strip.style.visibility = o === 0 ? 'hidden' : '';
+    };
+    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
+</script>
