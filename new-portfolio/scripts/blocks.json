@@ -100,13 +100,13 @@
       "name": "contacts",
       "nodeId": "553:660058",
       "selector": ".contacts",
-      "css": ".navbar{display:none!important}"
+      "css": ".navbar{display:none!important} .contacts{position:relative!important} /* the pinned footer is under the page plate until the very end */"
     },
     {
       "name": "contacts-center",
       "nodeId": "721:558652",
       "selector": ".contacts__center",
-      "css": ".navbar{display:none!important}"
+      "css": ".navbar{display:none!important} .contacts{position:relative!important} /* the pinned footer is under the page plate until the very end */"
     }
   ]
 }
