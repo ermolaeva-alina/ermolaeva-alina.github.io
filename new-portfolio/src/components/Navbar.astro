@@ -1,14 +1,16 @@
 ---
 // Figma: "Navbar Container" 553:618207
-// Floating glass pill, centered at the top. Items have fixed widths from Figma
-// so the active font (FK Raster) doesn't shift the layout. On hover the label
+// Floating glass pill, centered at the top. Items have one fixed width, so the
+// active font (FK Raster) doesn't shift the layout. On the home page the active
+// item follows the section you are looking at. On hover the label
 // under the pointer grows, with a little spring.
 const items = [
-  { label: 'Home', href: '/', width: 67 },
-  { label: 'Case studies', href: '/#case-studies', width: 106 },
-  { label: 'About', href: '/#about', width: 68 },
-  { label: 'Contacts', href: '/#contacts', width: 85 },
+  { label: 'Home', href: '/' },
+  { label: 'Case studies', href: '/#case-studies' },
+  { label: 'About', href: '/#about' },
+  { label: 'Contacts', href: '/#contacts' },
 ];
+const ITEM_WIDTH = 106;
 const current = Astro.url.pathname;
 ---
 
@@ -21,11 +23,11 @@ const current = Astro.url.pathname;
           <a
             class:list={['item', { active }]}
             href={item.href}
-            style={`width: ${item.width}px`}
+            style={`width: ${ITEM_WIDTH}px`}
             aria-current={active ? 'page' : undefined}
           >
             <span class="label">{item.label}</span>
-            {active && <span class="dot" aria-hidden="true" />}
+            <span class="dot" aria-hidden="true" />
           </a>
         </li>
       );
@@ -61,9 +63,7 @@ const current = Astro.url.pathname;
     position: relative;
     display: flex;
     align-items: center;
-    /* Figma centers a hug-width text box, so the text starts exactly at the 16px padding.
-       Browsers render the text ~1px narrower; left-aligning keeps it on the same pixel. */
-    justify-content: flex-start;
+    justify-content: center;
     height: 48px;
     padding: var(--space-8) var(--space-16);
     border-radius: 10px; /* Figma: nav item */
@@ -98,6 +98,7 @@ const current = Astro.url.pathname;
 
   /* Glowing dot, half hidden under the bottom edge of the pill */
   .dot {
+    display: none;
     position: absolute;
     left: 50%;
     top: 48.5px;
@@ -111,6 +112,10 @@ const current = Astro.url.pathname;
     clip-path: inset(-10px -10px 4.5px -10px);
   }
 
+  .item.active .dot {
+    display: block;
+  }
+
   .item:focus-visible {
     outline: 2px solid var(--color-brand);
     outline-offset: -2px;
@@ -120,5 +125,36 @@ const current = Astro.url.pathname;
 <script>
   import { initGlass } from '../scripts/glass-surface';
   initGlass();
+
+  // Scroll spy (home page): the item of the section that holds the upper third of
+  // the screen is active; above the first section it is Home.
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.navbar .item')];
+  const spied = links
+    .map((a) => ({ a, section: a.hash ? document.getElementById(a.hash.slice(1)) : null }))
+    .filter((x) => x.section);
+  const home = links.find((a) => new URL(a.href).pathname === location.pathname && !a.hash);
+  if (spied.length && home) {
+    const setActive = (el: HTMLAnchorElement) => {
+      for (const a of links) {
+        const on = a === el;
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', a === home ? 'page' : 'location');
+        else a.removeAttribute('aria-current');
+      }
+    };
+    let queued = false;
+    const update = () => {
+      queued = false;
+      const line = innerHeight / 3;
+      let current = home;
+      for (const { a, section } of spied) if (section!.getBoundingClientRect().top <= line) current = a;
+      // the last section may be too short to reach the line: count the page bottom too
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = spied[spied.length - 1].a;
+      if (!current.classList.contains('active')) setActive(current);
+    };
+    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
 </script>
 
