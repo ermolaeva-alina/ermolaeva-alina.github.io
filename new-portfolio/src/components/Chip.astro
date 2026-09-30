@@ -11,7 +11,7 @@ interface Props {
 const { size = 'md', point = 'orange', weight = 550, class: className } = Astro.props;
 ---
 
-<span class:list={['chip', `chip--${size}`, className]} data-glass style={size === 'md' ? `--chip-weight: ${weight}` : undefined}>
+<span class:list={['chip', `chip--${size}`, className]} data-glass="chip" style={size === 'md' ? `--chip-weight: ${weight}` : undefined}>
   <span class:list={['point', `point--${point}`]} aria-hidden="true"></span>
   <span class="chip__text"><slot /></span>
 </span>
@@ -57,19 +57,6 @@ const { size = 'md', point = 'orange', weight = 550, class: className } = Astro.
     letter-spacing: -0.02em;
   }
 
-  /* Glass surface (src/scripts/glass-surface.ts, Chromium): the backdrop is bent by an
-     SVG filter; the edge is drawn by inset shadows instead of the stroke */
-  .chip.glass--svg {
-    background: hsl(0 0% 100% / 0.14);
-    outline: none;
-    box-shadow:
-      0 0 2px 1px color-mix(in oklch, black, transparent 85%) inset,
-      0 0 10px 4px color-mix(in oklch, black, transparent 90%) inset,
-      0 4px 16px rgb(17 17 26 / 0.05) inset,
-      0 8px 24px rgb(17 17 26 / 0.05) inset,
-      0 16px 56px rgb(17 17 26 / 0.05) inset,
-      6px 8px 19.7px -6px rgb(66 66 66 / 0.16);
-  }
 </style>
 <script>
   import { initGlass } from "../scripts/glass-surface";

@@ -11,7 +11,7 @@ const items = [
 const current = Astro.url.pathname;
 ---
 
-<nav class="navbar" data-glass aria-label="Main">
+<nav class="navbar" data-glass="nav" aria-label="Main">
   <ul class="list">
     {items.map((item) => {
       const active = item.href === current;
@@ -102,19 +102,6 @@ const current = Astro.url.pathname;
     outline-offset: -2px;
   }
 
-  /* Glass surface (src/scripts/glass-surface.ts, Chromium): the backdrop is bent by an
-     SVG filter; the edge is drawn by inset shadows instead of the stroke */
-  .navbar.glass--svg {
-    background: hsl(0 0% 100% / 0.14);
-    outline: none;
-    box-shadow:
-      0 0 2px 1px color-mix(in oklch, black, transparent 85%) inset,
-      0 0 10px 4px color-mix(in oklch, black, transparent 90%) inset,
-      0 4px 16px rgb(17 17 26 / 0.05) inset,
-      0 8px 24px rgb(17 17 26 / 0.05) inset,
-      0 16px 56px rgb(17 17 26 / 0.05) inset,
-      0 10px 13.8px -7px rgb(213 213 213 / 0.25);
-  }
 </style>
 <script>
   import { initGlass } from "../scripts/glass-surface";
