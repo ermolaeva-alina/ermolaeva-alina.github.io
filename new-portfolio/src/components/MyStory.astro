@@ -34,7 +34,7 @@ const photos = [
 <section class="story" id="about" aria-labelledby="story-title">
   <div class="side cell--hatch"></div>
 
-  <div class="grid" data-pixel-intro>
+  <div class="grid">
     {tileCells.map((t) => <div class="tile" style={place(t)} aria-hidden="true" />)}
 
     <InlineSvg svg={iconAsterisk} id="icon-asterisk" class="icon" style={place({ r: 6, c: 7 })} />

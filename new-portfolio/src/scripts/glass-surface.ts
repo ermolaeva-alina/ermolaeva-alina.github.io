@@ -1,4 +1,4 @@
-// Liquid glass for the navbar and the chips — Figma's GLASS effect, Apple-style:
+// Liquid glass for the navbar — Figma's GLASS effect, Apple-style:
 // the element is a slab of glass with a rounded bevel along its edge. Through the
 // bevel the backdrop is magnified inward (refraction), the colour channels split a
 // little (dispersion), a light catches the rim (specular), and the whole backdrop
@@ -20,8 +20,6 @@ interface Glass {
 const PRESETS: Record<string, Glass> = {
   // Figma: Navbar Container 553:618207
   nav: { frost: 1, refraction: 1, depth: 23, lightAngle: -45, lightIntensity: 0.8, dispersion: 1 },
-  // Figma: Component 4/5 chips
-  chip: { frost: 4, refraction: 0.53, depth: 20, lightAngle: 320, lightIntensity: 0.6, dispersion: 0.27 },
 };
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
