@@ -26,7 +26,10 @@ const current = Astro.url.pathname;
             style={`width: ${ITEM_WIDTH}px`}
             aria-current={active ? 'page' : undefined}
           >
-            <span class="label">{item.label}</span>
+            <span class="label">
+              <span class="face face--sans">{item.label}</span>
+              <span class="face face--raster" aria-hidden="true">{item.label}</span>
+            </span>
             <span class="dot" aria-hidden="true" />
           </a>
         </li>
@@ -74,14 +77,36 @@ const current = Astro.url.pathname;
     transition: color var(--duration-hover) var(--ease-out);
   }
 
-  .item.active {
+  /* Both fonts are stacked in one cell; becoming active cross-fades
+     Inter Tight out and FK Raster in, with a short blur between them */
+  .label {
+    display: grid;
+    justify-items: center;
+    transform-origin: center;
+  }
+  .face {
+    grid-area: 1 / 1;
+    transition:
+      opacity 0.3s var(--ease-out),
+      filter 0.3s var(--ease-out),
+      transform 0.3s var(--ease-out);
+  }
+  .face--raster {
     font-family: var(--font-raster-rounded);
     font-weight: 400;
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(3px);
   }
-
-  .label {
-    display: block;
-    transform-origin: center;
+  .item.active .face--sans {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(-3px);
+  }
+  .item.active .face--raster {
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
   @media (hover: hover) and (prefers-reduced-motion: no-preference) {
     .label {
@@ -98,7 +123,6 @@ const current = Astro.url.pathname;
 
   /* Glowing dot, half hidden under the bottom edge of the pill */
   .dot {
-    display: none;
     position: absolute;
     left: 50%;
     top: 48.5px;
@@ -110,10 +134,23 @@ const current = Astro.url.pathname;
     box-shadow: 0 0 6.4px var(--color-brand);
     /* cut at the pill's bottom edge (nav 56px − 4px padding − 48.5px = 3.5px visible) */
     clip-path: inset(-10px -10px 4.5px -10px);
+    opacity: 0;
+    scale: 0.4;
+    transition:
+      opacity 0.3s var(--ease-out),
+      scale 0.3s var(--ease-out);
   }
 
   .item.active .dot {
-    display: block;
+    opacity: 1;
+    scale: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .face,
+    .dot {
+      transition: none;
+    }
   }
 
   .item:focus-visible {
