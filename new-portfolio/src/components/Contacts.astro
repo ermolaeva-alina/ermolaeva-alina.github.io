@@ -1,8 +1,10 @@
 ---
 // Figma: "Content" 553:660058 — contacts block below the main page frame.
 // Floating screenshot cards around a "Let's connect" headline with a screen-blended glow.
-// While the footer is revealed, the cards drift up a little slower than the scroll
-// (light parallax) and settle on their Figma positions at the page end.
+// The cards are an endless canvas (like simonrico.com): the Figma set is one tile,
+// repeated in a 3 × 3 grid and wrapped, so it can be panned forever in any direction.
+// Drag, horizontal trackpad scroll, or scrolling down at the page bottom pans it;
+// page scroll adds a parallax drift. The headline group stays in the middle, under the cards.
 import Chip from './Chip.astro';
 import Button from './Button.astro';
 import InlineSvg from './InlineSvg.astro';
@@ -18,6 +20,9 @@ const links = {
   cv: '#', // TODO: CV link
 };
 
+const TILE_W = 1996; // Figma: the off-canvas copies sit 1996px to the left
+const TILE_H = 1000;
+const TILES = [-1, 0, 1].flatMap((r) => [-1, 0, 1].map((c) => ({ r, c })));
 
 // Card frames relative to the section (Figma "Container" 718:558613)
 const cards = [
@@ -34,8 +39,8 @@ const cards = [
   <div class="contacts__texture" aria-hidden="true"></div>
 
   <div class="contacts__cards" aria-hidden="true">
-    <div class="contacts__track">
-    {cards.map((c) => (
+    <div class="contacts__track" data-tile-w={TILE_W} data-tile-h={TILE_H}>
+    {TILES.flatMap((t) => cards.map((c) => (
       <img
         class:list={['card', `card--${c.shadow}`]}
         src={c.src}
@@ -43,9 +48,9 @@ const cards = [
         height={c.h}
         alt=""
         loading="lazy"
-        style={`left: ${c.x}px; top: ${c.y}px; width: ${c.w}px; height: ${c.h}px`}
+        style={`left: ${c.x + t.c * TILE_W}px; top: ${c.y + t.r * TILE_H}px; width: ${c.w}px; height: ${c.h}px`}
       />
-    ))}
+    )))}
     </div>
   </div>
 
@@ -74,25 +79,73 @@ const cards = [
 </section>
 
 <script>
-  // Light parallax: the cards lag behind the scroll by PARALLAX while the footer is
-  // revealed, and reach their Figma positions at the very end of the page.
-  const PARALLAX = 0.25; // share of the scroll the cards hold back
+  // Endless card canvas. Drag/wheel pan eases toward its target; the scroll parallax
+  // follows the scroll 1:1 (easing it made the cards lag and jitter behind the page).
+  // While the page plate still covers the footer, nothing is drawn.
+  const PARALLAX = 0.5; // extra drift per px of page scroll
+  const EASE = 0.12;
   const initCards = () => {
-    const track = document.querySelector<HTMLElement>('.contacts__track');
-    const plate = document.querySelector<HTMLElement>('main.page');
-    if (!track || !plate || track.dataset.ready) return;
+    const section = document.querySelector<HTMLElement>('.contacts');
+    const track = section?.querySelector<HTMLElement>('.contacts__track');
+    if (!section || !track || track.dataset.ready) return;
     track.dataset.ready = '1';
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let queued = false;
+    const W = +track.dataset.tileW!, H = +track.dataset.tileH!;
+    const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const pan = { x: 0, y: 0 }; // from drag and wheel
+    const cur = { x: 0, y: 0 }; // what is drawn
+    const maxScroll = () => document.documentElement.scrollHeight - innerHeight;
+    const parallax = () => (still ? 0 : (maxScroll() - scrollY) * PARALLAX);
+    const plate = document.querySelector<HTMLElement>('main.page');
+    const covered = () => !!plate && plate.getBoundingClientRect().bottom >= innerHeight;
+    const wrap = (v: number, p: number) => ((v % p) + p) % p;
+    let raf = 0;
     const draw = () => {
-      queued = false;
-      if (plate.getBoundingClientRect().bottom >= innerHeight) return; // footer still covered
-      const left = document.documentElement.scrollHeight - innerHeight - scrollY; // px to the end
-      track.style.transform = `translate3d(0, ${(left * PARALLAX).toFixed(1)}px, 0)`;
+      raf = 0;
+      const k = still ? 1 : EASE;
+      cur.x += (pan.x - cur.x) * k;
+      cur.y += (pan.y - cur.y) * k;
+      if (Math.abs(pan.x - cur.x) < 0.1 && Math.abs(pan.y - cur.y) < 0.1) { cur.x = pan.x; cur.y = pan.y; }
+      else raf = requestAnimationFrame(draw);
+      if (covered()) return;
+      const x = Math.round(wrap(cur.x, W) * 2) / 2, y = Math.round(wrap(cur.y + parallax(), H) * 2) / 2;
+      track.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     };
-    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(draw); } }, { passive: true });
-    addEventListener('resize', draw);
+    const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
     draw();
+
+    addEventListener('scroll', kick, { passive: true });
+    addEventListener('resize', kick);
+    section.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) pan.x -= e.deltaX;
+      else if (e.deltaY > 0 && scrollY >= maxScroll() - 1) pan.y -= e.deltaY; // past the page end
+      else return; // normal page scroll
+      e.preventDefault();
+      kick();
+    }, { passive: false });
+
+    let drag: { id: number; x: number; y: number; vx: number; vy: number } | null = null;
+    section.addEventListener('pointerdown', (e) => {
+      if ((e.target as Element).closest('a, button') || e.button !== 0) return;
+      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, vx: 0, vy: 0 };
+      section.setPointerCapture(e.pointerId);
+      section.classList.add('is-dragging');
+    });
+    section.addEventListener('pointermove', (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+      drag = { ...drag, x: e.clientX, y: e.clientY, vx: dx, vy: dy };
+      pan.x += dx; pan.y += dy;
+      kick();
+    });
+    const end = (e: PointerEvent) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      if (!still) { pan.x += drag.vx * 12; pan.y += drag.vy * 12; } // flick carries on
+      drag = null;
+      section.classList.remove('is-dragging');
+      kick();
+    };
+    section.addEventListener('pointerup', end);
+    section.addEventListener('pointercancel', end);
   };
 
   // Copy the email on click; the label reads "Copied!" for a moment
@@ -146,6 +199,14 @@ const cards = [
     pointer-events: none;
   }
 
+  .contacts {
+    cursor: grab;
+    touch-action: pan-y; /* vertical swipes still scroll the page on touch screens */
+  }
+  .contacts.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
   .contacts__cards {
     position: absolute;
     inset: 0;
