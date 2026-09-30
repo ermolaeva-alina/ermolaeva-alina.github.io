@@ -5,7 +5,6 @@ interface Props {
   href?: string;
   icon?: string; // icon image before the label
   iconSize?: number; // px, default 20
-  specular?: boolean; // on hover, light streaks sweep around the edge (reactbits "Specular Button")
   color?: 'orange' | 'black';
   size?: 56 | 44;
   iconOnly?: boolean;
@@ -14,19 +13,18 @@ interface Props {
   style?: string;
   [attr: string]: unknown;
 }
-const { href, icon, iconSize = 20, specular = false, color = 'orange', size = 56, iconOnly = false, label, class: className, style, ...rest } = Astro.props;
+const { href, icon, iconSize = 20, color = 'orange', size = 56, iconOnly = false, label, class: className, style, ...rest } = Astro.props;
 const Tag = href ? 'a' : 'button';
 ---
 
 <Tag
-  class:list={['btn', `btn--${color}`, `btn--${size}`, { 'btn--icon': iconOnly, 'btn--specular': specular }, className]}
+  class:list={['btn', `btn--${color}`, `btn--${size}`, { 'btn--icon': iconOnly }, className]}
   href={href}
   type={href ? undefined : 'button'}
   aria-label={label}
   style={style}
   {...rest}
 >
-  {specular && <span class="btn__shine" aria-hidden="true" />}
   {icon && <img src={icon} width={iconSize} height={iconSize} alt="" />}
   <slot name="icon" />
   {!iconOnly && <span class="btn__text"><slot /></span>}
@@ -78,48 +76,6 @@ const Tag = href ? 'a' : 'button';
       inset 0 -2px 9px rgb(255 255 255 / 0.46),
       inset 0 2px 0 rgb(255 255 255 / 0.28),
       var(--shadow-dark);
-  }
-
-  /* Specular edge (reactbits "Specular Button" with Auto Animate): on hover two light
-     streaks appear on a 1.5px ring over the stroke and slowly sweep around the button */
-  .btn--specular {
-    position: relative;
-  }
-  .btn__shine {
-    position: absolute;
-    inset: 0;
-    padding: 1.5px;
-    border-radius: inherit;
-    background: conic-gradient(
-      from var(--shine-angle),
-      rgb(255 255 255 / 0.85) 0deg, transparent 22deg,
-      transparent 158deg, rgb(255 255 255 / 0.5) 180deg, transparent 202deg,
-      transparent 338deg, rgb(255 255 255 / 0.85) 360deg
-    );
-    animation: btn-shine 6s linear infinite;
-    animation-play-state: paused;
-    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    opacity: 0;
-    transition: opacity 0.25s ease-out;
-    pointer-events: none;
-  }
-
-  .btn--specular:hover .btn__shine {
-    opacity: 1;
-    animation-play-state: running;
-  }
-  @property --shine-angle {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
-  }
-  @keyframes btn-shine {
-    to { --shine-angle: 360deg; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .btn__shine { animation: none; }
   }
 
   .btn__text {
