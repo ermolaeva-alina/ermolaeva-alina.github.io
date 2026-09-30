@@ -1,7 +1,8 @@
 ---
 // Figma: "Navbar Container" 553:618207
 // Floating glass pill, centered at the top. Items have fixed widths from Figma
-// so the hover font swap (Inter Tight -> FK Raster) doesn't shift the layout.
+// so the active font (FK Raster) doesn't shift the layout. On hover the labels
+// magnify around the pointer like a macOS dock (reactbits.dev "Dock").
 const items = [
   { label: 'Home', href: '/', width: 67 },
   { label: 'Case studies', href: '/#case-studies', width: 106 },
@@ -12,7 +13,7 @@ const current = Astro.url.pathname;
 ---
 
 <nav class="navbar" data-glass="nav" aria-label="Main">
-  <ul class="list">
+  <ul class="list" data-dock>
     {items.map((item) => {
       const active = item.href === current;
       return (
@@ -23,7 +24,7 @@ const current = Astro.url.pathname;
             style={`width: ${item.width}px`}
             aria-current={active ? 'page' : undefined}
           >
-            {item.label}
+            <span class="label">{item.label}</span>
             {active && <span class="dot" aria-hidden="true" />}
           </a>
         </li>
@@ -73,10 +74,15 @@ const current = Astro.url.pathname;
     transition: color var(--duration-hover) var(--ease-out);
   }
 
-  .item:hover,
   .item.active {
     font-family: var(--font-raster-rounded);
     font-weight: 400;
+  }
+
+  .label {
+    display: block;
+    transform-origin: center;
+    will-change: transform;
   }
 
   .item.active {
@@ -105,7 +111,9 @@ const current = Astro.url.pathname;
 
 </style>
 <script>
-  import { initGlass } from "../scripts/glass-surface";
+  import { initGlass } from '../scripts/glass-surface';
+  import { initDock } from '../scripts/dock';
   initGlass();
+  initDock();
 </script>
 
