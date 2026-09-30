@@ -85,3 +85,14 @@ html.pixel-intro [data-pixel-intro=''] > * {
   transform-box: fill-box;
   transform-origin: center;
 }
+
+/* Anchor links (e.g. "View case studies") glide to their section instead of jumping */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+/* Anchored sections stop below the fixed navbar */
+section[id] {
+  scroll-margin-top: 80px;
+}
