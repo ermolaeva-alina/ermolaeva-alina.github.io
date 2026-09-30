@@ -21,6 +21,14 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <ClientRouter />
+    <script is:inline>
+      // Pixel intro (src/scripts/pixel-intro.ts): hide the grids before first paint.
+      // Falls back to showing everything if the script has not started in 3s.
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('pixel-intro');
+        setTimeout(() => { if (!window.__pixelIntroReady) document.documentElement.classList.remove('pixel-intro'); }, 3000);
+      }
+    </script>
   </head>
   <body>
     <slot />

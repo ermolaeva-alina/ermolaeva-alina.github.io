@@ -45,7 +45,7 @@ const industries = [
 <section class="widgets" aria-label="About me at a glance">
   <div class="side cell--hatch"></div>
 
-  <div class="grid">
+  <div class="grid" data-pixel-intro>
     {tiles.map((t) => <div class="tile" style={`grid-area: ${t.r + 1} / ${t.c + 1}`} aria-hidden="true" />)}
 
     <!-- Skills ticker -->

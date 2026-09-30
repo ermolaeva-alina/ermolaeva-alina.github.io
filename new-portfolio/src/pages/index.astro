@@ -22,6 +22,11 @@ import ProgressiveBlur from '../components/ProgressiveBlur.astro';
   <ProgressiveBlur />
 </Base>
 
+<script>
+  import { initPixelIntro } from '../scripts/pixel-intro';
+  initPixelIntro();
+</script>
+
 <style>
   .page {
     background: var(--color-bg); /* Figma: Main fill #f2f3f3 over the Container gradient */
