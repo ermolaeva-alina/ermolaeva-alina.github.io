@@ -184,7 +184,15 @@ const current = Astro.url.pathname;
       queued = false;
       const line = innerHeight / 3;
       let current = home;
-      for (const { a, section } of spied) if (section!.getBoundingClientRect().top <= line) current = a;
+      for (const { a, section } of spied) {
+        // A pinned (sticky) section — the footer under the page plate — starts where
+        // the element before it ends
+        const prev = section!.previousElementSibling;
+        const top = getComputedStyle(section!).position === 'sticky' && prev
+          ? prev.getBoundingClientRect().bottom
+          : section!.getBoundingClientRect().top;
+        if (top <= line) current = a;
+      }
       // the last section may be too short to reach the line: count the page bottom too
       if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) current = spied[spied.length - 1].a;
       if (!current.classList.contains('active')) setActive(current);

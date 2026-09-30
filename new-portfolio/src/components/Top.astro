@@ -21,12 +21,11 @@ const photos = [
   <div class="row row--start">
     <div class="side cell--hatch"></div>
     <div class="content">
-      <div class="photos" data-photo-float>
-        {photos.map((p, i) => (
+      <div class="photos">
+        {photos.map((p) => (
           <figure
             class="photo"
-            data-float-item
-            style={`left: ${p.x}px; top: ${p.y}px; transform: rotate(${-p.rot}deg); box-shadow: ${p.shadow}; --i: ${i}`}
+            style={`left: ${p.x}px; top: ${p.y}px; transform: rotate(${-p.rot}deg); box-shadow: ${p.shadow}`}
           >
             {p.src && <img src={p.src} width="58" height="57" alt={p.alt} />}
             <span class="photo__handle photo__handle--tl" aria-hidden="true"></span>
@@ -47,11 +46,6 @@ const photos = [
     <div class="side cell--hatch"></div>
   </div>
 </header>
-
-<script>
-  import { initPhotoFloat } from '../scripts/photo-float';
-  initPhotoFloat();
-</script>
 
 <style>
   .top {

@@ -98,13 +98,12 @@ const industries = [
     </div>
 
     <!-- Based in Prague -->
-    <div class="card prague" style={place(areas.prague)} data-photo-float>
+    <div class="card prague" style={place(areas.prague)}>
       <div class="prague__photos" role="img" aria-label="Three photos of Prague">
-        {praguePhotos.map((p, i) => (
+        {praguePhotos.map((p) => (
           <span
             class="prague__photo"
-            data-float-item
-            style={`left: ${p.x}px; top: ${p.y}px; transform: rotate(${-p.rot}deg); --i: ${i}`}
+            style={`left: ${p.x}px; top: ${p.y}px; transform: rotate(${-p.rot}deg)`}
           >
             <img src={p.src} width="73" height="91" alt="" />
           </span>

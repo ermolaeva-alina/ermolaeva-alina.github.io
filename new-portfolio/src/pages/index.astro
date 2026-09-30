@@ -29,7 +29,17 @@ import ProgressiveBlur from '../components/ProgressiveBlur.astro';
 </script>
 
 <style>
+  /* The page is a plate over the footer: rounded bottom, stroke and shadow from Figma
+     "Main", plus a deeper shadow so it reads as lifted. Scrolling past it reveals
+     Contacts, which stays pinned underneath (see Contacts.astro). */
   .page {
+    position: relative;
+    z-index: 1;
+    border-radius: 0 0 32px 32px; /* Figma: Main bottom corners */
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.1), /* Figma: Main stroke, black 10% */
+      0 1px 2px rgb(54 54 48 / 0.05), /* Figma: Main drop shadow */
+      0 24px 48px -12px rgb(17 17 26 / 0.12);
     background: var(--color-bg); /* Figma: Main fill #f2f3f3 over the Container gradient */
     display: flex;
     flex-direction: column;

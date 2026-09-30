@@ -97,14 +97,3 @@ section[id] {
   scroll-margin-top: 80px;
 }
 
-/* Photo stacks (src/scripts/photo-float.ts): while hovered, the photos drift gently.
-   Each starts after its pop-in (520ms + 45ms per photo), from rest, so nothing jumps. */
-@media (prefers-reduced-motion: no-preference) {
-  [data-photo-float].is-floating [data-float-item] {
-    animation: photo-drift 3.2s ease-in-out infinite;
-    animation-delay: calc(520ms + var(--i, 0) * 45ms);
-  }
-}
-@keyframes photo-drift {
-  50% { translate: 0 -3px; }
-}

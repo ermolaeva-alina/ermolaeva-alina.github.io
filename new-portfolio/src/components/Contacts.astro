@@ -165,10 +165,13 @@ const cards = [
 </script>
 
 <style>
+  /* Footer reveal: pinned to the bottom of the screen under the page plate, so the
+     plate slides up off it instead of the footer scrolling in */
   .contacts {
-    position: relative;
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
     height: 926px;
-    margin-top: var(--space-56); /* Figma: Container gap between Main and Content */
     overflow-x: clip; /* the 2048px texture is wider than the viewport */
   }
 
