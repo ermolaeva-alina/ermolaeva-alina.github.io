@@ -2,6 +2,8 @@
 // Figma: "Widgets" 553:617776
 import Chip from './Chip.astro';
 import Button from './Button.astro';
+import DotMatrix from './DotMatrix.astro';
+import { adaptyLogo } from '../data/dot-screens';
 // A 20 × 9 grid of 56px tiles (2px gap). Widgets occupy cells; free cells show a tile.
 const COLS = 20;
 const ROWS = 9;
@@ -82,8 +84,8 @@ const industries = [
     </div>
 
     <!-- Adapty pixel logo -->
-    <div class="pixels" style={place(areas.pixels)}>
-      <img src="/images/widgets/adapty-pixels.svg" width="50" height="50" alt="Adapty logo" />
+    <div class="pixels" style={place(areas.pixels)} data-dot-replay>
+      <DotMatrix id="adapty-logo" label="Adapty logo" {...adaptyLogo} r={1} shine={{ spread: 1, blur: 4, alpha: 0.12 }} />
     </div>
 
     <!-- Based in Prague -->

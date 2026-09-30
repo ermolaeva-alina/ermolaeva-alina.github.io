@@ -64,3 +64,28 @@ export function initPixelIntro() {
   );
   grids.forEach((g) => io.observe(g));
 }
+
+// Dot-matrix pictures ([data-dot-replay]: the My story screens, the pixel logo):
+// on hover the lit dots go dark and pop back in random order, like the tiles.
+export function initDotReplay() {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll<HTMLElement>('[data-dot-replay]').forEach((el) => {
+    if (el.dataset.dotReplay === 'ready') return;
+    el.dataset.dotReplay = 'ready';
+    let playing = false;
+    el.addEventListener('pointerenter', () => {
+      if (playing) return;
+      playing = true;
+      const anims = [...el.querySelectorAll<SVGGElement>('.dot__px')].map((px) =>
+        px.animate(
+          [
+            { transform: `scale(${FROM})`, opacity: 0 },
+            { transform: 'scale(1)', opacity: 1 },
+          ],
+          { duration: PIXEL, delay: Math.random() * (TOTAL - PIXEL), easing: EASING, fill: 'backwards' },
+        ),
+      );
+      Promise.all(anims.map((a) => a.finished)).then(() => (playing = false));
+    });
+  });
+}

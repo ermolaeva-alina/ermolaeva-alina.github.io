@@ -110,3 +110,28 @@ export const glass: DotScreen = {
     30: '5-12',
   }),
 };
+
+// Figma 784:629806 — pixel Adapty logo in the Widgets button. Figma draws it on a
+// 20 × 20 grid where it sits 1px off centre; on 21 × 21 it is centred exactly
+// (6 free columns and 5 free rows on each side) and the grid stays centred too.
+export const adaptyLogo = {
+  rows: 21,
+  cols: 21,
+  width: 52, // 20 × 2.5 + 2
+  height: 52,
+  pitchX: 2.5,
+  pitchY: 2.5,
+  on: rows({
+    5: '14',
+    6: '12-14',
+    7: '8-9, 11-14',
+    8: '7-9, 11-14',
+    9: '6-9, 11-14',
+    10: '6-9, 11-14',
+    11: '6-9, 11-14',
+    12: '6-9, 11-14',
+    13: '6-9, 11-14',
+    14: '7-9, 11-13',
+    15: '8-9, 11-12',
+  }),
+};

@@ -92,7 +92,7 @@ The older order of preference is kept below for reference:
 
 **Lighten every exported SVG** (keep the original in `.pixel-diff/svg-orig/`, then re-run the block's diff):
 - A regular dot grid (hundreds of `<circle>`s with the same r/fill) becomes one `<pattern>` plus a `<rect>` per filled area. Check the export for missing cells first: a partial row gets its own rect, and single gaps get a background-colored rect.
-- Per-dot drop-shadow filters (Figma glow) become one precomputed `radialGradient` (the `glow()` in `DotScreen.astro`, or `scripts/make-pixels.mjs`).
+- Per-dot drop-shadow filters (Figma glow) become one precomputed `radialGradient` (the `glow()` in `DotMatrix.astro`, shared by the My story screens and the pixel logo).
 - Then run `npx svgo -p 2 <files>`. It cuts path-heavy icons by 40–60% with no visible change. InlineSvg re-prefixes ids, so svgo's id shortening is safe.
 - Keep a Figma vector as PNG only when the node contains a raster image fill.
 - **Photos inside frames, handles or rotation:** do not export the whole composition as one image. An export is cut to the node box, so anything sticking out (selection handles, strokes, shadows) is clipped. Instead, take the original fill with `figma.getImageByHash(hash).getBytesAsync()` through the bridge, crop it to the box with sharp (`fit: 'cover'` for scaleMode FILL) at 2×, and build the frame, handles, shadow and `rotate(-rotation deg)` (with `transform-origin: 0 0` at the node's x/y) in CSS.

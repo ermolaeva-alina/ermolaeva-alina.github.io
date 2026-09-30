@@ -1,0 +1,113 @@
+---
+// Dot-matrix picture as inline SVG — shared by the "My story" screens (DotScreen)
+// and the pixel Adapty logo. Every lit dot is a real element you can animate:
+//   <g class="dot" data-r data-c transform="translate(cx cy)">  — positioned lit dot
+//     <g class="dot__px">glow + dot, centred at 0,0</g>           — animate this one
+//   <g class="led">                                              — green status LED
+// Scale or fade a .dot__px and its glow follows. Unlit dots are one SVG pattern.
+// The <svg> carries data-rows/cols and data-pitch-x/y, so a script can add or move
+// dots on the same grid: cx = col * pitchX + r, cy = row * pitchY + r.
+import type { Dot } from '../data/dot-screens';
+
+interface Props {
+  id: string; // unique per page — used for pattern/gradient ids
+  label: string; // accessible description of the picture
+  rows: number;
+  cols: number;
+  width: number;
+  height: number;
+  pitchX: number;
+  pitchY: number;
+  r: number; // dot radius
+  on: Dot[];
+  empty?: Dot[];
+  led?: Dot;
+  shine: { spread: number; blur: number; alpha: number }; // Figma drop shadow on a lit dot
+}
+const { id, label, rows, cols, width, height, pitchX, pitchY, r: R, on, empty = [], led, shine: sh } = Astro.props;
+
+// Figma drop shadow (blur, spread) on a dot = a disk of radius R + spread blurred by σ = blur / 2.
+// Precomputed as a radial gradient: same look as an SVG filter, but nearly free to paint.
+function glow(spread: number, blur: number, alpha: number) {
+  const disk = R + spread;
+  const sigma = blur / 2;
+  const extent = disk + 3 * sigma;
+  const value = (d: number) => {
+    // 2D disk ⊛ Gaussian, integrated numerically
+    let sum = 0;
+    const N = 48;
+    for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
+      const x = -disk + ((i + 0.5) / N) * 2 * disk, y = -disk + ((j + 0.5) / N) * 2 * disk;
+      if (x * x + y * y > disk * disk) continue;
+      sum += Math.exp(-((d - x) ** 2 + y * y) / (2 * sigma * sigma));
+    }
+    return (sum * (2 * disk / N) ** 2) / (2 * Math.PI * sigma * sigma);
+  };
+  const stops = Array.from({ length: 9 }, (_, i) => {
+    const t = i / 8;
+    return { offset: +t.toFixed(3), opacity: +(alpha * value(t * extent)).toFixed(4) };
+  });
+  return { r: +extent.toFixed(2), stops };
+}
+const shine = glow(sh.spread, sh.blur, sh.alpha);
+const ledGlow = glow(0, 6.4, 1); // LED: #aeed00, blur 6.4
+const cx = (c: number) => +(c * pitchX + R).toFixed(3);
+const cy = (r: number) => +(r * pitchY + R).toFixed(3);
+---
+
+<svg
+  class="dot-matrix"
+  width={width}
+  height={height}
+  viewBox={`0 0 ${width} ${height}`}
+  role="img"
+  aria-label={label}
+  data-rows={rows}
+  data-cols={cols}
+  data-pitch-x={pitchX}
+  data-pitch-y={pitchY}
+>
+  <defs>
+    <pattern id={`${id}-off`} width={pitchX} height={pitchY} patternUnits="userSpaceOnUse">
+      <circle cx={R} cy={R} r={R} fill="#ffffff" fill-opacity="0.1" />
+    </pattern>
+    <radialGradient id={`${id}-shine`}>
+      {shine.stops.map((st) => <stop offset={st.offset} stop-color="#ffffff" stop-opacity={st.opacity} />)}
+    </radialGradient>
+    {led && (
+      <radialGradient id={`${id}-led`}>
+        {ledGlow.stops.map((st) => <stop offset={st.offset} stop-color="#aeed00" stop-opacity={st.opacity} />)}
+      </radialGradient>
+    )}
+  </defs>
+
+  <rect width="100%" height="100%" fill={`url(#${id}-off)`} />
+  {empty.map(([r, c]) => <rect x={cx(c) - R} y={cy(r) - R} width={R * 2} height={R * 2} fill="#020202" />)}
+  {led && (
+    <g class="led" transform={`translate(${cx(led[1])} ${cy(led[0])})`}>
+      <circle r={ledGlow.r} fill={`url(#${id}-led)`} />
+      <circle r={R} fill="#a1d906" />
+    </g>
+  )}
+  <g class="dot-matrix__on">
+    {on.map(([r, c]) => (
+      <g class="dot" data-r={r} data-c={c} transform={`translate(${cx(c)} ${cy(r)})`}>
+        <g class="dot__px">
+          <circle r={shine.r} fill={`url(#${id}-shine)`} />
+          <circle r={R} fill="#fcfdfd" />
+        </g>
+      </g>
+    ))}
+  </g>
+</svg>
+
+<style>
+  .dot-matrix {
+    display: block;
+    overflow: hidden;
+  }
+  .dot__px {
+    transform-box: fill-box; /* scale each dot around its own centre */
+    transform-origin: center;
+  }
+</style>
