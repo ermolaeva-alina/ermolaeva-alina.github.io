@@ -15,7 +15,11 @@ import copy from '../assets/contacts/copy.svg?raw';
 const EMAIL = 'alinaermolaeva044@gmail.com';
 
 // TODO: real URLs — the user will send them later
-const links = { linkedin: '#', behance: '#', cv: '#' };
+const links = {
+  linkedin: 'https://www.linkedin.com/in/alina-ermolaeva-/',
+  behance: 'https://www.behance.net/mandxalinka',
+  cv: '#', // TODO: CV link
+};
 
 const TILE_W = 1996; // Figma: the off-canvas copies sit 1996px to the left
 const TILE_H = 1000;
@@ -76,7 +80,9 @@ const cards = [
 </section>
 
 <script>
-  // Endless card canvas: target offset follows input, the drawn offset eases toward it
+  // Endless card canvas. Drag/wheel pan eases toward its target; the scroll parallax
+  // follows the scroll 1:1 (easing it made the cards lag and jitter behind the page).
+  // While the page plate still covers the footer, nothing is drawn.
   const PARALLAX = 0.5; // extra drift per px of page scroll
   const EASE = 0.12;
   const initCards = () => {
@@ -89,20 +95,24 @@ const cards = [
     const pan = { x: 0, y: 0 }; // from drag and wheel
     const cur = { x: 0, y: 0 }; // what is drawn
     const maxScroll = () => document.documentElement.scrollHeight - innerHeight;
-    const target = () => ({ x: pan.x, y: pan.y + (still ? 0 : (maxScroll() - scrollY) * PARALLAX) });
+    const parallax = () => (still ? 0 : (maxScroll() - scrollY) * PARALLAX);
+    const plate = document.querySelector<HTMLElement>('main.page');
+    const covered = () => !!plate && plate.getBoundingClientRect().bottom >= innerHeight;
     const wrap = (v: number, p: number) => ((v % p) + p) % p;
     let raf = 0;
     const draw = () => {
-      const t = target();
+      raf = 0;
       const k = still ? 1 : EASE;
-      cur.x += (t.x - cur.x) * k;
-      cur.y += (t.y - cur.y) * k;
-      if (Math.abs(t.x - cur.x) < 0.1 && Math.abs(t.y - cur.y) < 0.1) { cur.x = t.x; cur.y = t.y; raf = 0; }
+      cur.x += (pan.x - cur.x) * k;
+      cur.y += (pan.y - cur.y) * k;
+      if (Math.abs(pan.x - cur.x) < 0.1 && Math.abs(pan.y - cur.y) < 0.1) { cur.x = pan.x; cur.y = pan.y; }
       else raf = requestAnimationFrame(draw);
-      track.style.transform = `translate3d(${wrap(cur.x, W)}px, ${wrap(cur.y, H)}px, 0)`;
+      if (covered()) return;
+      const x = Math.round(wrap(cur.x, W) * 2) / 2, y = Math.round(wrap(cur.y + parallax(), H) * 2) / 2;
+      track.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     };
     const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
-    const t0 = target(); cur.x = t0.x; cur.y = t0.y; draw();
+    draw();
 
     addEventListener('scroll', kick, { passive: true });
     addEventListener('resize', kick);

@@ -16,6 +16,9 @@ const variants = {
   'no tiles': '.tile{display:none!important}',
   'no text': '*{color:transparent!important;-webkit-text-stroke:0!important}',
   'no inline svgs': '.inline-svg{visibility:hidden!important}',
+  'no glass': '.glass-layer{display:none!important}',
+  'no sticky footer': '.contacts{position:relative!important}',
+  'no card loop': '.contacts__track{visibility:hidden!important}',
 };
 const only = process.argv.slice(2);
 for (const [name, css] of Object.entries(variants).filter(([n]) => !only.length || only.includes(n))) {

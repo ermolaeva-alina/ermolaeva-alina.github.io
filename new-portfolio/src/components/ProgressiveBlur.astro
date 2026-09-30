@@ -1,19 +1,29 @@
 ---
 // Progressive blur along the bottom edge of the screen (like midu.design):
-// 8 stacked layers, each blurring twice as much as the one before, each masked to
-// its own band, so the blur fades in smoothly toward the bottom edge.
+// 8 steps, each blurring twice as much as the one before, each masked to its own
+// band, so the blur fades in smoothly toward the bottom edge.
+// Performance: every layer is only as tall as its band (a backdrop blur costs by
+// area, and it is redrawn on every frame something moves under it), and the two
+// top steps (under 1px of blur, invisible) are skipped.
 const LAYERS = 8;
 const MAX_BLUR = 36; // px, the bottom-most layer (midu.design uses 17.5)
-const step = 100 / LAYERS; // mask band, %
-const layers = Array.from({ length: LAYERS }, (_, i) => ({
-  blur: +(MAX_BLUR / 2 ** (LAYERS - 1 - i)).toFixed(3),
-  mask: `linear-gradient(to bottom, transparent ${i * step}%, #000 ${(i + 1) * step}%, #000 ${(i + 2) * step}%, transparent ${(i + 3) * step}%)`,
-}));
+const MIN_BLUR = 1; // px, lighter steps are not drawn
+const step = 100 / LAYERS; // band, % of the strip
+const layers = Array.from({ length: LAYERS }, (_, i) => {
+  const blur = +(MAX_BLUR / 2 ** (LAYERS - 1 - i)).toFixed(3);
+  const top = i * step;
+  const bottom = Math.min((i + 3) * step, 100);
+  const h = bottom - top;
+  const at = (p: number) => `${(((p - top) / h) * 100).toFixed(2)}%`;
+  // fade in over one band, full over the next, fade out over the third (cut at the bottom edge)
+  const mask = `linear-gradient(to bottom, transparent 0%, #000 ${at(top + step)}, #000 ${at(Math.min(top + 2 * step, 100))}, ${(i + 3) * step > 100 ? '#000' : 'transparent'} 100%)`;
+  return { blur, top, h, mask };
+}).filter((l) => l.blur >= MIN_BLUR);
 ---
 
 <div class="progressive-blur" aria-hidden="true">
   {layers.map((l, i) => (
-    <div style={`z-index: ${i + 1}; backdrop-filter: blur(${l.blur}px); -webkit-backdrop-filter: blur(${l.blur}px); mask-image: ${l.mask}; -webkit-mask-image: ${l.mask}`} />
+    <div style={`top: ${l.top}%; height: ${l.h}%; z-index: ${i + 1}; backdrop-filter: blur(${l.blur}px); -webkit-backdrop-filter: blur(${l.blur}px); mask-image: ${l.mask}; -webkit-mask-image: ${l.mask}`} />
   ))}
 </div>
 
@@ -29,6 +39,7 @@ const layers = Array.from({ length: LAYERS }, (_, i) => ({
   }
   .progressive-blur > div {
     position: absolute;
-    inset: 0;
+    left: 0;
+    right: 0;
   }
 </style>
