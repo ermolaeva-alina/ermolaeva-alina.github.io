@@ -103,6 +103,14 @@ const Tag = href ? 'a' : 'button';
   .btn--orange {
     background: var(--color-brand);
     box-shadow: inset 0 0 0 1px var(--color-brand-dark), var(--shadow-orange);
+    transition: background-color 0.15s ease-out;
+  }
+  /* A touch lighter on hover, back to the base orange while pressed */
+  .btn--orange:hover {
+    background: color-mix(in srgb, var(--color-brand), #fff 12%);
+  }
+  .btn--orange:active {
+    background: var(--color-brand);
   }
 
   .btn--black {
@@ -124,8 +132,8 @@ const Tag = href ? 'a' : 'button';
     padding: 1px;
     border-radius: inherit;
     background:
-      radial-gradient(64px 64px at var(--shine-x, 50%) var(--shine-y, 0), #fff, transparent 70%),
-      radial-gradient(40px 40px at var(--shine-x2, 50%) var(--shine-y2, 100%), rgb(255 255 255 / 0.5), transparent 70%);
+      radial-gradient(64px 64px at var(--shine-x, 50%) var(--shine-y, 0), rgb(255 255 255 / 0.5), transparent 70%),
+      radial-gradient(40px 40px at var(--shine-x2, 50%) var(--shine-y2, 100%), rgb(255 255 255 / 0.25), transparent 70%);
     mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
