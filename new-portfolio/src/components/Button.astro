@@ -3,7 +3,9 @@
 // Renders an <a> when href is given, otherwise a <button>.
 interface Props {
   href?: string;
-  icon?: string; // 20px icon image before the label
+  icon?: string; // icon image before the label
+  iconSize?: number; // px, default 20
+  specular?: boolean; // shine along the edge that turns toward the cursor (reactbits "Specular Button")
   color?: 'orange' | 'black';
   size?: 56 | 44;
   iconOnly?: boolean;
@@ -12,22 +14,64 @@ interface Props {
   style?: string;
   [attr: string]: unknown;
 }
-const { href, icon, color = 'orange', size = 56, iconOnly = false, label, class: className, style, ...rest } = Astro.props;
+const { href, icon, iconSize = 20, specular = false, color = 'orange', size = 56, iconOnly = false, label, class: className, style, ...rest } = Astro.props;
 const Tag = href ? 'a' : 'button';
 ---
 
 <Tag
-  class:list={['btn', `btn--${color}`, `btn--${size}`, { 'btn--icon': iconOnly }, className]}
+  class:list={['btn', `btn--${color}`, `btn--${size}`, { 'btn--icon': iconOnly, 'btn--specular': specular }, className]}
   href={href}
   type={href ? undefined : 'button'}
   aria-label={label}
   style={style}
   {...rest}
 >
-  {icon && <img src={icon} width="20" height="20" alt="" />}
+  {specular && <span class="btn__shine" aria-hidden="true" />}
+  {icon && <img src={icon} width={iconSize} height={iconSize} alt="" />}
   <slot name="icon" />
   {!iconOnly && <span class="btn__text"><slot /></span>}
 </Tag>
+
+<script>
+  // Specular edge: a highlight on the stroke at the point nearest the cursor (and a
+  // weaker one opposite), fading in as the cursor comes within PROXIMITY px
+  const PROXIMITY = 150;
+  const INTENSITY = 1;
+  let raf = 0;
+  let mouse = { x: -1e4, y: -1e4 };
+  const update = () => {
+    raf = 0;
+    document.querySelectorAll<HTMLElement>('.btn--specular').forEach((btn) => {
+      const r = btn.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      // nearest point of the box to the cursor, pushed onto the edge
+      let x = Math.min(Math.max(mouse.x, r.left), r.right) - r.left;
+      let y = Math.min(Math.max(mouse.y, r.top), r.bottom) - r.top;
+      const inside = x > 0 && x < r.width && y > 0 && y < r.height;
+      if (inside) {
+        const edges = [y, r.height - y, x, r.width - x];
+        const i = edges.indexOf(Math.min(...edges));
+        if (i === 0) y = 0; else if (i === 1) y = r.height; else if (i === 2) x = 0; else x = r.width;
+      }
+      const dist = inside ? 0 : Math.hypot(mouse.x - r.left - x, mouse.y - r.top - y);
+      const near = Math.max(0, 1 - dist / PROXIMITY);
+      btn.style.setProperty('--shine-x', `${x.toFixed(1)}px`);
+      btn.style.setProperty('--shine-y', `${y.toFixed(1)}px`);
+      btn.style.setProperty('--shine-x2', `${(r.width - x).toFixed(1)}px`);
+      btn.style.setProperty('--shine-y2', `${(r.height - y).toFixed(1)}px`);
+      btn.style.setProperty('--shine-opacity', (near * INTENSITY).toFixed(3));
+    });
+  };
+  addEventListener('pointermove', (e) => {
+    mouse = { x: e.clientX, y: e.clientY };
+    if (!raf) raf = requestAnimationFrame(update);
+  }, { passive: true });
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  document.addEventListener('pointerleave', () => {
+    mouse = { x: -1e4, y: -1e4 };
+    if (!raf) raf = requestAnimationFrame(update);
+  });
+</script>
 
 <style>
   .btn {
@@ -67,6 +111,27 @@ const Tag = href ? 'a' : 'button';
       inset 0 -2px 9px rgb(255 255 255 / 0.46),
       inset 0 2px 0 rgb(255 255 255 / 0.28),
       var(--shadow-dark);
+  }
+
+  /* Specular edge: highlights on a ring as thick as the stroke (1px), at the point
+     nearest the cursor and, weaker, opposite it (reactbits "Specular Button" look) */
+  .btn--specular {
+    position: relative;
+  }
+  .btn__shine {
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background:
+      radial-gradient(64px 64px at var(--shine-x, 50%) var(--shine-y, 0), #fff, transparent 70%),
+      radial-gradient(40px 40px at var(--shine-x2, 50%) var(--shine-y2, 100%), rgb(255 255 255 / 0.5), transparent 70%);
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    opacity: var(--shine-opacity, 0);
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
   }
 
   .btn__text {
