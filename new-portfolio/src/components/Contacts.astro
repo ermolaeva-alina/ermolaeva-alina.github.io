@@ -148,7 +148,7 @@ const cards = [
     section.addEventListener('pointercancel', end);
   };
 
-  // Copy the email on click; the label reads "Copied!" for a moment
+  // Copy the email on click; the label reads "E-mail copied. Let’s chat :)" for a moment
   const init = () => {
     document.querySelectorAll<HTMLButtonElement>('.email[data-email]').forEach((btn) => {
       if (btn.dataset.ready) return;
@@ -163,8 +163,8 @@ const cards = [
           return;
         }
         if (!label) return;
-        label.textContent = 'Copied!';
-        setTimeout(() => (label.textContent = email), 1500);
+        label.textContent = 'E-mail copied. Let’s chat :)';
+        setTimeout(() => (label.textContent = email), 2000);
       });
     });
     initCards();
