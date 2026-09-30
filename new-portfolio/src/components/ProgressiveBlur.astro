@@ -3,7 +3,7 @@
 // 8 stacked layers, each blurring twice as much as the one before, each masked to
 // its own band, so the blur fades in smoothly toward the bottom edge.
 const LAYERS = 8;
-const MAX_BLUR = 17.5; // px, the bottom-most layer
+const MAX_BLUR = 36; // px, the bottom-most layer (midu.design uses 17.5)
 const step = 100 / LAYERS; // mask band, %
 const layers = Array.from({ length: LAYERS }, (_, i) => ({
   blur: +(MAX_BLUR / 2 ** (LAYERS - 1 - i)).toFixed(3),
@@ -23,7 +23,7 @@ const layers = Array.from({ length: LAYERS }, (_, i) => ({
     left: 0;
     right: 0;
     bottom: 0;
-    height: 100px;
+    height: 160px;
     z-index: 50; /* above the page, below the navbar (100) */
     pointer-events: none;
   }
