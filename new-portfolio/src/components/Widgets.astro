@@ -2,10 +2,8 @@
 // Figma: "Widgets" 553:617776
 import Chip from './Chip.astro';
 import Button from './Button.astro';
-import DotMatrix from './DotMatrix.astro';
 import InlineSvg from './InlineSvg.astro';
 import arrowDots from '../assets/widgets/arrow-dots.svg?raw';
-import { adaptyLogo } from '../data/dot-screens';
 // A 20 × 9 grid of 56px tiles (2px gap). Widgets occupy cells; free cells show a tile.
 // Figma "Photos" 553:617972: three rotated photos (Figma x/y and CCW rotation)
 const praguePhotos = [
@@ -21,7 +19,6 @@ const ROWS = 9;
 const areas = {
   ticker: { r: 0, c: 0, rs: 1, cs: 1 },
   current: { r: 1, c: 11, rs: 1, cs: 7 },
-  pixels: { r: 1, c: 18, rs: 1, cs: 1 },
   prague: { r: 3, c: 3, rs: 3, cs: 3 },
   cta: { r: 4, c: 8, rs: 1, cs: 4 },
   experience: { r: 4, c: 15, rs: 4, cs: 4 },
@@ -90,11 +87,6 @@ const industries = [
           <span class="outlined company__name">adapty.io</span>
         </a>
       </p>
-    </div>
-
-    <!-- Adapty pixel logo -->
-    <div class="pixels" style={place(areas.pixels)} data-dot-replay>
-      <DotMatrix id="adapty-logo" label="Adapty logo" {...adaptyLogo} r={1} shine={{ spread: 1, blur: 4, alpha: 0.12 }} />
     </div>
 
     <!-- Based in Prague -->
@@ -315,20 +307,6 @@ const industries = [
   }
   .company__name {
     width: 63px; /* Figma text box */
-  }
-
-  /* Adapty pixel logo button */
-  .pixels {
-    display: grid;
-    place-items: center;
-    border-radius: var(--radius-s);
-    background: #020202; /* Figma: Btn black */
-    box-shadow:
-      inset 0 0 0 1px var(--color-black-dark),
-      inset 0 -2px 9px rgb(255 255 255 / 0.46),
-      inset 0 2px 0 rgb(255 255 255 / 0.28),
-      var(--shadow-dark);
-    overflow: hidden;
   }
 
   /* Prague */
