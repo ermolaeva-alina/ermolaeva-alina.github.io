@@ -1,0 +1,19 @@
+new-portfolio/src/components/MyStory.astro
+  s_902dde4ed541cf::t_204e9f3fba73fb 17-19,55,62,67,77,100,232
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "db24fed5869f63e2b81ead7036166aa3d7753f51",
+  "prompts": {},
+  "sessions": {
+    "s_902dde4ed541cf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "26d88f8b-b5e0-41d9-aa24-075cbb992fd6",
+        "model": "unknown"
+      },
+      "human_author": "Oleksandr Shylenko <oleksandr.shylenko@gooddata.com>"
+    }
+  }
+}
