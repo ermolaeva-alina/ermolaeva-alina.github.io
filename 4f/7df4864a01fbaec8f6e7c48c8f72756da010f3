@@ -1,0 +1,19 @@
+new-portfolio/src/components/DotMatrix.astro
+  s_902dde4ed541cf::t_3f03db544ee942 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4f7df4864a01fbaec8f6e7c48c8f72756da010f3",
+  "prompts": {},
+  "sessions": {
+    "s_902dde4ed541cf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "26d88f8b-b5e0-41d9-aa24-075cbb992fd6",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Oleksandr Shylenko <oleksandr.shylenko@gooddata.com>"
+    }
+  }
+}
