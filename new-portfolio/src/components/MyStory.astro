@@ -14,8 +14,9 @@ import iconPlay from '../assets/story/icon-play.svg?raw';
 type Area = { r: number; c: number; rs?: number; cs?: number };
 const place = ({ r, c, rs = 1, cs = 1 }: Area) => `grid-area: ${r + 1} / ${c + 1} / span ${rs} / span ${cs}`;
 
-// Tiles exist only in these cells (row * 100 + col), exactly as in Figma
-const tileCells = '7,9,11,12,14,15,16,17,18,19,108,109,112,113,114,115,116,118,119,209,212,213,214,215,216,217,218,219,309,310,319,400,409,410,418,419,501,502,504,505,507,508,509,510,518,519,602,603,604,605,606,608,609,610,618,619,702,703,704,706,707,708,709,710,718,719,800,801,810,818,819,900,919,1000,1001,1010,1018,1019,1101,1110,1111,1112,1113,1114,1115,1116,1118,1119,1200,1210,1211,1212,1213,1214,1219,1300,1301,1310,1312,1313,1314,1319,1400,1401,1410,1411,1412,1413,1414,1419,1500,1501,1511,1512,1513,1514,1519,1600,1601,1610,1612,1613,1619,1700,1701,1702,1703,1704,1705,1706,1707,1708,1710,1711,1712,1713,1714,1719,1800,1812,1814,1819,1900,1912,1913,1914,1919,2000,2013,2014,2015,2016,2019,2100,2112,2113,2114,2115,2116,2117,2118,2119,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2213,2214,2215,2216,2217,2219'
+// Tiles exist only in these cells (row * 100 + col), as in Figma plus 1602–1609
+// and 2017–2018 where the heart and photo cards are shorter than in Figma
+const tileCells = '7,9,11,12,14,15,16,17,18,19,108,109,112,113,114,115,116,118,119,209,212,213,214,215,216,217,218,219,309,310,319,400,409,410,418,419,501,502,504,505,507,508,509,510,518,519,602,603,604,605,606,608,609,610,618,619,702,703,704,706,707,708,709,710,718,719,800,801,810,818,819,900,919,1000,1001,1010,1018,1019,1101,1110,1111,1112,1113,1114,1115,1116,1118,1119,1200,1210,1211,1212,1213,1214,1219,1300,1301,1310,1312,1313,1314,1319,1400,1401,1410,1411,1412,1413,1414,1419,1500,1501,1511,1512,1513,1514,1519,1600,1601,1602,1603,1604,1605,1606,1607,1608,1609,1610,1612,1613,1619,1700,1701,1702,1703,1704,1705,1706,1707,1708,1710,1711,1712,1713,1714,1719,1800,1812,1814,1819,1900,1912,1913,1914,1919,2000,2013,2014,2015,2016,2017,2018,2019,2100,2112,2113,2114,2115,2116,2117,2118,2119,2200,2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2211,2213,2214,2215,2216,2217,2219'
   .split(',')
   .map(Number)
   .map((n) => ({ r: Math.floor(n / 100), c: n % 100 }));
@@ -51,19 +52,19 @@ const photos = [
       <div class="card__text">
         <h3 class="card__title">What I actually <span class="raster-r">do</span></h3>
         <p class="t-body-16">
-          Most of the work is deciding what the thing actually is. I take half-defined problems — a business goal, some constraints, a rough sense of user needs — and turn them into a structure that holds. I work close to product, so I'm part of deciding what we build and what it moves for the business, and I stay through build, where the real decisions happen.
+          Most of the work is deciding what the thing is. I turn half-defined problems into a structure that holds. I work close to product, help decide what we build, and stay through development, where the real decisions happen. I also prototype in code with AI: I built this website that way.
         </p>
       </div>
     </article>
 
     <InlineSvg svg={iconType} id="icon-type" class="icon icon--lg" style={place({ r: 6, c: 0, rs: 2, cs: 2 })} />
 
-    <article class="card card--heart" style={place({ r: 8, c: 2, rs: 9, cs: 8 })}>
+    <article class="card card--heart" style={place({ r: 8, c: 2, rs: 8, cs: 8 })}>
       <DotScreen screen={heart} id="screen-heart" label="Pixel heart" inset={false} />
       <div class="card__text card__text--24">
         <h3 class="card__title">I like <span class="raster-r">design that</span> has to <span class="raster-r">work</span></h3>
         <p class="t-body-16">
-          The part I enjoy most is the moment a solution finally lines up — when the structure, the interface, and how it feels to use all agree, and it stops feeling like a compromise. Getting there means research and known patterns, and it means caring how someone feels using the thing, not only whether they can. And the products I work on are tools people build their own things with, which is a good reason to get them right.
+          My favorite moment is when structure, interface and feel finally agree, and the solution stops being a compromise. I work on tools people build their own things with, so how it feels to use them matters as much as whether it works.
         </p>
       </div>
     </article>
@@ -73,7 +74,7 @@ const photos = [
       <div class="card__text card__text--wide">
         <h3 class="card__title">Where the <span class="raster-r">background</span> comes in</h3>
         <p class="t-body-16">
-          A Bachelor's at a technical university — advanced math, statistics, coding in several languages — gave me a structural way of thinking. A Master's in HCI and UX Design added the other half: user psychology, quantitative research, accessibility. One taught me how systems hold together, the other how people actually meet them.
+          A technical Bachelor's (math, statistics, coding) taught me to think in systems. A Master's in HCI added user psychology, research and accessibility. So I can talk architecture with engineers, read the data, and give AI tools the clear logic they need to build what I design.
         </p>
       </div>
     </article>
@@ -96,7 +97,7 @@ const photos = [
       <div class="card__text card__text--photos">
         <h3 class="card__title"><span class="raster-r">Outside</span> of work</h3>
         <p class="t-body-16">
-          I live in Prague with my husband, in the city of my heart. Fourteen countries so far and nowhere near done. Design has been my thing since I was a kid, back when I had no idea it could be a job. I take a lot of photos too — the kind where something looks like a still from a film and I have to show someone right away, except it's just a Tuesday.<br />And music, always.
+          I live in Prague with my husband. It’s the city of my heart. We’ve been to fourteen countries so far, and we’re nowhere near done. I take a lot of photos, mostly ordinary moments that look like a film still.<br />And music, always.
         </p>
       </div>
     </article>
@@ -228,7 +229,7 @@ const photos = [
     justify-self: end;
     align-self: start;
     width: 348px;
-    height: 518px;
+    height: 460px;
     justify-content: flex-end;
     gap: var(--space-32);
   }
