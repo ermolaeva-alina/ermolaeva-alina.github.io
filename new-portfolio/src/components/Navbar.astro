@@ -2,8 +2,7 @@
 // Figma: "Navbar Container" 553:618207
 // Floating glass pill, centered at the top. Items have one fixed width. The active
 // item turns orange and the glowing dot slides under it; on the home page the
-// active item follows the section you are looking at. On hover the label
-// under the pointer grows, with a little spring.
+// active item follows the section you are looking at.
 const items = [
   { label: 'Home', href: '/' },
   { label: 'Case studies', href: '/#case-studies' },
@@ -31,7 +30,7 @@ const activeIndex = items.findIndex((item) => item.href === current);
             style={`width: ${ITEM_WIDTH}px`}
             aria-current={active ? 'page' : undefined}
           >
-            <span class="label">{item.label}</span>
+            {item.label}
           </a>
         </li>
       );
@@ -78,19 +77,6 @@ const activeIndex = items.findIndex((item) => item.href === current);
     color: var(--color-gray);
     white-space: nowrap;
     transition: color var(--duration-hover) var(--ease-out);
-  }
-
-  .label {
-    display: block;
-    transform-origin: center;
-  }
-  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-    .label {
-      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot */
-    }
-    .item:hover .label {
-      transform: scale(1.12); /* 14px text reads as ~16px */
-    }
   }
 
   .item.active {
