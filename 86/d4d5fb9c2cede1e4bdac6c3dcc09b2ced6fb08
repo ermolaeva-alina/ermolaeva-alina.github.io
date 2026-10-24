@@ -1,0 +1,19 @@
+new-portfolio/src/components/Navbar.astro
+  s_902dde4ed541cf::t_187598f6aaedc2 5,33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "86d4d5fb9c2cede1e4bdac6c3dcc09b2ced6fb08",
+  "prompts": {},
+  "sessions": {
+    "s_902dde4ed541cf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "26d88f8b-b5e0-41d9-aa24-075cbb992fd6",
+        "model": "unknown"
+      },
+      "human_author": "Oleksandr Shylenko <oleksandr.shylenko@gooddata.com>"
+    }
+  }
+}
